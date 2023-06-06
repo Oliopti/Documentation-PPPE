@@ -30,12 +30,12 @@ I- Présentation du contrat
 --------------------------
 
 Pour obtenir une liste d'ingrédients aléatoires, 
-vous pouvez utiliser la fonction, ``test`` function:
-
+vous pouvez utiliser la fonction, ``lumache.get_random_ingredients`` function:
 .. autofunction:: lumache.get_random_ingredients
 
 The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`will raise an exception.
+or ``"veggies"``. 
+Otherwise, :py:func:`lumache.get_random_ingredients`will raise an exception.
 
 .. autoexception:: lumache.InvalidKindError
 
