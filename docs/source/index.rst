@@ -34,3 +34,4 @@ Sommaire
 
    usage
    api
+   test

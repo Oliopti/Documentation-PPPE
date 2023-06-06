@@ -65,11 +65,12 @@ II- Description du code pour récupérer les données et les inporter dans la ba
 Voici une explication ligne par ligne du code :
 
 
-.. autoexception:: 
+.. code-block:: python
+   :linenos:
 
-> import time
->> import serial
->>> import mysql.connector
+   import time
+   import serial
+   import mysql.connector
 
 
 Ces lignes importent les modules nécessaires pour le code ``time``, ``serial`` et ``mysql.connector``. 
