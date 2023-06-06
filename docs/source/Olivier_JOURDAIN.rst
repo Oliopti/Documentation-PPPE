@@ -65,12 +65,10 @@ II- Description du code pour récupérer les données et les inporter dans la ba
 Voici une explication ligne par ligne du code :
 
 
-   :py:func:`lumache.get_random_ingredients`
-
 .. autoexception:: 
 
->>> import time
->>> import serial
+> import time
+>> import serial
 >>> import mysql.connector
 
 
