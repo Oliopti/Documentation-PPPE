@@ -1,4 +1,4 @@
-Bastien VIVIAN
+IR4 - Bastien Vivian
 ==============
 
 .. _installation:
