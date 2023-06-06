@@ -69,9 +69,9 @@ Voici une explication ligne par ligne du code :
 
 .. autoexception:: 
 
->>> import time
->>> import serial
->>> import mysql.connector
+import time
+import serial
+import mysql.connector
 
 
 Ces lignes importent les modules nécessaires pour le code ``time``, ``serial`` et ``mysql.connector``. 
