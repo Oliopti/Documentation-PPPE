@@ -29,9 +29,11 @@ For example:
 I- Présentation du contrat
 --------------------------
 
-Pour obtenir une liste d'ingrédients aléatoires, 
-vous pouvez utiliser la fonction, ``lumache.get_random_ingredients`` function:
+Ces lignes importent les modules nécessaires pour le code, notamment
+``time``, ``serial``, ``mysql.connector``.
+
 .. autofunction:: lumache.get_random_ingredients
+
 
 The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
 or ``"veggies"``. 
@@ -49,7 +51,7 @@ For example:
 
 Voici une description détaillée du code :
 
-.. code-block:: console
+.. autoexception:: lumache.InvalidKindError
 
    (.venv) $ pip install lumache
 
@@ -67,6 +69,20 @@ Voici une explication ligne par ligne du code :
    import mysql.connector
 
 Ces lignes importent les modules nécessaires pour le code, notamment `time`, `serial` et `mysql.connector`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .. code-block:: console
    def insertion(mesures):
@@ -98,8 +114,7 @@ Les étapes effectuées sont les suivantes :
 
 - Un curseur est créé pour exécuter des requêtes SQL. ;
 
-- Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument `mesures`. La valeur de l'id de session est obtenue 
-en sélectionnant la valeur maximale de la colonne `id` dans la table `session`. ;
+- Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument `mesures`. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne `id` dans la table `session`. ;
 
 - La requête d'insertion est exécutée. ;
 
