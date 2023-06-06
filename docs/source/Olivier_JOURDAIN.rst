@@ -63,15 +63,14 @@ II- Description du code pour récupérer les données et les inporter dans la ba
 
 Voici une explication ligne par ligne du code :
 
-``python
-import time
+``import time
 import serial
 import mysql.connector
 ``
 Ces lignes importent les modules nécessaires pour le code, notamment `time`, `serial` et `mysql.connector`.
 
-``python
-def insertion(mesures):
+
+``def insertion(mesures):
     try:
         connection = mysql.connector.connect(
             host='172.20.10.26',
@@ -93,6 +92,7 @@ def insertion(mesures):
         return False
     return
 ``
+
 Cette partie du code définit une fonction `insertion` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. 
 Les étapes effectuées sont les suivantes :
 - Une connexion est établie avec la base de données en utilisant les informations de connexion fournies. ;
@@ -103,8 +103,7 @@ en sélectionnant la valeur maximale de la colonne `id` dans la table `session`.
 - Les modifications sont validées dans la base de données. ;
 - Le curseur est fermé.
 
-``python
-ser = serial.Serial(
+``ser = serial.Serial(
     port='/dev/ttyUSB0',
     baudrate=9600,
     parity=serial.PARITY_NONE,
@@ -122,8 +121,7 @@ Ces lignes configurent une connexion série en utilisant le module `serial`. Les
 précédemment dans l'autre exemple de code que vous avez donné. Le port série est ouvert après la vérification et la fermeture du port 
 s'il est déjà ouvert.
 
-``python
-while True:
+``while True:
     try:
         res = ser.read(6)
         res = res.decode()
