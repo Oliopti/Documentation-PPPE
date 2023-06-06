@@ -62,6 +62,7 @@ II- Description du code pour récupérer les données et les inporter dans la ba
 ------------------------------------------------------------------------------------------
 
 
+
 Voici une explication ligne par ligne du code :
 
 
@@ -74,26 +75,10 @@ Voici une explication ligne par ligne du code :
 
 
 Ces lignes importent les modules nécessaires pour le code ``time``, ``serial`` et ``mysql.connector``. 
-.. autofunction:: lumache.get_random_ingredients
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.. code-block:: console
+.. code-block:: python
+   :emphasize-lines:
    def insertion(mesures):
       try:
         connection = mysql.connector.connect(
@@ -117,21 +102,9 @@ Ces lignes importent les modules nécessaires pour le code ``time``, ``serial`` 
     return
 
 
-Cette partie du code définit une fonction `insertion` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. 
-Les étapes effectuées sont les suivantes :
-- Une connexion est établie avec la base de données en utilisant les informations de connexion fournies. 
-
-- Un curseur est créé pour exécuter des requêtes SQL. 
-
-- Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument `mesures`. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne `id` dans la table `session`.
-
-- La requête d'insertion est exécutée. 
-
-- Les modifications sont validées dans la base de données. 
-
-- Le curseur est fermé.
-
-.. code-block:: console
+console
+.. code-block:: 
+   python
    ser = serial.Serial(
       port='/dev/ttyUSB0',
       baudrate=9600,
