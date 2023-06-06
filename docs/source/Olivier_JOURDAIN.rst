@@ -37,49 +37,42 @@ Voici une explication ligne par ligne du code :
    import time
    import serial
    import mysql.connector
-
+   
+   
 Ces lignes importent les modules nécessaires pour le code, notamment ``time``, ``serial`` et ``mysql.connector``.
 
-.. function displayCode()
-    -- Code Python à afficher
-    local code = [[
-        function insertion(mesures)
-            try:
-                connection = mysql.connector.connect(
-                    host='172.20.10.26',
-                    database='pppe',
-                    user='admin',
-                    password='admin'
-                )
-                print("Essai de connexion au serveur MySQL")
-                cursor = connection.cursor()
-                mySql_insert_query = "INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), " .. mesures .. ")"
-                print(mySql_insert_query)
-                cursor.execute(mySql_insert_query)
-                connection.commit()
-                print("Exécuter la commande :", mySql_insert_query)
-                cursor.close()
-                print("Enregistrement inséré avec succès dans la table releve_puissance")
-            except mysql.connector.Error as error:
-                print("Échec de l'insertion d'un enregistrement dans la table :", error)
-                return false
-            return
-        end
-    ]]
 
-    -- Affichage du code
-    print("Code Python :")
-    print(code)
-   end
+.. code-block:: python
+   :linenos:
 
--- Appel de la fonction pour afficher le code
-displayCode()
+    function insertion(mesures)
+        try:
+            connection = mysql.connector.connect(
+                host='172.20.10.26',
+                database='pppe',
+                user='admin',
+                password='admin'
+            )
+            print("Essai de connexion au serveur MySQL")
+            cursor = connection.cursor()
+            mySql_insert_query = "INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), " .. mesures .. ")"
+            print(mySql_insert_query)
+            cursor.execute(mySql_insert_query)
+            connection.commit()
+            print("Exécuter la commande :", mySql_insert_query)
+            cursor.close()
+            print("Enregistrement inséré avec succès dans la table releve_puissance")
+        except mysql.connector.Error as error:
+            print("Échec de l'insertion d'un enregistrement dans la table :", error)
+            return false
+        return
+     
 
-Cette partie du code définit une fonction `insertion` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. Les étapes effectuées sont les suivantes :
+Cette partie du code définit une fonction ``insertion`` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. Les étapes effectuées sont les suivantes :
 
 1. Une connexion est établie avec la base de données en utilisant les informations de connexion fournies.
 2. Un curseur est créé pour exécuter des requêtes SQL.
-3. Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument `mesures`. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne `id` dans la table `session`.
+3. Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument ``mesures``. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne ``id`` dans la table ``session``.
 4. La requête d'insertion est exécutée.
 5. Les modifications sont validées dans la base de données.
 6. Le curseur est fermé.
@@ -87,6 +80,7 @@ Cette partie du code définit une fonction `insertion` qui effectue l'insertion 
 
 .. code-block:: python
    :linenos:
+
    ser = serial.Serial(
       port='/dev/ttyUSB0',
       baudrate=9600,
@@ -102,7 +96,7 @@ Cette partie du code définit une fonction `insertion` qui effectue l'insertion 
    ser.isOpen()
 
 
-Ces lignes configurent une connexion série en utilisant le module `serial`. Les paramètres spécifiés sont les mêmes que ceux utilisés précédemment dans l'autre exemple de code que vous avez donné. Le port série est ouvert après la vérification et la fermeture du port s'il est déjà ouvert.
+Ces lignes configurent une connexion série en utilisant le module ``serial``. Les paramètres spécifiés sont les mêmes que ceux utilisés précédemment dans l'autre exemple de code que vous avez donné. Le port série est ouvert après la vérification et la fermeture du port s'il est déjà ouvert.
 
 
 .. code-block:: python
