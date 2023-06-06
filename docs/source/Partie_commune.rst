@@ -20,9 +20,7 @@ d’alimenter tous les luminaires de la salle soit 11 points lumineux de 40W cha
 Domaine d’activité du système support d’étude :
 
     -Informatique, réseaux et infrastructures ;
-
     -Mobilité et systèmes embarqués ;
-
     -Mesure, instrumentation et microsystèmes.
 
 
@@ -33,9 +31,7 @@ Domaine d’activité du système support d’étude :
 Réaliser l’installation de l’ensemble panneaux, régulateur, batteries, vélos et alternateurs pour ensuite :
 
 -gérer l’éclairage via un écran tactile, prévoir un circuit de puissance pour un fonctionnement en 24V continu ou 230V alternatif ;
-
 -mesurer la production des panneaux photovoltaïques, envoyer les informations via XBee ; 
-
 -enregistrement de la production journalière et annuelle des étudiants participant.
 
 
