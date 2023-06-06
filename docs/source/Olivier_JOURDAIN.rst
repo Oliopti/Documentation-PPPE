@@ -40,30 +40,40 @@ Voici une explication ligne par ligne du code :
 
 Ces lignes importent les modules nécessaires pour le code, notamment ``time``, ``serial`` et ``mysql.connector``.
 
+function displayCode()
+    -- Code Python à afficher
+    local code = [[
+        function insertion(mesures)
+            try:
+                connection = mysql.connector.connect(
+                    host='172.20.10.26',
+                    database='pppe',
+                    user='admin',
+                    password='admin'
+                )
+                print("Essai de connexion au serveur MySQL")
+                cursor = connection.cursor()
+                mySql_insert_query = "INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), " .. mesures .. ")"
+                print(mySql_insert_query)
+                cursor.execute(mySql_insert_query)
+                connection.commit()
+                print("Exécuter la commande :", mySql_insert_query)
+                cursor.close()
+                print("Enregistrement inséré avec succès dans la table releve_puissance")
+            except mysql.connector.Error as error:
+                print("Échec de l'insertion d'un enregistrement dans la table :", error)
+                return false
+            return
+        end
+    ]]
 
-.. code-block:: python
-   :linenos:
-   def insertion(mesures):
-   try:
-      connection = mysql.connector.connect(
-         host='172.20.10.26',
-         database='pppe',
-         user='admin',
-         password='admin'
-      )
-   print("Essai de connexion au serveur MySQL")
-   cursor = connection.cursor()
-   mySql_insert_query = f"INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), {mesures})"
-   print(mySql_insert_query)
-   cursor.execute(mySql_insert_query)
-   connection.commit()
-   print("Exécuter la commande :", mySql_insert_query)
-   cursor.close()
-      print("Enregistrement inséré avec succès dans la table releve_puissance")
-   except mysql.connector.Error as error:
-      print("Échec de l'insertion d'un enregistrement dans la table :", error)
-         return False
-    return
+    -- Affichage du code
+    print("Code Python :")
+    print(code)
+end
+
+-- Appel de la fonction pour afficher le code
+displayCode()
 
 Cette partie du code définit une fonction `insertion` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. Les étapes effectuées sont les suivantes :
 1. Une connexion est établie avec la base de données en utilisant les informations de connexion fournies.
