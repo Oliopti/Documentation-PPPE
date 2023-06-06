@@ -35,17 +35,17 @@ Ces lignes importent les modules nécessaires pour le code, notamment
 .. autofunction:: lumache.get_random_ingredients
 
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. 
+The ``kind`` parameter should be either ``time``, ``serial``,
+or ``mysql.connector``. 
 Otherwise, :py:func:`lumache.get_random_ingredients`will raise an exception.
 
 .. autoexception:: lumache.InvalidKindError
 
 For example:
 
-   import time
-   import serial
-   import mysql.connector
+>>> import lumache
+>>> lumache.get_random_ingredients()
+['shells', 'gorgonzola', 'parsley']
 
 
 
