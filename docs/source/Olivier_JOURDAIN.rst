@@ -43,9 +43,9 @@ Otherwise, :py:func:`lumache.get_random_ingredients`will raise an exception.
 
 For example:
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+   import time
+   import serial
+   import mysql.connector
 
 
 
@@ -63,13 +63,16 @@ II- Description du code pour récupérer les données et les inporter dans la ba
 
 
 Voici une explication ligne par ligne du code :
-.. code-block:: console
-   import time
+
+`` import time `` 
    import serial
    import mysql.connector
+``
+.. autofunction:: lumache.get_random_ingredients
 
-Ces lignes importent les modules nécessaires pour le code, notamment `time`, `serial` et `mysql.connector`.
 
+Ces lignes importent les modules nécessaires pour le code, notamment ``time``, ``serial``, ``mysql.connector``.
+.. autofunction:: lumache.get_random_ingredients
 
 
 
