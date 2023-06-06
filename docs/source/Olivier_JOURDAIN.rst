@@ -22,6 +22,8 @@ Enfin, dans le cadre de l'interface tactile, il est prévu de créer un slider p
 En suivant ces différentes étapes, il sera possible d'assurer une réception et un enregistrement efficaces des informations dans la base de données locale, tout en offrant une interface conviviale pour le contrôle du réseau électrique d'alimentation.
 
 
+Pour voir le code complet :doc:`Annexe_IR3`
+
 
 II- Description du code pour récupérer les données et les inporter dans la base de donnée:
 ------------------------------------------------------------------------------------------
@@ -89,11 +91,10 @@ Cette partie du code définit une fonction ``insertion`` qui effectue l'insertio
       bytesize=serial.EIGHTBITS,
       timeout=5
 )
-
-   if ser.isOpen():
-    ser.close()
-   ser.open()
-   ser.isOpen()
+    if ser.isOpen():
+     ser.close()
+    ser.open()
+    ser.isOpen()
 
 
 Ces lignes configurent une connexion série en utilisant le module ``serial``. Les paramètres spécifiés sont les mêmes que ceux utilisés précédemment dans l'autre exemple de code que vous avez donné. Le port série est ouvert après la vérification et la fermeture du port s'il est déjà ouvert.
