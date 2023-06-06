@@ -8,7 +8,7 @@ supplémentaires la mesure de la production des panneaux solaires, l'enregistrem
 des étudiants et la participation à un concours annuel sur l'énergie verte, tout en relevant des défis 
 liés à l'informatique, aux réseaux, à la mobilité et à la mesure.
 
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
+It pulls data from the `Open Food Facts database <http://btssnfourcade.free.fr//>`_
 and offers a *simple* and *intuitive* API.
 
 Check out the :doc:`usage` section for further information, including
@@ -18,7 +18,9 @@ how to :ref:`installation` the project.
 
    Ce projet est en cours de développement.
 
-Contents
+
+
+Sommaire
 --------
 
 .. toctree::
