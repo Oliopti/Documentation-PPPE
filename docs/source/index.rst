@@ -23,6 +23,12 @@ Contents
 
 .. toctree::
 
+   Partie_commune
+
+   Olivier_JOURDAIN
+   Bastien_VIVIAN
+   Djibril_CHAABI
+   Laurent_CARDONA
+
    usage
    api
-   Code de Olivier JOURDAIN

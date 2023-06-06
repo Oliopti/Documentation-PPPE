@@ -1,9 +1,9 @@
-Usage
+Olivier Jourdain
 =====
 
 .. _installation:
 
-Code de Olivier JOURDAIN
+I- Présentation du contrat
 ------------
 
 Voici une description détaillée du code :
@@ -12,7 +12,7 @@ Voici une description détaillée du code :
 
    (.venv) $ pip install lumache
 
-Creating recipes
+II- Description du code 
 ----------------
 
 To retrieve a list of random ingredients,
