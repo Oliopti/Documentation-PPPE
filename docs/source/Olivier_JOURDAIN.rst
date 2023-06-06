@@ -40,7 +40,7 @@ Voici une explication ligne par ligne du code :
 
 Ces lignes importent les modules nécessaires pour le code, notamment ``time``, ``serial`` et ``mysql.connector``.
 
-function displayCode()
+.. function displayCode()
     -- Code Python à afficher
     local code = [[
         function insertion(mesures)
@@ -70,12 +70,13 @@ function displayCode()
     -- Affichage du code
     print("Code Python :")
     print(code)
-end
+   end
 
 -- Appel de la fonction pour afficher le code
 displayCode()
 
 Cette partie du code définit une fonction `insertion` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. Les étapes effectuées sont les suivantes :
+
 1. Une connexion est établie avec la base de données en utilisant les informations de connexion fournies.
 2. Un curseur est créé pour exécuter des requêtes SQL.
 3. Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument `mesures`. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne `id` dans la table `session`.
@@ -106,6 +107,7 @@ Ces lignes configurent une connexion série en utilisant le module `serial`. Les
 
 .. code-block:: python
    :linenos:
+   
    while True:
       try:
          res = ser.read(6)
