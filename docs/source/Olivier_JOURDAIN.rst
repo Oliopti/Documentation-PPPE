@@ -1,5 +1,5 @@
 Olivier Jourdain
-=====
+================
 
 .. _installation:
 
