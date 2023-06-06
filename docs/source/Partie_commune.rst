@@ -19,9 +19,7 @@ d’alimenter tous les luminaires de la salle soit 11 points lumineux de 40W cha
 
 Domaine d’activité du système support d’étude :
 
-    -Informatique, réseaux et infrastructures ;
-    -Mobilité et systèmes embarqués ;
-    -Mesure, instrumentation et microsystèmes.
+    -Informatique, réseaux et infrastructures ;-Mobilité et systèmes embarqués ; -Mesure, instrumentation et microsystèmes.
 
 
 
