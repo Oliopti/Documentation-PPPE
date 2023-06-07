@@ -36,47 +36,36 @@ A – Logiciels
 ^^^^^^^^^^^^^
 
 Pour l’organisation :
+++++++++++++++++++++
 
-- Notion :
-Notion est une plateforme tout-en-un de productivité et de collaboration qui offre des fonctionnalités telles que la prise de notes, création d’un diagramme de Gantt, la gestion de tâches, la création de bases de connaissances et la collaboration en équipe, le tout dans une interface personnalisable. Cela m’a permis d’avoir une vision globale de l'avancée du projet.
-
-- Draw.io :
-Draw.io est un logiciel polyvalent de conception de diagrammes, idéal pour créer des diagrammes UML et SysML pour représenter les différentes facettes d'un projet, tels que les classes, les exigences, etc.
+- Notion : Notion est une plateforme tout-en-un de productivité et de collaboration qui offre des fonctionnalités telles que la prise de notes, création d’un diagramme de Gantt, la gestion de tâches, la création de bases de connaissances et la collaboration en équipe, le tout dans une interface personnalisable. Cela m’a permis d’avoir une vision globale de l'avancée du projet.
+- Draw.io : Draw.io est un logiciel polyvalent de conception de diagrammes, idéal pour créer des diagrammes UML et SysML pour représenter les différentes facettes d'un projet, tels que les classes, les exigences, etc.
 
 
 Pour développer :
++++++++++++++++++
 
-- PyCharm :
-PyCharm est un environnement de développement intégré (IDE) spécialement conçu pour la programmation en Python, offrant des fonctionnalités avancées telles que la complétion de code, le débogage, la gestion de projets et l'intégration avec des outils de développement populaires.
-
+- PyCharm : PyCharm est un environnement de développement intégré (IDE) spécialement conçu pour la programmation en Python, offrant des fonctionnalités avancées telles que la complétion de code, le débogage, la gestion de projets et l'intégration avec des outils de développement populaires.
 - XCTU est un logiciel développé par Digi International qui permet de configurer, surveiller et mettre à jour les modules XBee.
 
 
 Pour la base de données :
++++++++++++++++++++++++++
 
-- MariaDB :
-MariaDB est un système de gestion de base de données (SGBD) open source et performant, qui constitue une alternative compatible à MySQL et offre des fonctionnalités avancées pour la gestion et le stockage des données.
-
-
-- phpMyAdmin :
-PhpMyAdmin est un outil open-source permettant de gérer et d'administrer facilement des bases de données MySQL à travers une interface web.
-
-
-- Apache2 :
-Apache2 est un serveur web open-source largement
-utilisé, offrant une plateforme stable et sécurisée pour héberger des sites web et servir des pages aux utilisateurs. Apache2 m’a fourni un accès à phpMyAdmin via un navigateur web.
+- MariaDB : MariaDB est un système de gestion de base de données (SGBD) open source et performant, qui constitue une alternative compatible à MySQL et offre des fonctionnalités avancées pour la gestion et le stockage des données.
+- phpMyAdmin : PhpMyAdmin est un outil open-source permettant de gérer et d'administrer facilement des bases de données MySQL à travers une interface web.
+- Apache2 : Apache2 est un serveur web open-source largement utilisé, offrant une plateforme stable et sécurisée pour héberger des sites web et servir des pages aux utilisateurs. Apache2 m’a fourni un accès à phpMyAdmin via un navigateur web.
 
 
 Pour le contrôle à distance :
++++++++++++++++++++++++++++++
 
-- Remmina :
-c’est une application open-source de bureau à distance qui permet aux utilisateurs de se connecter et de contrôler facilement des ordinateurs distants à partir d'une seule interface via le protocole RDP (Remote Desktop Protocol).
-
-- Microsoft Virtual Desktop :
-c’est une solution de virtualisation qui permet aux utilisateurs d'accéder à distance à des ordinateurs virtuels et à des applications Windows à partir de n'importe quel appareil, offrant une expérience de bureau virtuel sécurisée et flexible via le protocole RDP (Remote Desktop Protocol). 
+- Remmina : c’est une application open-source de bureau à distance qui permet aux utilisateurs de se connecter et de contrôler facilement des ordinateurs distants à partir d'une seule interface via le protocole RDP (Remote Desktop Protocol).
+- Microsoft Virtual Desktop : c’est une solution de virtualisation qui permet aux utilisateurs d'accéder à distance à des ordinateurs virtuels et à des applications Windows à partir de n'importe quel appareil, offrant une expérience de bureau virtuel sécurisée et flexible via le protocole RDP (Remote Desktop Protocol). 
 
 
 B – Matériel
+^^^^^^^^^^^^
 
 Une base de données de test pour effectuer les premiers tests d’interaction avec linux :
 
@@ -109,16 +98,16 @@ Format d'affichage : 800 (RGB) × 480 pixels
 Zone active : 154,08 mm × 85,92 mm
 Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
 
-- Ordinateur MacBook Pro :
-pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
+- Ordinateur MacBook Pro : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
 
-- Ordinateur avec Ubuntu 22.04 :
-pour programmer, faire des différents tests, exécuter du code
+- Ordinateur avec Ubuntu 22.04 : pour programmer, faire des différents tests, exécuter du code
 
 
 C – Choix technologiques
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Communication radio : 
++++++++++++++++++++++
 
 Pour la transmission des données j’ai choisi XBee Pro S1 comme module de communication sans fil. Les modules XBee Pro S1 sont faciles à utiliser et offrent une connectivité fiable et sécurisée. Ils ont une faible consommation d'énergie, une grande flexibilité et une capacité à être intégrés dans une large gamme d'applications. Ils prennent en charge diverses interfaces de communication, telles que UART, SPI et I2C.
 
@@ -148,6 +137,7 @@ Sigfox :
 
 
 Ordinateurs monocartes :
+++++++++++++++++++++++++
 
 Raspberry Pi :
 - énorme communauté d'utilisateurs et de développeurs qui partagent des projets, des tutoriels et des ressources
@@ -161,6 +151,7 @@ BeagleBone Black, Odroid, Nvidia Jetson Nano, Asus Tinker Board, majoritairement
 
 
 Système d’exploitation :
+++++++++++++++++++++++++
 
 - Raspberry Pi OS : Optimisé pour la Raspberry Pi, vaste compatibilité logicielle
 
@@ -171,8 +162,8 @@ Quel équivalent ?
 - Arch Linux : beaucoup trop complexe à entretenir (bas niveau => plus de codage)
 
 
-
 Systèmes de gestion de bases de données (SGBD) :
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 MariaDB :
 - Open-source maintenu par une communauté active
@@ -186,6 +177,7 @@ Quel équivalent ?
 
 
 Langage de programmation :
+++++++++++++++++++++++++++
 
 Python présente de nombreux avantages, notamment une syntaxe claire et concise, une vaste bibliothèque standard, une compatibilité multiplate-forme, une grande polyvalence dans divers domaines tels que le développement web et l'analyse de données, une communauté. En somme, Python est un langage de programmation puissant, facile à apprendre et largement utilisé.
 
@@ -194,6 +186,168 @@ Quel équivalent ?
 - Langage C : C'est un langage de programmation de bas niveau qui offre un contrôle précis sur le matériel informatique. Il est plus rapide que Python, mais nécessite généralement plus de travail et de code pour accomplir les mêmes tâches.
 - Langage Java : Un langage de programmation populaire utilisé pour créer des applications de bureau, des applications mobiles et des systèmes distribués. Java est souvent considéré comme plus verbeux que Python, ce qui signifie qu'il nécessite généralement plus de code pour accomplir les mêmes tâches.
 - Langage C++ : Une extension du langage C qui prend en charge la programmation orientée objet. C++ est également plus rapide que Python, mais il peut être plus complexe et nécessite souvent plus de compétences en programmation.
+
+
+III - Description de la Base de Données
+---------------------------------------
+
+Voici une explication partie par partie du code fourni :
+
+
+1. En-tête : Cette partie indique qu'il s'agit d'une sauvegarde SQL générée par phpMyAdmin. Elle inclut des informations telles que la version de phpMyAdmin utilisée, le lien vers le site web de phpMyAdmin, l'hôte du serveur, la date et l'heure de génération de la sauvegarde, ainsi que les versions du serveur MySQL/MariaDB et de PHP.
+
+.. code-block:: sql
+   :linenos:
+
+    -- phpMyAdmin SQL Dump
+    -- version 5.0.4deb2+deb11u1
+    -- https://www.phpmyadmin.net/
+    --
+    -- Hôte : localhost:3306
+    -- Généré le : jeu. 30 mars 2023 à 14:10
+    -- Version du serveur :  10.5.15-MariaDB-0+deb11u1
+    -- Version de PHP : 7.4.33
+
+
+2. Configuration SQL : Cette partie définit différentes configurations SQL pour la session en cours. Elle configure le mode SQL pour ne pas générer de valeurs automatiques sur zéro, démarre une transaction et définit le fuseau horaire.
+
+.. code-block:: sql
+   :linenos:
+
+    SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+    START TRANSACTION;
+    SET time_zone = "+00:00";
+
+    /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+    /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+    /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+    /*!40101 SET NAMES utf8mb4 */;
+
+
+
+3. Base de données : Cette partie crée la base de données "pppe" si elle n'existe pas déjà. Elle définit également l'utilisation de cette base de données pour les commandes suivantes.
+
+.. code-block:: sql
+   :linenos:
+
+    CREATE DATABASE IF NOT EXISTS `pppe` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    USE `pppe`;
+
+
+4. Structure de la table `role` : Cette section crée la table "role" avec deux colonnes : "id" de type int(10) et "nom_role" de type varchar(50). La table est définie avec le moteur InnoDB et le jeu de caractères utf8mb4.
+
+.. code-block:: sql
+   :linenos:
+
+    CREATE TABLE `role` (
+    `id` int(10) NOT NULL,
+    `nom_role` varchar(50) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+5. Déchargement des données de la table `role` : Cette partie insère une seule ligne de données dans la table "role" avec les valeurs spécifiées.
+
+.. code-block:: sql
+   :linenos:
+
+    INSERT INTO `role` (`id`, `nom_role`) VALUES
+    (1, 'admin');
+
+-- --------------------------------------------------------
+6. Structure de la table `utilisateur` : Cette section crée la table "utilisateur" avec plusieurs colonnes, dont "id", "role", "prenom", "nom", "e-mail" et "mdp". Les types de données et les contraintes sont spécifiés pour chaque colonne.
+
+.. code-block:: sql
+   :linenos:
+
+    CREATE TABLE `utilisateur` (
+    `id` int(11) NOT NULL,
+    `role` int(10) NOT NULL,
+    `prenom` varchar(50) NOT NULL,
+    `nom` varchar(50) NOT NULL,
+    `e-mail` varchar(50) NOT NULL,
+    `mdp` varchar(50) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+7. Déchargement des données de la table `utilisateur` : Cette partie insère une seule ligne de données dans la table "utilisateur" avec les valeurs spécifiées.
+
+.. code-block:: sql
+   :linenos:
+
+    INSERT INTO `utilisateur` (`id`, `role`, `prenom`, `nom`, `e-mail`, `mdp`) VALUES
+    (1, 1, 'user', 'user', 'user@user.fr', '*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9');
+
+
+
+8. Index pour les tables déchargées : Cette partie définit les clés primaires et les index pour les tables "role" et "utilisateur".
+
+.. code-block:: sql
+   :linenos:
+
+    --
+    -- Index pour la table `role`
+    --
+    ALTER TABLE `role`
+    ADD PRIMARY KEY (`id`);
+
+    --
+    -- Index pour la table `utilisateur`
+    --
+    ALTER TABLE `utilisateur`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `utilisateur_ibfk_1` (`role`);
+
+
+9. AUTO_INCREMENT pour les tables déchargées : Cette partie configure les valeurs AUTO_INCREMENT pour les colonnes d'ID des tables "role" et "utilisateur".
+
+.. code-block:: sql
+   :linenos:
+
+    --
+    -- AUTO_INCREMENT pour la table `role`
+    --
+    ALTER TABLE `role`
+    MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+    --
+    -- AUTO_INCREMENT pour la table `utilisateur`
+    --
+    ALTER TABLE `utilisateur`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+10. Contraintes pour les tables déchargées : Cette partie ajoute une contrainte de clé étrangère pour la colonne "role" de la table "utilisateur" faisant référence à la colonne "id" de la table "role".
+
+.. code-block:: sql
+   :linenos:
+
+    --
+    -- Contraintes pour la table `utilisateur`
+    --
+    ALTER TABLE `utilisateur`
+    ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`role`) REFERENCES `utilisateur` (`id`);
+    COMMIT;
+
+
+11. COMMIT : Cette commande valide la transaction en cours.
+
+
+.. code-block:: sql
+   :linenos:
+
+    /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+    /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+    /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+12. Restauration des valeurs précédentes : Les instructions finales restaurent les valeurs des variables de jeu de caractères, de l'ensemble de résultats et de la connexion de collation à leurs valeurs précédentes.
+
+En résumé, le code fourni crée la structure de deux tables ("role" et "utilisateur") dans la base de données "pppe" et insère des données initiales dans ces tables. Des index, des contraintes et des configurations supplémentaires sont également définis pour les tables.
+
+
+
 
 
 
@@ -262,8 +416,8 @@ Cette partie du code définit une fonction ``insertion`` qui effectue l'insertio
       stopbits=serial.STOPBITS_ONE,
       bytesize=serial.EIGHTBITS,
       timeout=5
-)
-    if ser.isOpen():
+    )
+        if ser.isOpen():
      ser.close()
     ser.open()
     ser.isOpen()
