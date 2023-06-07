@@ -13,7 +13,7 @@ En parallèle, il est nécessaire d'établir le modèle des données qui sera ut
 
 Pour assurer la réception périodique des données, un script doit être créé. Ce script permettra de récupérer les informations à intervalle de temps régulier, assurant ainsi une mise à jour constante de la base de données. Les données récupérées sont ensuite enregistrées dans la base de données, créant ainsi un système d'archivage et de stockage efficace.
 
-En collaboration avec l'étudiant 4, il convient d'établir un moyen de déterminer l'utilisateur actuel du système. Cette information est ensuite enregistrée dans la base de données en tant que données utilisateur, permettant une identification précise des responsables des enregistrements.
+En collaboration avec l'étudiant 4 :doc:`Bastien_VIVIAN`, il convient d'établir un moyen de déterminer l'utilisateur actuel du système. Cette information est ensuite enregistrée dans la base de données en tant que données utilisateur, permettant une identification précise des responsables des enregistrements.
 
 Par ailleurs, il est envisagé de créer une interface graphique sur la Raspberry Pi. Cette interface tactile facilitera la manipulation et le contrôle du réseau électrique d'alimentation, offrant ainsi la possibilité de basculer entre les sources d'énergie, qu'il s'agisse d'EDF ou des panneaux solaires.
 
@@ -23,6 +23,11 @@ En suivant ces différentes étapes, il sera possible d'assurer une réception e
 
 
 Pour voir le code complet :doc:`Annexe_IR3`
+
+OU
+
+`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/connexion_base_de_donn%C3%A9e/2v-connection-serveur.py>`_
+
 
 
 II- Description du code pour récupérer les données et les inporter dans la base de donnée:
@@ -123,3 +128,120 @@ Enfin, il y a une pause de 1 seconde ``(`time.sleep(1)`)`` entre chaque itérati
 
 II- Description du code de l'IHM `in situ`
 -----------------------------------------
+
+
+`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/IHM_in_situ/0v-Projet_solaire.py>`_
+
+
+Pour voir le code complet :doc:`Annexe_IR3`
+
+Ce code utilise la bibliothèque Tkinter pour créer une interface graphique permettant de piloter un luminaire à l'aide d'un Raspberry Pi. Voici une explication ligne par ligne :
+
+
+.. code-block:: python
+   :linenos:
+
+    from tkinter import *
+    import smbus
+    import time
+    import RPi.GPIO as GPIO
+
+
+Les trois premières lignes importent les modules nécessaires : ``tkinter`` pour l'interface graphique, ``smbus`` pour la communication I2C (non utilisée dans ce code) et ``RPi.GPIO`` pour la manipulation des broches GPIO du Raspberry Pi.
+
+.. code-block:: python
+   :linenos:
+
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(37, GPIO.OUT)
+    GPIO.setup(12, GPIO.OUT)
+    p = GPIO.PWM(12, 100)
+    p.start(0)
+
+
+Ces lignes initialisent le mode de numérotation des broches GPIO ``(`GPIO.BOARD`)``, configurent les broches 37 et 12 en sortie (`GPIO.OUT`) et créent un objet PWM (`p`) sur la broche 12 avec une fréquence de 100 Hz. La fonction `start(0)` démarre le signal PWM avec un rapport cyclique de 0%.
+
+.. code-block:: python
+   :linenos:
+   
+    fenetre = Tk()
+    fenetre.title("Pilotage progressif des luminaires")
+    fenetre.geometry("650x300")
+    fenetre.configure(bg="ghost white")
+
+
+Ces lignes créent une fenêtre graphique en utilisant la classe ``Tk`` du module Tkinter. La fenêtre est titrée "Pilotage progressif des luminaires" et a une taille de 650x300 pixels. La couleur de fond est réglée sur "ghost white".
+
+.. code-block:: python
+   :linenos:
+   
+    message = Label(fenetre, text="Production d'énergie", fg="blue", bg="ghost white", font=("Courier", 25))
+    message.place(x=120, y=25)
+
+
+Cette ligne crée un widget ``Label`` qui affiche le texte "Production d'énergie" avec une couleur de texte bleue et une police de caractères "Courier" de taille 25. Le label est positionné à la coordonnée (120, 25) dans la fenêtre.
+
+.. code-block:: python
+   :linenos:
+   
+    def Allumer():
+        print("Allumage du luminaire")
+        GPIO.output(37, GPIO.HIGH)
+        time.sleep(1)
+
+    def Eteindre():
+        print("Eteindre le luminaire")
+        GPIO.output(37, GPIO.LOW)
+        time.sleep(1)
+
+
+Ces deux blocs de code définissent les fonctions `Allumer()` et `Eteindre()`. Lorsqu'elles sont appelées, elles mettent respectivement la broche GPIO 37 en état haut (allumage) ou bas (extinction) pendant une seconde, et affichent un message à la console.
+
+.. code-block:: python
+   :linenos:
+   
+    def valeur(var):
+        temp = var.get()
+        print(temp)
+        p.ChangeDutyCycle(temp)
+
+
+Cette fonction ``valeur()`` est appelée lorsque la valeur du curseur ``(`Scale`)`` est modifiée. Elle récupère la valeur du curseur, l'affiche à la console, puis modifie le rapport cyclique du signal PWM ``(`p`)`` en utilisant la méthode ``ChangeDutyCycle()``.
+
+.. code-block:: python
+   :linenos:
+   
+    bouton1 = Button(fenetre, text="Quitter", fg="blue", command=fenetre.destroy)
+    bouton1.place(x=250, y=100)
+
+    bouton2 = Button(fenetre, text="Allumer", fg="blue", activebackground="white", command=Allumer)
+    bouton2.place
+
+    (x=50, y=100)
+
+    bouton3 = Button(fenetre, text="Eteindre", fg="blue", activebackground="white", command=Eteindre)
+    bouton3.place(x=150, y=100)
+
+
+
+Ces lignes créent trois boutons ``(`Button`)`` dans la fenêtre. Le premier bouton a le texte "Quitter" et appelle la méthode ``destroy()`` de la fenêtre lorsqu'il est cliqué. Les deux autres boutons sont respectivement pour "Allumer" et "Éteindre", et appellent les fonctions ``Allumer()`` et ``Eteindre()`` lorsqu'ils sont cliqués.
+
+.. code-block:: python
+   :linenos:
+    
+    var = DoubleVar()
+    curseur = Scale(fenetre, orient='horizontal', from_=0, to=100, resolution=1, tickinterval=10, length=450, activebackground="blue", variable=var, command=lambda x: valeur(var))
+    curseur.place(x=100, y=175)
+
+
+Ces lignes créent un curseur ``(`Scale`)`` horizontal dans la fenêtre. Le curseur va de 0 à 100 avec un intervalle de résolution de 1 et un intervalle de graduation de 10. Sa longueur est fixée à 450 pixels. Lorsque la valeur du curseur est modifiée, la fonction ``valeur()`` est appelée avec la variable ``var`` passée en tant que paramètre.
+
+.. code-block:: python
+   :linenos:
+   
+    fenetre.mainloop()
+
+
+Cette ligne lance la boucle principale de l'interface graphique, permettant à la fenêtre d'être affichée et de répondre aux interactions de l'utilisateur.
+
+C'est une explication détaillée du code ligne par ligne. Si vous avez d'autres questions, n'hésitez pas à demander !
