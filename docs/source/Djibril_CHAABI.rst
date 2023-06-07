@@ -3,21 +3,18 @@ EC1 - Djibril Chaabi
 
 .. _installation:
 
-I- Présentation du contrat
+I - Présentation du contrat
 --------------------------
 
+Dans le cadre de ce projet, diverses étapes doivent être réalisées pour mettre en place la fonction de mesure de courant et de puissance. Tout d'abord, une sonde à effet Hall sera utilisée pour mesurer les courants. Un choix technologique devra également être effectué pour mesurer la tension, en prenant en compte les contraintes et les exigences du système. 
 
-Dans le cadre du projet, une attention particulière est accordée à la réalisation de la fonction de mesure de puissance. 
-Pour ce faire, une sonde à effet Hall est utilisée afin d'obtenir des mesures précises des courants. Parallèlement, un choix technologique est effectué pour mesurer la tension de manière fiable. 
-En utilisant un multiplicateur, il est ensuite possible de déduire une image précise de la puissance en combinant les mesures de courant et de tension. 
-Des essais sont réalisés sur une plaque de prototypage afin de tester différentes structures et de sélectionner la plus adaptée. 
-Une étroite collaboration avec les autres membres du projet est essentielle pour valider les choix concernant la communication. 
-Un protocole tel que l'I2C ou l'UART est choisi pour envoyer les informations de mesure. 
-Les schémas sont réalisés sur ISIS, puis simulés avant d'être importés sur ARES pour concevoir les PCB des cartes électroniques. 
-Enfin, l'intégration de ces cartes dans le système global est effectuée pour assurer un fonctionnement harmonieux et efficace.
+Pour transmettre les informations recueillies, un protocole de communication tel que I2C ou UART sera sélectionné. Des essais seront ensuite réalisés sur une plaque de prototypage afin de valider les différentes structures choisies pour la mesure de courant et de puissance. Une coordination avec les autres membres de l'équipe de projet sera nécessaire pour s'assurer de la pertinence des choix effectués en ce qui concerne la communication.
 
+Un mode de communication, soit synchrone soit asynchrone, sera choisi en fonction des besoins du système. Les schémas seront conçus sur ISIS, puis simulés et importés sur ARES pour réaliser les cartes électroniques correspondantes. Enfin, les cartes seront intégrées dans le système pour assurer leur bon fonctionnement global.
 
-`Cliquez ici pour voir le code complet <https://youtu.be/xvFZjo5PgG0>`_
+L'ensemble de ces étapes permettra de mettre en place une fonction de mesure de courant et de puissance efficace et précise, en utilisant des technologies appropriées et en garantissant une bonne communication au sein du système.
+
+`Cliquez ici pour voir le code <https://youtu.be/xvFZjo5PgG0>`_
 
 
 

@@ -7,13 +7,13 @@ I- Présentation du contrat
 --------------------------
 
 
-Dans le cadre du processus de réception et d'enregistrement des informations dans une base de données locale, plusieurs étapes doivent être suivies. Tout d'abord, il est essentiel de déterminer les données à récupérer ainsi que leurs formats respectifs. Cela implique de travailler en collaboration avec l'étudiant 1 pour établir un protocole d'encodage des données, permettant le transfert fluide des informations depuis la carte électronique.
+Dans le cadre du processus de réception et d'enregistrement des informations dans une base de données locale, plusieurs étapes doivent être suivies. Tout d'abord, il est essentiel de déterminer les données à récupérer ainsi que leurs formats respectifs. Cela implique de travailler en collaboration avec l'étudiant :doc:`Djibril_CHAABI` et l'étudiant :doc:`Laurent_CARDONA` pour établir un protocole d'encodage des données, permettant le transfert fluide des informations depuis la carte électronique.
 
 En parallèle, il est nécessaire d'établir le modèle des données qui sera utilisé pour la base de données. Cette étape joue un rôle crucial dans l'organisation et la structure des informations enregistrées. De plus, il est important de se familiariser avec la technologie radio utilisée pour la transmission des données, afin de garantir une communication fiable et sécurisée.
 
 Pour assurer la réception périodique des données, un script doit être créé. Ce script permettra de récupérer les informations à intervalle de temps régulier, assurant ainsi une mise à jour constante de la base de données. Les données récupérées sont ensuite enregistrées dans la base de données, créant ainsi un système d'archivage et de stockage efficace.
 
-En collaboration avec l'étudiant 4 :doc:`Bastien_VIVIAN`, il convient d'établir un moyen de déterminer l'utilisateur actuel du système. Cette information est ensuite enregistrée dans la base de données en tant que données utilisateur, permettant une identification précise des responsables des enregistrements.
+En collaboration avec l'étudiant :doc:`Bastien_VIVIAN`, il convient d'établir un moyen de déterminer l'utilisateur actuel du système. Cette information est ensuite enregistrée dans la base de données en tant que données utilisateur, permettant une identification précise des responsables des enregistrements.
 
 Par ailleurs, il est envisagé de créer une interface graphique sur la Raspberry Pi. Cette interface tactile facilitera la manipulation et le contrôle du réseau électrique d'alimentation, offrant ainsi la possibilité de basculer entre les sources d'énergie, qu'il s'agisse d'EDF ou des panneaux solaires.
 
@@ -22,11 +22,11 @@ Enfin, dans le cadre de l'interface tactile, il est prévu de créer un slider p
 En suivant ces différentes étapes, il sera possible d'assurer une réception et un enregistrement efficaces des informations dans la base de données locale, tout en offrant une interface conviviale pour le contrôle du réseau électrique d'alimentation.
 
 
-Pour voir le code complet :doc:`Annexe_IR3`
+Pour voir le code le code de Olivier JOURDAIN :doc:`Annexe_IR3`
 
 OU
 
-`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/tree/main/Code_de_Olivier>`_
+`Cliquez ici pour voir le code de Olivier JOURDAIN sur GitHub <https://github.com/Oliopti/pppe/tree/main/Code_de_Olivier>`_
 
 
 II – Ressources, matériel utilisé et choix technologiques
@@ -69,37 +69,37 @@ B – Matériel
 
 Une base de données de test pour effectuer les premiers tests d’interaction avec linux :
 
-- Raspberry Pi 3 Model B v1.2 
+- **Raspberry Pi 3 Model B v1.2** 
 
-ROM : SD Card : 8-16 Go ;
-RAM : 1Go ;
-Operating System : Raspbian GNU/Linux 11 (bullseye) ;
-Kernel : Linux 6.1.21-v7+ ;
-Architecture : arm7l ;
-CPU(s) : 4 ;
-CPU max MHz : 1200.0000 ;
-CPU min MHz : 600.0000 ;
+- ROM : SD Card : 8-16 Go
+- RAM : 1Go
+- Operating System : Raspbian GNU/Linux 11 (bullseye)
+- Kernel : Linux 6.1.21-v7+
+- Architecture : arm7l
+- CPU(s) : 4
+- CPU max MHz : 1200.0000
+- CPU min MHz : 600.0000
 
 Une base de données avec l’écran tactile pour gérer le passage entre le réseau EDF et les panneaux solaires et gérer la luminosité via un slider dans l’interface tactile :
 
-- Raspberry Pi 3 Model B v1.2 avec Touch Display 7″
+- **Raspberry Pi 3 Model B v1.2 avec Touch Display 7″**
 
-ROM : SD Card : 8-16 Go
-RAM : 1Go
-Operating System : Raspbian GNU/Linux 11 (bullseye)
-Kernel : Linux 6.1.21-v7+
-Architecture : arm7l
-CPU(s) : 4
-CPU max MHz : 1200.0000
-CPU min MHz : 600.0000
+- ROM : SD Card : 8-16 Go
+- RAM : 1Go
+- Operating System : Raspbian GNU/Linux 11 (bullseye)
+- Kernel : Linux 6.1.21-v7+
+- Architecture : arm7l
+- CPU(s) : 4
+- CPU max MHz : 1200.0000
+- CPU min MHz : 600.0000
 
-Taille de l'écran (diagonale) : 7 pouces
-Format d'affichage : 800 (RGB) × 480 pixels
-Zone active : 154,08 mm × 85,92 mm
-Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
+- Taille de l'écran (diagonale) : 7 pouces
+- Format d'affichage : 800 (RGB) × 480 pixels
+- Zone active : 154,08 mm × 85,92 mm
+- Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
 
-- Ordinateur MacBook Pro : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
-- Ordinateur avec Ubuntu 22.04 : pour programmer, faire des différents tests, exécuter du code
+- **Ordinateur MacBook Pro** : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
+- **Ordinateur avec Ubuntu 22.04** : pour programmer, faire des différents tests, exécuter du code
 
 
 C – Choix technologiques
@@ -114,7 +114,7 @@ Protocole de communication :
 Le module XBee Pro S1 prend uniquement en charge le protocole de communication Zigbee. Il est important de noter qu’il n'est pas compatible avec d'autres protocoles tels que le Wi-Fi ou Bluetooth. Zigbee offre une portée étendue, une faible consommation d'énergie, la connectivité à plusieurs appareils et des fonctionnalités avancées, le distinguant ainsi du Bluetooth, du Wi-Fi, du LoRa et de Sigfox.
 
 
-Quel équivalent ?
+**Quel équivalent ?**
 
 WiFi :
 
@@ -149,7 +149,7 @@ Raspberry Pi :
 - Prend en charge une grande variété de systèmes d'exploitation, notamment Raspbian (basé sur Linux), Ubuntu, Windows IoT Core, etc
 - Connectivité, ports Ethernet, USB, HDMI et sans fil (Wi-Fi et Bluetooth) intégrées
 
-Quel équivalent ?
+**Quel équivalent ?**
 
 BeagleBone Black, Odroid, Nvidia Jetson Nano, Asus Tinker Board, majoritairement manque de connectivité, flexibilité et de documentations
 
@@ -159,7 +159,7 @@ Système d’exploitation :
 
 - Raspberry Pi OS : Optimisé pour la Raspberry Pi, vaste compatibilité logicielle
 
-Quel équivalent ?
+**Quel équivalent ?**
 
 - Ubuntu Desktop : mais pas assez optimisé pour la Raspberry Pi qui est peu puissante
 - Ubuntu server : besoin d’une interface graphique
@@ -175,7 +175,7 @@ MariaDB :
 - Compatible avec MySQL cela permet d’être facilement migrées vers MariaDB
 - Fonctionnalités supplémentaires par rapport à MySQL, moteurs de stockage supplémentaires
 
-Quel équivalent ?
+**Quel équivalent ?**
 
 - Oracle Database : Oracle est un SGBD propriétaire largement utilisé dans les entreprises. Il offre une grande puissance, une évolutivité élevée, des fonctionnalités avancées et une intégration étroite avec d'autres produits Oracle. Cependant, en raison de son statut “propriétaire” (code source fermé), il peut être plus coûteux et moins accessible pour les petites et moyennes entreprises.
 - Microsoft SQL Server : Il s'agit d'un SGBD propriétaire développé par Microsoft, largement utilisé dans les environnements Windows. SQL Server est apprécié pour son intégration transparente avec d'autres produits Microsoft, sa convivialité et ses outils de développement. Cependant, comme Oracle, il peut être plus coûteux et moins adapté aux environnements non-Windows.
@@ -186,7 +186,7 @@ Langage de programmation :
 
 Python présente de nombreux avantages, notamment une syntaxe claire et concise, une vaste bibliothèque standard, une compatibilité multiplate-forme, une grande polyvalence dans divers domaines tels que le développement web et l'analyse de données, une communauté. En somme, Python est un langage de programmation puissant, facile à apprendre et largement utilisé.
 
-Quel équivalent ?
+**Quel équivalent ?**
 
 - Langage C : C'est un langage de programmation de bas niveau qui offre un contrôle précis sur le matériel informatique. Il est plus rapide que Python, mais nécessite généralement plus de travail et de code pour accomplir les mêmes tâches.
 - Langage Java : Un langage de programmation populaire utilisé pour créer des applications de bureau, des applications mobiles et des systèmes distribués. Java est souvent considéré comme plus verbeux que Python, ce qui signifie qu'il nécessite généralement plus de code pour accomplir les mêmes tâches.
@@ -196,13 +196,18 @@ Quel équivalent ?
 III - Description de la Base de Données
 ---------------------------------------
 
-`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
+`Cliquez ici pour voir une sauvegarde du code de la base de donnée sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
 
 OU
 
 Pour voir le code complet :doc:`Annexe_IR3`
 
-Voici une explication partie par partie du code fourni :
+.. warning::
+
+   Code en cours de mise à jour
+
+
+Voici une explication partie par partie de sauvegarde du code de la base de donnée :
 
 
 1. En-tête : Cette partie indique qu'il s'agit d'une sauvegarde SQL générée par phpMyAdmin. Elle inclut des informations telles que la version de phpMyAdmin utilisée, le lien vers le site web de phpMyAdmin, l'hôte du serveur, la date et l'heure de génération de la sauvegarde, ainsi que les versions du serveur MySQL/MariaDB et de PHP.
@@ -360,9 +365,18 @@ En résumé, le code fourni crée la structure de deux tables ("role" et "utilis
 
 
 
-V - Description du code pour récupérer les données et les inporter dans la base de donnée:
+V - Description du code pour récupérer les données et les importer dans la base de donnée:
 --------------------------------------------------------------------------------------------
 
+`Cliquez ici pour voir ce code sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
+
+OU
+
+Pour voir le code complet :doc:`Annexe_IR3`
+
+.. warning::
+
+   Code en cours de mise à jour
 
 
 Voici une explication ligne par ligne du code :

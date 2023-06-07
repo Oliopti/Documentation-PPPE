@@ -14,7 +14,7 @@ liés à l'informatique, aux réseaux, à la mobilité et à la mesure.
 
 .. note::
 
-   Ce projet est en cours de développement. lol
+   Ce projet est en cours de développement.
 
 
 
@@ -32,6 +32,8 @@ Sommaire
    
 
    Annexe_IR3
+
+   test_img
 
    usage
    api
