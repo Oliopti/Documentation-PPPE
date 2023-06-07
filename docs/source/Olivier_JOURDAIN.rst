@@ -132,6 +132,7 @@ II- Description du code de l'IHM `in situ`
 
 `Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/IHM_in_situ/0v-Projet_solaire.py>`_
 
+OU
 
 Pour voir le code complet :doc:`Annexe_IR3`
 
@@ -244,4 +245,3 @@ Ces lignes créent un curseur ``(`Scale`)`` horizontal dans la fenêtre. Le curs
 
 Cette ligne lance la boucle principale de l'interface graphique, permettant à la fenêtre d'être affichée et de répondre aux interactions de l'utilisateur.
 
-C'est une explication détaillée du code ligne par ligne. Si vous avez d'autres questions, n'hésitez pas à demander !

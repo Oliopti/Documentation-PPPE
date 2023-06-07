@@ -2,18 +2,15 @@ Bienvenue dans la documentation du Projet pédagogique de production d'énergie 
 ===================================
 
 Le **Projet Pédagogique de Production d'Énergie** consiste à rendre autonome l'éclairage 
-de la salle blanche en utilisant deux panneaux solaires, deux vélos couplés à des alternateurs 
+de la salle blanche du `BTS SN du lycée Marie Madeleine Fourcade <http://btssnfourcade.free.fr//>` en utilisant deux panneaux solaires, deux vélos couplés à des alternateurs 
 et des batteries, permettant d'alimenter les 11 points lumineux de la salle, avec comme objectifs 
 supplémentaires la mesure de la production des panneaux solaires, l'enregistrement de la production 
 des étudiants et la participation à un concours annuel sur l'énergie verte, tout en relevant des défis 
 liés à l'informatique, aux réseaux, à la mobilité et à la mesure.
 
-It pulls data from the `Open Food Facts database <http://btssnfourcade.free.fr//>`_
-and offers a *simple* and *intuitive* API.
 
-Pour voir le code complet :doc:`Annexe_IR3`
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+`L'intégralité du code que nous utilisons est sur GitHub <https://github.com/Oliopti/pppe?search=1>`_
+
 
 .. note::
 
