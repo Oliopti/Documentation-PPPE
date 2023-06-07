@@ -25,10 +25,11 @@ Sommaire
 
    Partie_commune
 
-   Olivier_JOURDAIN
-   Bastien_VIVIAN
    Djibril_CHAABI
    Laurent_CARDONA
+   Olivier_JOURDAIN
+   Bastien_VIVIAN
+   
 
    Annexe_IR3
 
