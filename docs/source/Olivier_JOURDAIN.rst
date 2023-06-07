@@ -71,14 +71,14 @@ Une base de données de test pour effectuer les premiers tests d’interaction a
 
 - Raspberry Pi 3 Model B v1.2 
 
-ROM : SD Card : 8-16 Go
-RAM : 1Go
-Operating System : Raspbian GNU/Linux 11 (bullseye)
-Kernel : Linux 6.1.21-v7+
-Architecture : arm7l
-CPU(s) : 4
-CPU max MHz : 1200.0000
-CPU min MHz : 600.0000
+ROM : SD Card : 8-16 Go ;
+RAM : 1Go ;
+Operating System : Raspbian GNU/Linux 11 (bullseye) ;
+Kernel : Linux 6.1.21-v7+ ;
+Architecture : arm7l ;
+CPU(s) : 4 ;
+CPU max MHz : 1200.0000 ;
+CPU min MHz : 600.0000 ;
 
 Une base de données avec l’écran tactile pour gérer le passage entre le réseau EDF et les panneaux solaires et gérer la luminosité via un slider dans l’interface tactile :
 
@@ -99,7 +99,6 @@ Zone active : 154,08 mm × 85,92 mm
 Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
 
 - Ordinateur MacBook Pro : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
-
 - Ordinateur avec Ubuntu 22.04 : pour programmer, faire des différents tests, exécuter du code
 
 
@@ -118,19 +117,23 @@ Le module XBee Pro S1 prend uniquement en charge le protocole de communication Z
 Quel équivalent ?
 
 WiFi :
+
 - Consommation d'énergie plus élevée, ce qui peut limiter l'autonomie des appareils alimentés par batterie.
 - Plus complexe à mettre en œuvre et à configurer
 
 Bluetooth :
+
 - Consommation d'énergie plus élevée, ce qui peut être un inconvénient dans les applications nécessitant une autonomie prolongée des batteries.
 - Courte portée, ce qui peut être un inconvénient dans les applications nécessitant une communication à longue distance à travers un réseau de capteurs.
 - Connectivité limitée, conçue pour connecter directement deux appareils à proximité.
 
 LoRa :
+
 - Débit de données plus faible, optimisé pour des applications nécessitant une communication longue portée avec une faible consommation d'énergie.
 - Latence plus élevée, délai plus important entre l'envoi et la réception des données
 
 Sigfox :
+
 - Limitation du débit de données dans ses réseaux pour réduire la consommation d'énergie et les coûts
 - Abonnement nécessaire donc coût supplémentaire
 - Couverture réseau peut varier selon les régions
@@ -140,6 +143,7 @@ Ordinateurs monocartes :
 ++++++++++++++++++++++++
 
 Raspberry Pi :
+
 - énorme communauté d'utilisateurs et de développeurs qui partagent des projets, des tutoriels et des ressources
 - Variété d'accessoires et de modules complémentaires, tels que des écrans tactiles, des caméras, des capteurs, des cartes d'extension, etc
 - Prend en charge une grande variété de systèmes d'exploitation, notamment Raspbian (basé sur Linux), Ubuntu, Windows IoT Core, etc
@@ -166,6 +170,7 @@ Systèmes de gestion de bases de données (SGBD) :
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
 MariaDB :
+
 - Open-source maintenu par une communauté active
 - Compatible avec MySQL cela permet d’être facilement migrées vers MariaDB
 - Fonctionnalités supplémentaires par rapport à MySQL, moteurs de stockage supplémentaires
@@ -190,6 +195,12 @@ Quel équivalent ?
 
 III - Description de la Base de Données
 ---------------------------------------
+
+`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
+
+OU
+
+Pour voir le code complet :doc:`Annexe_IR3`
 
 Voici une explication partie par partie du code fourni :
 
@@ -340,8 +351,6 @@ Voici une explication partie par partie du code fourni :
     /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-
-
 12. Restauration des valeurs précédentes : Les instructions finales restaurent les valeurs des variables de jeu de caractères, de l'ensemble de résultats et de la connexion de collation à leurs valeurs précédentes.
 
 En résumé, le code fourni crée la structure de deux tables ("role" et "utilisateur") dans la base de données "pppe" et insère des données initiales dans ces tables. Des index, des contraintes et des configurations supplémentaires sont également définis pour les tables.
@@ -351,7 +360,7 @@ En résumé, le code fourni crée la structure de deux tables ("role" et "utilis
 
 
 
-III - Description du code pour récupérer les données et les inporter dans la base de donnée:
+V - Description du code pour récupérer les données et les inporter dans la base de donnée:
 --------------------------------------------------------------------------------------------
 
 
