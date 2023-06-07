@@ -1,11 +1,10 @@
-IR4 - Djibril Chaabi
+EC1 - Djibril Chaabi
 ====================
 
 .. _installation:
 
-Installation
-------------
-
+I- Présentation du contrat
+--------------------------
 
 
 Dans le cadre du projet, une attention particulière est accordée à la réalisation de la fonction de mesure de puissance. 
@@ -21,11 +20,6 @@ Enfin, l'intégration de ces cartes dans le système global est effectuée pour 
 `Cliquez ici pour voir le code complet <https://youtu.be/xvFZjo5PgG0>`_
 
 
-To use Lumache, first install it using pip:
-
-.. code-block:: console
-
-   (.venv) $ pip install rien
 
 Creating recipes
 ----------------
