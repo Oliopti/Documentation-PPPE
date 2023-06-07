@@ -14,7 +14,7 @@ liés à l'informatique, aux réseaux, à la mobilité et à la mesure.
 
 .. note::
 
-   Ce projet est en cours de développement.
+   Ce projet est en cours de développement. lol
 
 
 
