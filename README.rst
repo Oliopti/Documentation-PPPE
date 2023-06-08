@@ -1,5 +1,5 @@
-Template for the Read the Docs tutorial
-=======================================
+Documentation du Projet Pédagogique de Production d’Énergie
+===========================================================
 
 This GitHub template includes fictional Python library
 with some basic Sphinx docs.
