@@ -192,8 +192,206 @@ Python présente de nombreux avantages, notamment une syntaxe claire et concise,
 - Langage Java : Un langage de programmation populaire utilisé pour créer des applications de bureau, des applications mobiles et des systèmes distribués. Java est souvent considéré comme plus verbeux que Python, ce qui signifie qu'il nécessite généralement plus de code pour accomplir les mêmes tâches.
 - Langage C++ : Une extension du langage C qui prend en charge la programmation orientée objet. C++ est également plus rapide que Python, mais il peut être plus complexe et nécessite souvent plus de compétences en programmation.
 
+III - Automatisation
+--------------------
 
-III - Description de la Base de Données
+A - Mise à jours des paquets du système d'exploitation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Créer le fichier ``update.sh``
+
+.. code-block:: bash
+   :linenos:
+
+   sudo nano update.sh
+
+La commande ``sudo chmod +x update.sh`` est utilisée pour changer les permissions du fichier ``update.sh`` et le rendre exécutable
+
+.. code-block:: bash
+   :linenos:
+
+   sudo chmod +x update.sh
+
+
+Voici une explication ligne par ligne du script permettant Voici une explication ligne par ligne du script permettant des paquets du système d'exploitationla mise à jours du système d'exploitation :
+
+.. code-block:: bash
+   :linenos:
+
+   #!/bin/bash
+
+Cette ligne indique que le script est écrit en shell et sera exécuté par ``/bin/bash``.
+
+.. code-block:: bash
+   :linenos:
+
+   # Code rédigé par Olivier JOURDAIN le 10/04/2023
+
+Ce commentaire indique le nom de l'auteur et la date de rédaction du code.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mExécution de la commande pour télécharger les paquets de mise à jour :\033[0m"
+   sudo apt-get update -y && sudo apt update -y
+
+Cette ligne affiche un message à l'utilisateur en utilisant ``echo -e`` et la séquence d'échappement ``\033[1;32m`` pour spécifier la couleur du texte (vert clair). Ensuite, la commande `sudo apt-get update -y` est exécutée pour télécharger les informations sur les nouveaux paquets disponibles. La commande `sudo apt update -y` est également exécutée pour mettre à jour les listes de paquets.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mExécution de la commande pour lister tous les paquets à mettre à jour :\033[0m"
+   apt list --upgradable && apt list --upgradable -a
+
+Cette ligne affiche un autre message à l'utilisateur. Ensuite, la commande ``apt list --upgradable`` est exécutée pour lister tous les paquets pouvant être mis à jour. La commande ``apt list --upgradable -a`` est également exécutée pour afficher toutes les versions disponibles des paquets pouvant être mis à jour.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mExécution de la commande pour mettre à jour tous les paquets :\033[0m"
+   sudo apt-get upgrade -y && sudo apt upgrade -y
+
+Cette ligne affiche un autre message à l'utilisateur. Ensuite, la commande ``sudo apt-get upgrade -y`` est exécutée pour mettre à jour tous les paquets installés. La commande ``sudo apt upgrade -y`` est également exécutée pour mettre à jour les paquets.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mExécution de la commande pour supprimer les paquets inutiles :\033[0m"
+   sudo apt-get autoremove -y && sudo apt autoremove -y
+
+Cette ligne affiche un autre message à l'utilisateur. Ensuite, la commande ``sudo apt-get autoremove -y`` est exécutée pour supprimer les paquets qui ne sont plus nécessaires. La commande ``sudo apt autoremove -y`` est également exécutée pour supprimer les paquets.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;36mMise à jour terminée.\033[0m"
+
+Cette ligne affiche un message à l'utilisateur pour indiquer que la mise à jour est terminée. Le texte est coloré en cyan clair.
+
+Le script shell est destiné à mettre à jour les paquets du système d'exploitation en utilisant la commande ``apt-get`` et à afficher des informations sur les paquets pouvant être mis à jour. Il effectue également la suppression des paquets inutiles.
+
+
+
+B - automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Créer le fichier ``phpmyadmin-install.sh``
+
+.. code-block:: bash
+   :linenos:
+
+   sudo nano phpmyadmin-install.sh
+
+La commande ``sudo chmod +x phpmyadmin-install.sh`` est utilisée pour changer les permissions du fichier ``phpmyadmin-install.sh`` et le rendre exécutable
+
+.. code-block:: bash
+   :linenos:
+
+   sudo chmod +x phpmyadmin-install.sh
+
+
+Ce script shell est destiné à installer et configurer Apache2, PHP, MariaDB et phpMyAdmin. Voici une explication ligne par ligne :
+
+.. code-block:: bash
+   :linenos:
+
+   #!/bin/bash
+
+Cette ligne indique que le script est écrit en shell et sera exécuté par ``/bin/bash``.
+
+.. code-block:: bash
+   :linenos:
+
+   # Code rédigé par Olivier JOURDAIN le 09/06/2023
+
+Ce commentaire indique l'auteur et la date de rédaction du code.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mInstallation d'Apache2\033[0m"
+   sudo apt-get install apache2 -y
+   echo -e "\033[1;36mInstallation d'Apache2 et configuration terminée.\033[0m"
+
+Ces lignes affichent un message à l'écran, puis utilisent la commande ``apt-get`` pour installer Apache2. L'option ``-y`` permet d'automatiser les réponses "oui" aux questions de confirmation. Le message de confirmation est ensuite affiché à l'écran.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mInstallation de PHP\033[0m"
+   sudo apt-get install php -y
+   echo -e "\033[1;36mInstallation de PHP et configuration terminée.\033[0m"
+
+Ces lignes installent PHP de la même manière que précédemment, en affichant des messages avant et après l'installation.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mInstallation de MariaDB\033[0m"
+   sudo apt-get install mariadb-server mariadb-client -y
+   echo -e "\033[1;36mInstallation de MariaDB et configuration terminée.\033[0m"
+
+Ces lignes installent MariaDB, à la fois le serveur et le client, en affichant des messages appropriés.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mCréation d'un lien symbolique pour accéder à phpMyAdmin via le navigateur\033[0m"
+   sudo ln -s /usr/share/phpmyadmin /var/www/html
+
+Ces lignes créent un lien symbolique pour accéder à phpMyAdmin via le navigateur. Cela permet d'accéder à phpMyAdmin en utilisant l'URL ``http://localhost/phpmyadmin``.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mInstallation de phpMyAdmin\033[0m"
+   sudo apt-get install phpmyadmin -y
+   echo -e "\033[1;36mInstallation de phpMyAdmin et configuration terminée.\033[0m"
+
+Ces lignes installent phpMyAdmin en utilisant ``apt-get``, en affichant des messages appropriés.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[1;32mRedémarrage d'Apache2\033[0m"
+   sudo systemctl restart apache2
+   echo -e "\033[1;36mRedémarrage d'Apache2 terminé.\033[0m"
+
+Ces lignes redémarrent Apache2 à l'aide de la commande ``systemctl`` et affichent des messages appropriés.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[0;35mInstallation de Apache2, PHP, MariaDB et phpMyAdmin terminée.\033[0m"
+
+Cette ligne affiche un message indiquant la fin de l'installation de tous les composants.
+
+.. code-block:: bash
+   :linenos:
+
+   echo -e "\033[0;35mExecutez 'sudo systemctl status apache2' ou '
+
+   sudo systemctl status mariadb' pour connaître le statut de Apache 2 ou MariaDB.\033[0m"
+
+Cette ligne donne une instruction à l'utilisateur pour vérifier le statut d'Apache 2 ou de MariaDB en utilisant la commande ``systemctl status`.
+
+Ces commandes permettent donc d'automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin sur un système Linux.
+
+C - Autoriser les connexion étrangère
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pour autoriser les connexion étrangère ouvrir le fichier de configuration ``/etc/mysql/mariadb.conf.d/50-server.cnf``.
+
+.. code-block:: bash
+   :linenos:
+
+   sudo nano /etc/mysql/mysql.conf.d/mysql.cnf
+
+Puis, renplacer ``bind-address = 127.0.0.1`` par ``bind-address = 0.0.0.0``.
+
+
+V - Description de la Base de Données
 ---------------------------------------
 
 `Cliquez ici pour voir une sauvegarde du code de la base de donnée sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
@@ -204,168 +402,403 @@ Pour voir le code complet :doc:`Annexe_IR3`
 
 .. warning::
 
-   Code en cours de mise à jour
+   Code mis à jour
 
 
 Voici une explication partie par partie de sauvegarde du code de la base de donnée :
 
 
-1. En-tête : Cette partie indique qu'il s'agit d'une sauvegarde SQL générée par phpMyAdmin. Elle inclut des informations telles que la version de phpMyAdmin utilisée, le lien vers le site web de phpMyAdmin, l'hôte du serveur, la date et l'heure de génération de la sauvegarde, ainsi que les versions du serveur MySQL/MariaDB et de PHP.
+Ce code est un fichier de sauvegarde SQL généré par phpMyAdmin. Il contient une série d'instructions SQL pour créer une base de données et ses tables, ainsi que pour insérer des données dans ces tables.
+
+Voici une explication section par section :
+
+
+1. Les premières lignes du code sont des commentaires indiquant la version de phpMyAdmin utilisée, l'hôte, la date et l'heure de génération du fichier, ainsi que les versions du serveur MariaDB et de PHP.
 
 .. code-block:: sql
    :linenos:
 
-    -- phpMyAdmin SQL Dump
-    -- version 5.0.4deb2+deb11u1
-    -- https://www.phpmyadmin.net/
-    --
-    -- Hôte : localhost:3306
-    -- Généré le : jeu. 30 mars 2023 à 14:10
-    -- Version du serveur :  10.5.15-MariaDB-0+deb11u1
-    -- Version de PHP : 7.4.33
-
-
-2. Configuration SQL : Cette partie définit différentes configurations SQL pour la session en cours. Elle configure le mode SQL pour ne pas générer de valeurs automatiques sur zéro, démarre une transaction et définit le fuseau horaire.
-
-.. code-block:: sql
-   :linenos:
-
-    SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-    START TRANSACTION;
-    SET time_zone = "+00:00";
-
-    /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-    /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-    /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-    /*!40101 SET NAMES utf8mb4 */;
+   -- phpMyAdmin SQL Dump
+   -- version 5.0.4deb2+deb11u1
+   -- https://www.phpmyadmin.net/
+   --
+   -- Hôte : localhost:3306
+   -- Généré le : ven. 09 juin 2023 à 01:31
+   -- Version du serveur :  10.5.19-MariaDB-0+deb11u2
+   -- Version de PHP : 7.4.33
 
 
 
-3. Base de données : Cette partie crée la base de données "pppe" si elle n'existe pas déjà. Elle définit également l'utilisation de cette base de données pour les commandes suivantes.
+2. Ensuite, certaines instructions SQL sont utilisées pour configurer le mode SQL, le fuseau horaire et les jeux de caractères.
 
 .. code-block:: sql
    :linenos:
 
-    CREATE DATABASE IF NOT EXISTS `pppe` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-    USE `pppe`;
+   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+   START TRANSACTION;
+   SET time_zone = "+00:00";
 
 
-4. Structure de la table `role` : Cette section crée la table "role" avec deux colonnes : "id" de type int(10) et "nom_role" de type varchar(50). La table est définie avec le moteur InnoDB et le jeu de caractères utf8mb4.
-
-.. code-block:: sql
-   :linenos:
-
-    CREATE TABLE `role` (
-    `id` int(10) NOT NULL,
-    `nom_role` varchar(50) NOT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+   /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+   /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+   /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+   /*!40101 SET NAMES utf8mb4 */;
 
 
-5. Déchargement des données de la table `role` : Cette partie insère une seule ligne de données dans la table "role" avec les valeurs spécifiées.
+3. La section suivante concerne la création de la base de données ``pppe`` si elle n'existe pas déjà, ainsi que la sélection de cette base de données pour les instructions suivantes.
 
 .. code-block:: sql
    :linenos:
 
-    INSERT INTO `role` (`id`, `nom_role`) VALUES
-    (1, 'admin');
+   --
+   -- Base de données : `pppe`
+   --
+   CREATE DATABASE IF NOT EXISTS `pppe` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+   USE `pppe`;
 
--- --------------------------------------------------------
-6. Structure de la table `utilisateur` : Cette section crée la table "utilisateur" avec plusieurs colonnes, dont "id", "role", "prenom", "nom", "e-mail" et "mdp". Les types de données et les contraintes sont spécifiés pour chaque colonne.
-
-.. code-block:: sql
-   :linenos:
-
-    CREATE TABLE `utilisateur` (
-    `id` int(11) NOT NULL,
-    `role` int(10) NOT NULL,
-    `prenom` varchar(50) NOT NULL,
-    `nom` varchar(50) NOT NULL,
-    `e-mail` varchar(50) NOT NULL,
-    `mdp` varchar(50) NOT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-7. Déchargement des données de la table `utilisateur` : Cette partie insère une seule ligne de données dans la table "utilisateur" avec les valeurs spécifiées.
+   -- --------------------------------------------------------
+   4. Le code crée ensuite plusieurs tables avec leurs structures et leurs clés primaires. Les tables créées sont les suivantes :
+      - `batterie` avec les colonnes `id` et `date_service`.
+      - `mesure_batterie` avec les colonnes `id`, `id_batterie`, `tension` et `timestamp`.
+      - `panneaux_solaire` avec les colonnes `id`, `tension` et `timestamp`.
+      - `releve_puissance` avec les colonnes `id`, `id_session` et `mesures`.
+      - `role` avec les colonnes `id` et `nom_role`.
+      - `session` avec les colonnes `id`, `id_user`, `datetime_debut` et `datetime_fin`.
+      - `utilisateur` avec les colonnes `id`, `role`, `nom`, `prenom`, `email`, `mdp` et `date_inscription`.
+      
+5. Après la création des tables, le code insère des données dans chaque table. Les données sont insérées à l'aide des instructions ``INSERT INTO``. Chaque instruction ``INSERT INTO`` spécifie les colonnes et les valeurs à insérer pour chaque enregistrement.
 
 .. code-block:: sql
    :linenos:
 
-    INSERT INTO `utilisateur` (`id`, `role`, `prenom`, `nom`, `e-mail`, `mdp`) VALUES
-    (1, 1, 'user', 'user', 'user@user.fr', '*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9');
+   --
+   -- Structure de la table `batterie`
+   --
+
+   CREATE TABLE `batterie` (
+   `id` int(23) NOT NULL,
+   `date_service` timestamp(1) NOT NULL DEFAULT current_timestamp(1) ON UPDATE current_timestamp(1)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `batterie`
+   --
 
 
 
-8. Index pour les tables déchargées : Cette partie définit les clés primaires et les index pour les tables "role" et "utilisateur".
+
+   INSERT INTO `batterie` (`id`, `date_service`) VALUES
+   (1, '2023-03-31 22:00:00.0');
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `mesure_batterie`
+   --
+
+   CREATE TABLE `mesure_batterie` (
+   `id` int(23) NOT NULL,
+   `id_batterie` int(23) NOT NULL,
+   `tension` int(16) NOT NULL,
+   `timestamp` timestamp(1) NOT NULL DEFAULT current_timestamp(1)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `mesure_batterie`
+   --
+
+   INSERT INTO `mesure_batterie` (`id`, `id_batterie`, `tension`, `timestamp`) VALUES
+   (1, 1, 20, '2023-05-09 08:56:26.0'),
+   (4, 1, 1023, '0000-00-00 00:00:00.0'),
+   (5, 1, 1, '0000-00-00 00:00:00.0'),
+   (6, 1, 1, '0000-00-00 00:00:00.0'),
+   (7, 1, 1, '0000-00-00 00:00:00.0'),
+   (8, 1, 1234, '0000-00-00 00:00:00.0');
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `panneaux_solaire`
+   --
+
+   CREATE TABLE `panneaux_solaire` (
+   `id` int(23) NOT NULL,
+   `tension` int(23) NOT NULL,
+   `timestamp` timestamp(1) NOT NULL DEFAULT current_timestamp(1)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `panneaux_solaire`
+   --
+
+   INSERT INTO `panneaux_solaire` (`id`, `tension`, `timestamp`) VALUES
+   (1, 1022, '0000-00-00 00:00:00.0'),
+   (2, 1234, '0000-00-00 00:00:00.0');
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `releve_puissance`
+   --
+
+   CREATE TABLE `releve_puissance` (
+   `id` int(23) NOT NULL,
+   `id_session` int(23) NOT NULL,
+   `mesures` int(16) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `releve_puissance`
+   --
+
+   INSERT INTO `releve_puissance` (`id`, `id_session`, `mesures`) VALUES
+   (128, 21, 1234),
+   (129, 74, 0),
+   (130, 74, 0),
+   (131, 74, 123),
+   (142, 74, 123),
+   (143, 74, 80),
+   (144, 74, 1023),
+   (156, 74, 1023),
+   (157, 74, 123),
+   (158, 74, 1234);
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `role`
+   --
+
+   CREATE TABLE `role` (
+   `id` int(10) NOT NULL,
+   `nom_role` varchar(20) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `role`
+   --
+
+   INSERT INTO `role` (`id`, `nom_role`) VALUES
+   (1, 'admin'),
+   (2, 'utilisateur');
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `session`
+   --
+
+   CREATE TABLE `session` (
+   `id` int(16) NOT NULL,
+   `id_user` int(16) NOT NULL,
+   `datetime_debut` timestamp(1) NOT NULL DEFAULT current_timestamp(1),
+   `datetime_fin` timestamp(1) NOT NULL DEFAULT current_timestamp(1)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `session`
+   --
+
+   INSERT INTO `session` (`id`, `id_user`, `datetime_debut`, `datetime_fin`) VALUES
+   (21, 17, '2023-05-09 09:53:53.6', '2023-05-09 10:01:10.0'),
+   (23, 3, '2023-05-10 13:47:08.5', '2023-05-10 14:11:10.0'),
+   (24, 3, '2023-05-10 13:54:48.6', '2023-05-10 14:11:10.0'),
+   (25, 17, '2023-05-10 13:55:35.4', '2023-05-10 14:11:10.0'),
+   (28, 3, '2023-05-10 14:16:59.9', '2023-05-10 14:17:11.0'),
+   (29, 3, '2023-05-10 14:20:14.5', '2023-05-12 08:22:06.0'),
+   (50, 3, '2023-05-12 09:46:03.6', '2023-05-12 09:46:10.0'),
+   (51, 3, '2023-05-12 09:52:17.4', '2023-05-12 09:52:23.0'),
+   (52, 19, '2023-05-12 09:56:55.8', '2023-05-12 09:57:04.0'),
+   (53, 19, '2023-05-12 09:57:33.9', '2023-05-12 09:57:36.0'),
+   (54, 19, '2023-05-12 09:58:34.4', '2023-05-12 09:58:38.0'),
+   (55, 3, '2023-05-12 09:58:49.5', '2023-05-12 09:59:00.0'),
+   (57, 19, '2023-05-12 10:25:49.8', '2023-05-12 10:50:02.0'),
+   (58, 19, '2023-05-12 10:50:07.8', '2023-05-12 10:53:52.0'),
+   (59, 19, '2023-05-12 10:50:25.0', '2023-05-12 10:53:52.0'),
+   (60, 19, '2023-05-12 10:53:45.5', '2023-05-12 10:53:52.0'),
+   (61, 19, '2023-05-12 12:07:31.3', '2023-05-12 12:08:53.0'),
+   (62, 19, '2023-05-12 12:08:55.8', '2023-05-12 12:14:05.0'),
+   (63, 19, '2023-05-12 12:09:10.1', '2023-05-12 12:14:05.0'),
+   (64, 15, '2023-05-12 12:14:32.7', '2023-05-12 12:14:48.0'),
+   (65, 15, '2023-05-12 12:15:20.3', '2023-05-12 12:15:24.0'),
+   (66, 15, '2023-05-12 12:15:49.8', '2023-05-12 12:15:57.0'),
+   (67, 15, '2023-05-12 12:16:52.2', '2023-05-12 12:16:57.0'),
+   (68, 15, '2023-05-12 12:16:59.5', '2023-05-23 07:03:51.0'),
+   (69, 15, '2023-05-12 12:17:12.7', '2023-05-23 07:03:51.0'),
+   (70, 17, '2023-05-23 06:59:00.7', '2023-05-23 07:03:51.0'),
+   (71, 17, '2023-05-23 07:03:24.0', '2023-05-23 07:03:51.0'),
+   (72, 3, '2023-05-23 07:04:21.4', '2023-05-23 07:04:57.0'),
+   (73, 3, '2023-05-23 07:04:59.0', '2023-05-23 07:05:07.0'),
+   (74, 3, '2023-05-23 07:09:47.3', '2023-05-23 07:09:54.0');
+
+   -- --------------------------------------------------------
+
+   --
+   -- Structure de la table `utilisateur`
+   --
+
+   CREATE TABLE `utilisateur` (
+   `id` int(11) NOT NULL,
+   `role` int(10) NOT NULL,
+   `nom` varchar(50) NOT NULL,
+   `prenom` varchar(50) NOT NULL,
+   `email` varchar(50) NOT NULL,
+   `mdp` varchar(50) NOT NULL,
+   `date_inscription` timestamp(1) NOT NULL DEFAULT current_timestamp(1)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   --
+   -- Déchargement des données de la table `utilisateur`
+   --
+
+   INSERT INTO `utilisateur` (`id`, `role`, `nom`, `prenom`, `email`, `mdp`, `date_inscription`) VALUES
+   (3, 1, 'VIVIAN', 'Bastien', 'bastienvivian29@gmail.com', '*CC67043C7BCFF5EEA5566BD9B1F3C74FD9A5CF5D', '0000-00-00 00:00:00.0'),
+   (15, 1, 'administrateurtest', 'administrateurtest', 'adminpppe@gmail.com', '*01A6717B58FF5C7EAFFF6CB7C96F7428EA65FE4C', '0000-00-00 00:00:00.0'),
+   (17, 2, 'Utilisateur_simple', 'Utilisateur_simple', 'utilisateur_simple@gmail.com', '*CC67043C7BCFF5EEA5566BD9B1F3C74FD9A5CF5D', '0000-00-00 00:00:00.0'),
+   (19, 1, 'JOUDRAIN', 'Olivier', 'olivierjourdaintechnitien@gmail.com', '*CC67043C7BCFF5EEA5566BD9B1F3C74FD9A5CF5D', '2023-05-12 08:45:14.4'),
+   (20, 2, 'de Djibril', 'Nintendoswitch', 'Djib@gmail.com', '*CC67043C7BCFF5EEA5566BD9B1F3C74FD9A5CF5D', '2023-05-23 06:46:38.1');
+
+
+
+6. Enfin, le code définit des index pour certaines tables.
 
 .. code-block:: sql
    :linenos:
 
-    --
-    -- Index pour la table `role`
-    --
-    ALTER TABLE `role`
-    ADD PRIMARY KEY (`id`);
+   --
+   -- Index pour les tables déchargées
+   --
 
-    --
-    -- Index pour la table `utilisateur`
-    --
-    ALTER TABLE `utilisateur`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `utilisateur_ibfk_1` (`role`);
+   --
+   -- Index pour la table `batterie`
+   --
+   ALTER TABLE `batterie`
+   ADD PRIMARY KEY (`id`);
+
+   --
+   -- Index pour la table `mesure_batterie`
+   --
+   ALTER TABLE `mesure_batterie`
+   ADD PRIMARY KEY (`id`),
+   ADD KEY `id_batterie` (`id_batterie`) USING BTREE;
+
+   --
+   -- Index pour la table `panneaux_solaire`
+   --
+   ALTER TABLE `panneaux_solaire`
+   ADD PRIMARY KEY (`id`);
+
+   --
+   -- Index pour la table `releve_puissance`
+   --
+   ALTER TABLE `releve_puissance`
+   ADD PRIMARY KEY (`id`),
+   ADD KEY `id-session` (`id_session`);
+
+   --
+   -- Index pour la table `role`
+   --
+   ALTER TABLE `role`
+   ADD PRIMARY KEY (`id`);
+
+   --
+   -- Index pour la table `session`
+   --
+   ALTER TABLE `session`
+   ADD PRIMARY KEY (`id`),
+   ADD KEY `id-user` (`id_user`);
+
+   --
+   -- Index pour la table `utilisateur`
+   --
+   ALTER TABLE `utilisateur`
+   ADD PRIMARY KEY (`id`),
+   ADD KEY `fk_role` (`role`);
+
+   --
+   -- AUTO_INCREMENT pour les tables déchargées
+   --
+
+   --
+   -- AUTO_INCREMENT pour la table `batterie`
+   --
+   ALTER TABLE `batterie`
+   MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+   --
+   -- AUTO_INCREMENT pour la table `mesure_batterie`
+   --
+   ALTER TABLE `mesure_batterie`
+   MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+   --
+   -- AUTO_INCREMENT pour la table `panneaux_solaire`
+   --
+   ALTER TABLE `panneaux_solaire`
+   MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+   --
+   -- AUTO_INCREMENT pour la table `releve_puissance`
+   --
+   ALTER TABLE `releve_puissance`
+   MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+
+   --
+   -- AUTO_INCREMENT pour la table `role`
+   --
+   ALTER TABLE `role`
+   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+   --
+   -- AUTO_INCREMENT pour la table `session`
+   --
+   ALTER TABLE `session`
+   MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+   --
+   -- AUTO_INCREMENT pour la table `utilisateur`
+   --
+   ALTER TABLE `utilisateur`
+   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+   --
+   -- Contraintes pour les tables déchargées
+   --
+
+   --
+   -- Contraintes pour la table `mesure_batterie`
+   --
+   ALTER TABLE `mesure_batterie`
+   ADD CONSTRAINT `mesure_batterie_ibfk_1` FOREIGN KEY (`id_batterie`) REFERENCES `batterie` (`id`);
+
+   --
+   -- Contraintes pour la table `releve_puissance`
+   --
+   ALTER TABLE `releve_puissance`
+   ADD CONSTRAINT `releve_puissance_ibfk_1` FOREIGN KEY (`id_session`) REFERENCES `session` (`id`);
+
+   --
+   -- Contraintes pour la table `session`
+   --
+   ALTER TABLE `session`
+   ADD CONSTRAINT `session_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `utilisateur` (`id`);
+
+   --
+   -- Contraintes pour la table `utilisateur`
+   --
+   ALTER TABLE `utilisateur`
+   ADD CONSTRAINT `fk_role` FOREIGN KEY (`role`) REFERENCES `role` (`id`);
+   COMMIT;
+
+   /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+   /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+   /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-9. AUTO_INCREMENT pour les tables déchargées : Cette partie configure les valeurs AUTO_INCREMENT pour les colonnes d'ID des tables "role" et "utilisateur".
-
-.. code-block:: sql
-   :linenos:
-
-    --
-    -- AUTO_INCREMENT pour la table `role`
-    --
-    ALTER TABLE `role`
-    MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-    --
-    -- AUTO_INCREMENT pour la table `utilisateur`
-    --
-    ALTER TABLE `utilisateur`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+En résumé, le code fourni crée la structure de deux tables (« batterie », « mesure_batterie », « panneaux_solaire », « releve_puissance », « role », « session » et « utilisateur ») dans la base de données « pppe » et insère des données initiales dans ces tables. Des index, des contraintes et des configurations supplémentaires sont également définis pour les tables.
 
 
-10. Contraintes pour les tables déchargées : Cette partie ajoute une contrainte de clé étrangère pour la colonne "role" de la table "utilisateur" faisant référence à la colonne "id" de la table "role".
-
-.. code-block:: sql
-   :linenos:
-
-    --
-    -- Contraintes pour la table `utilisateur`
-    --
-    ALTER TABLE `utilisateur`
-    ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`role`) REFERENCES `utilisateur` (`id`);
-    COMMIT;
-
-
-11. COMMIT : Cette commande valide la transaction en cours.
-
-
-.. code-block:: sql
-   :linenos:
-
-    /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-    /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-    /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-12. Restauration des valeurs précédentes : Les instructions finales restaurent les valeurs des variables de jeu de caractères, de l'ensemble de résultats et de la connexion de collation à leurs valeurs précédentes.
-
-En résumé, le code fourni crée la structure de deux tables ("role" et "utilisateur") dans la base de données "pppe" et insère des données initiales dans ces tables. Des index, des contraintes et des configurations supplémentaires sont également définis pour les tables.
-
-
-
-
-
-
-V - Description du code pour récupérer les données et les importer dans la base de donnée:
+VI - Description du code pour récupérer les données et les importer dans la base de donnée:
 --------------------------------------------------------------------------------------------
 
 `Cliquez ici pour voir ce code sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
@@ -376,216 +809,134 @@ Pour voir le code complet :doc:`Annexe_IR3`
 
 .. warning::
 
-   Code en cours de mise à jour
+   Code mis à jour
 
 
 Voici une explication ligne par ligne du code :
 
+
+Voici une explication détaillée du code ligne par ligne :
 
 .. code-block:: python
    :linenos:
 
    import time
    import serial
-   import mysql.connector
-   
-   
-Ces lignes importent les modules nécessaires pour le code, notamment ``time``, ``serial`` et ``mysql.connector``.
 
+   import mysql.connector as mysql
 
-.. code-block:: python
-   :linenos:
-
-    function insertion(mesures)
-        try:
-            connection = mysql.connector.connect(
-                host='172.20.10.26',
-                database='pppe',
-                user='admin',
-                password='admin'
-            )
-            print("Essai de connexion au serveur MySQL")
-            cursor = connection.cursor()
-            mySql_insert_query = "INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), " .. mesures .. ")"
-            print(mySql_insert_query)
-            cursor.execute(mySql_insert_query)
-            connection.commit()
-            print("Exécuter la commande :", mySql_insert_query)
-            cursor.close()
-            print("Enregistrement inséré avec succès dans la table releve_puissance")
-        except mysql.connector.Error as error:
-            print("Échec de l'insertion d'un enregistrement dans la table :", error)
-            return false
-        return
-     
-
-Cette partie du code définit une fonction ``insertion`` qui effectue l'insertion d'une mesure dans une table de la base de données MariaDB. Les étapes effectuées sont les suivantes :
-
-1. Une connexion est établie avec la base de données en utilisant les informations de connexion fournies.
-2. Un curseur est créé pour exécuter des requêtes SQL.
-3. Une requête d'insertion est construite en utilisant la valeur fournie dans l'argument ``mesures``. La valeur de l'id de session est obtenue en sélectionnant la valeur maximale de la colonne ``id`` dans la table ``session``.
-4. La requête d'insertion est exécutée.
-5. Les modifications sont validées dans la base de données.
-6. Le curseur est fermé.
-
+Dans cette section, nous importons les modules nécessaires pour le programme. Le module ``time`` est utilisé pour gérer les attentes et les intervalles de temps, le module ``serial`` permet la communication avec les périphériques série, et le module ``mysql.connector`` est utilisé pour se connecter à une base de données MySQL.
 
 .. code-block:: python
    :linenos:
 
    ser = serial.Serial(
-      port='/dev/ttyUSB0',
-      baudrate=9600,
-      parity=serial.PARITY_NONE,
-      stopbits=serial.STOPBITS_ONE,
-      bytesize=serial.EIGHTBITS,
-      timeout=5
-    )
-        if ser.isOpen():
-     ser.close()
-    ser.open()
-    ser.isOpen()
+      port='/dev/ttyUSB0',                  # Port série à utiliser
+      baudrate=9600,                        # Vitesse de communication en bauds
+      parity=serial.PARITY_NONE,            # Parité (aucune parité)
+      stopbits=serial.STOPBITS_ONE,         # Bits d'arrêt (1 bit)
+      bytesize=serial.EIGHTBITS,            # Taille des octets de données (8 bits)
+      timeout=5                             # Délai d'attente pour la lecture de données (5 secondes)
+   )
 
 
-Ces lignes configurent une connexion série en utilisant le module ``serial``. Les paramètres spécifiés sont les mêmes que ceux utilisés précédemment dans l'autre exemple de code que vous avez donné. Le port série est ouvert après la vérification et la fermeture du port s'il est déjà ouvert.
-
+Cette partie configure la connexion série en utilisant les paramètres spécifiés. ``port`` indique le port série à utiliser (dans cet exemple, '/dev/ttyUSB0'), ``baudrate`` définit la vitesse de communication en bauds (9600), ``parity`` indique la parité (aucune parité), ``stopbits`` spécifie le nombre de bits d'arrêt (1 bit), ``bytesize`` détermine la taille des octets de données (8 bits), et ``timeout`` représente le délai d'attente pour la lecture de données (5 secondes).
 
 .. code-block:: python
    :linenos:
-   
+
+   if ser.isOpen():
+      ser.close()
+
+
+Cette condition vérifie si le port série est déjà ouvert à l'aide de la méthode ``isOpen()``. Si c'est le cas, la méthode ``close()`` est appelée pour fermer le port série.
+
+.. code-block:: python
+   :linenos:
+
+   ser.open()
+
+Cette ligne ouvre le port série en appelant la méthode ``open()``.
+
+.. code-block:: python
+   :linenos:
+
+   ser.isOpen()
+
+Cette ligne vérifie si le port série est ouvert en appelant la méthode ``isOpen()``. Cependant, le résultat de cet appel n'est pas stocké ou utilisé dans ce code.
+
+.. code-block:: python
+   :linenos:
+
    while True:
       try:
          res = ser.read(6)
          res = res.decode()
          res = res.split("-")
-         print("Signal recu :", res)
-         insertion(res[1])
+         print("Signal recu :",res)
+         if len(res)==2:
+               insertion(res)
          time.sleep(1)
-    except:
+      except:
          print('erreur while true')
 
+Ceci est la boucle principale du programme. Il s'agit d'une boucle infinie ``while True`` qui lit en continu les données à partir du port série, effectue certaines opérations sur ces données, puis attend 1 seconde avant la prochaine lecture.
 
-Cette partie du code contient une boucle ``while`` qui s'exécute en continu. À chaque itération de la boucle, le code lit 6 octets de données ``(`ser.read(6)`)`` à partir du port série. Les données lues sont ensuite décodées en une chaîne de caractères ``(`res.decode()`)``. Ensuite, la chaîne décodée est divisée en utilisant le délimiteur ``-`` pour obtenir les valeurs individuelles dans une liste ```res = res.split("-")`)``. Les valeurs sont affichées à l'écran, puis la fonction ``insertion`` est appelée avec la deuxième valeur de la liste ``(`res[1]`)`` pour insérer cette valeur dans la base de données.
-
-Enfin, il y a une pause de 1 seconde ``(`time.sleep(1)`)`` entre chaque itération de la boucle. Si une exception se produit, le message d'erreur "erreur while true" est affiché à l'écran.
-
-
-
-IV- Description du code de l'IHM `in situ`
------------------------------------------
-
-
-`Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/IHM_in_situ/0v-Projet_solaire.py>`_
-
-OU
-
-Pour voir le code complet :doc:`Annexe_IR3`
-
-Ce code utilise la bibliothèque Tkinter pour créer une interface graphique permettant de piloter un luminaire à l'aide d'un Raspberry Pi. Voici une explication ligne par ligne :
-
+Dans la boucle, les étapes suivantes sont effectuées :
+- ``res = ser.read(6)`` lit 6 octets de données à partir du port série et les stocke dans la variable ``res``.
+- ``res = res.decode()`` décode les données lues en une chaîne de caractères lisible.
+- ``res = res.split("-")`` divise la chaîne de caractères en une liste de sous-chaînes en utilisant le caractère "-" comme séparateur.
+- ``print("Signal recu :", res)`` affiche les données reçues du port série.
+- ``if len(res)==2:`` vér ifie si la longueur de la liste ``res`` est égale à 2.
+- Si la condition est vraie, la fonction ``insertion(res)`` est appelée avec la liste ``res`` en tant qu'argument.
+- ``time.sleep(1)`` fait une pause d'une seconde avant de continuer à la prochaine itération de la boucle.
 
 .. code-block:: python
    :linenos:
 
-    from tkinter import *
-    import smbus
-    import time
-    import RPi.GPIO as GPIO
+   def insertion(mesures):
+      try:
+         connection = mysql.connector.connect(
+               host='192.168.0.104',
+               database='pppe',
+               user='admin',
+               password='admin'
+         )
+         cursor = connection.cursor()
+
+         if mesures[0] == '0':
+               mySql_insert_query = f"INSERT INTO mesure_batterie(id_batterie, tension, timestamp) VALUES((SELECT MAX(id) FROM batterie), {mesures[1]}, timestamp)"
+         elif mesures[0] == '1':
+               mySql_insert_query = f"INSERT INTO panneaux_solaire(tension, timestamp) VALUES({mesures[1]}, timestamp)"
+         elif mesures[0] == '2':
+               mySql_insert_query = f"INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), {mesures[1]})"
+
+         print(mySql_insert_query)
+
+         cursor.execute(mySql_insert_query)
+         connection.commit()
+         print("Exécuter la commande :", mySql_insert_query)
+
+         cursor.close()
+         print("Enregistrement inséré avec succès dans la table releve_puissance")
+      except mysql.connector.Error as error:
+         print("Échec de l'insertion d'un enregistrement dans la table :", error)
+         return False
+      return True
 
 
-Les trois premières lignes importent les modules nécessaires : ``tkinter`` pour l'interface graphique, ``smbus`` pour la communication I2C (non utilisée dans ce code) et ``RPi.GPIO`` pour la manipulation des broches GPIO du Raspberry Pi.
+Cette partie du code définit la fonction ``insertion(mesures)`` qui est appelée pour insérer les données dans une base de données MySQL.
 
-.. code-block:: python
-   :linenos:
+Dans la fonction, les étapes suivantes sont effectuées :
 
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(37, GPIO.OUT)
-    GPIO.setup(12, GPIO.OUT)
-    p = GPIO.PWM(12, 100)
-    p.start(0)
-
-
-Ces lignes initialisent le mode de numérotation des broches GPIO ``(`GPIO.BOARD`)``, configurent les broches 37 et 12 en sortie (`GPIO.OUT`) et créent un objet PWM (`p`) sur la broche 12 avec une fréquence de 100 Hz. La fonction `start(0)` démarre le signal PWM avec un rapport cyclique de 0%.
-
-.. code-block:: python
-   :linenos:
-   
-    fenetre = Tk()
-    fenetre.title("Pilotage progressif des luminaires")
-    fenetre.geometry("650x300")
-    fenetre.configure(bg="ghost white")
-
-
-Ces lignes créent une fenêtre graphique en utilisant la classe ``Tk`` du module Tkinter. La fenêtre est titrée "Pilotage progressif des luminaires" et a une taille de 650x300 pixels. La couleur de fond est réglée sur "ghost white".
-
-.. code-block:: python
-   :linenos:
-   
-    message = Label(fenetre, text="Production d'énergie", fg="blue", bg="ghost white", font=("Courier", 25))
-    message.place(x=120, y=25)
-
-
-Cette ligne crée un widget ``Label`` qui affiche le texte "Production d'énergie" avec une couleur de texte bleue et une police de caractères "Courier" de taille 25. Le label est positionné à la coordonnée (120, 25) dans la fenêtre.
-
-.. code-block:: python
-   :linenos:
-   
-    def Allumer():
-        print("Allumage du luminaire")
-        GPIO.output(37, GPIO.HIGH)
-        time.sleep(1)
-
-    def Eteindre():
-        print("Eteindre le luminaire")
-        GPIO.output(37, GPIO.LOW)
-        time.sleep(1)
-
-
-Ces deux blocs de code définissent les fonctions `Allumer()` et `Eteindre()`. Lorsqu'elles sont appelées, elles mettent respectivement la broche GPIO 37 en état haut (allumage) ou bas (extinction) pendant une seconde, et affichent un message à la console.
-
-.. code-block:: python
-   :linenos:
-   
-    def valeur(var):
-        temp = var.get()
-        print(temp)
-        p.ChangeDutyCycle(temp)
-
-
-Cette fonction ``valeur()`` est appelée lorsque la valeur du curseur ``(`Scale`)`` est modifiée. Elle récupère la valeur du curseur, l'affiche à la console, puis modifie le rapport cyclique du signal PWM ``(`p`)`` en utilisant la méthode ``ChangeDutyCycle()``.
-
-.. code-block:: python
-   :linenos:
-   
-    bouton1 = Button(fenetre, text="Quitter", fg="blue", command=fenetre.destroy)
-    bouton1.place(x=250, y=100)
-
-    bouton2 = Button(fenetre, text="Allumer", fg="blue", activebackground="white", command=Allumer)
-    bouton2.place
-
-    (x=50, y=100)
-
-    bouton3 = Button(fenetre, text="Eteindre", fg="blue", activebackground="white", command=Eteindre)
-    bouton3.place(x=150, y=100)
-
-
-
-Ces lignes créent trois boutons ``(`Button`)`` dans la fenêtre. Le premier bouton a le texte "Quitter" et appelle la méthode ``destroy()`` de la fenêtre lorsqu'il est cliqué. Les deux autres boutons sont respectivement pour "Allumer" et "Éteindre", et appellent les fonctions ``Allumer()`` et ``Eteindre()`` lorsqu'ils sont cliqués.
-
-.. code-block:: python
-   :linenos:
-    
-    var = DoubleVar()
-    curseur = Scale(fenetre, orient='horizontal', from_=0, to=100, resolution=1, tickinterval=10, length=450, activebackground="blue", variable=var, command=lambda x: valeur(var))
-    curseur.place(x=100, y=175)
-
-
-Ces lignes créent un curseur ``(`Scale`)`` horizontal dans la fenêtre. Le curseur va de 0 à 100 avec un intervalle de résolution de 1 et un intervalle de graduation de 10. Sa longueur est fixée à 450 pixels. Lorsque la valeur du curseur est modifiée, la fonction ``valeur()`` est appelée avec la variable ``var`` passée en tant que paramètre.
-
-.. code-block:: python
-   :linenos:
-   
-    fenetre.mainloop()
-
-
-Cette ligne lance la boucle principale de l'interface graphique, permettant à la fenêtre d'être affichée et de répondre aux interactions de l'utilisateur.
-
+- Une connexion est établie avec le serveur MySQL en utilisant les informations de connexion fournies (hôte, base de données, nom d'utilisateur, mot de passe).
+- Un curseur est créé pour exécuter les requêtes SQL.
+- En fonction de la valeur ``mesures[0]`` (le premier élément de la liste ``mesures``), une requête d'insertion appropriée est construite pour insérer les données dans la table correspondante de la base de données.
+- La requête d'insertion est affichée à des fins de débogage.
+- La requête d'insertion est exécutée à l'aide de la méthode ``execute()`` du curseur.
+- Les modifications sont validées dans la base de données à l'aide de la méthode ``commit()`` de la connexion.
+- La requête d'insertion est à nouveau affichée.
+- Le curseur est fermé.
+- Un message indiquant le succès de l'insertion est affiché.
+- Si une exception ``mysql.connector.Error`` est levée pendant le processus, un message d'échec est affiché et la valeur ``False`` est renvoyée.
+- Sinon, la valeur ``True`` est renvoyée pour indiquer le succès de l'insertion.
