@@ -1,5 +1,5 @@
-Annexe_IR3
-==========
+Annexe - IR3 - Olivier Jourdain
+===============================
 
 Code reception données et connexion base de données :
 -----------------------------------------------------

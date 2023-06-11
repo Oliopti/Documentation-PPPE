@@ -1064,3 +1064,264 @@ Dans la fonction, les étapes suivantes sont effectuées :
 - Un message indiquant le succès de l'insertion est affiché.
 - Si une exception ``mysql.connector.Error`` est levée pendant le processus, un message d'échec est affiché et la valeur ``False`` est renvoyée.
 - Sinon, la valeur ``True`` est renvoyée pour indiquer le succès de l'insertion.
+
+
+VII - Description du code de l'IHM *in Situ*
+--------------------------------------------
+
+
+`Cliquez ici pour voir ce code sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/IHM_in_situ/0v-Projet_solaire.py>`_
+
+OU
+
+Pour voir le code complet :doc:`Annexe_IR3`
+
+
+
+Voici une explication du code partie par partie :
+
+1. Importation des modules :
+   - ``from tkinter import *`` : Importe tous les éléments du module tkinter, qui est une bibliothèque graphique pour créer des interfaces utilisateur.
+   - ``import smbus`` : Importe le module smbus, qui est utilisé pour communiquer avec des périphériques I2C.
+   - ``import time`` : Importe le module time, qui fournit des fonctions liées au temps.
+   - ``import RPi.GPIO as GPIO`` : Importe le module RPi.GPIO, qui permet de contrôler les broches GPIO (General Purpose Input/Output) sur un Raspberry Pi.
+
+2. Configuration des broches GPIO :
+   - ``GPIO.setmode(GPIO.BOARD)`` : Configure le mode de numérotation des broches GPIO en mode BOARD.
+   - ``GPIO.setup(37, GPIO.OUT)`` : Configure la broche 37 en tant que sortie.
+   - ``GPIO.setup(12, GPIO.OUT)`` : Configure la broche 12 en tant que sortie.
+   
+3. Configuration de la modulation de largeur d'impulsion (MLI) :
+   - ``p = GPIO.PWM(12, 100)`` : Crée un objet PWM sur la broche 12 avec une fréquence de 100 Hz.
+   - ``p.start(0)`` : Démarre la modulation de largeur d'impulsion avec un rapport cyclique de 0%.
+
+4. Configuration de la fenêtre Tkinter :
+   - ``fenetre = Tk()`` : Crée une nouvelle fenêtre Tkinter.
+   - ``fenetre.title("Pilotage progressif des luminaires")`` : Définit le titre de la fenêtre.
+   - ``fenetre.geometry("650x300")`` : Définit la taille de la fenêtre.
+   - ``fenetre.configure(bg="ghost white")`` : Définit la couleur de fond de la fenêtre.
+
+5. Création des éléments de l'interface utilisateur :
+   - ``message = Label(fenetre, text="Production d'énergie", fg="blue", bg="ghost white", font=("Courier", 25))`` : Crée un widget Label avec le texte "Production d'énergie" et les paramètres de couleur et de police spécifiés.
+   - ``message.place(x=120, y=25)`` : Place le widget Label à la position spécifiée dans la fenêtre.
+   - ``bouton1 = Button(fenetre, text="Quitter", fg="blue", command=fenetre.destroy)`` : Crée un bouton avec le texte "Quitter" et la fonction de rappel pour fermer la fenêtre.
+   - ``bouton1.place(x=250, y=100)`` : Place le bouton à la position spécifiée dans la fenêtre.
+   - ``bouton2 = Button(fenetre, text="Allumer", fg="blue", activebackground="white", command=Allumer)`` : Crée un bouton avec le texte "Allumer" et la fonction de rappel Allumer().
+   - ``bouton2.place(x=50, y=100)`` : Place le bouton à la position spécifiée dans la fenêtre.
+   - ``bouton3 = Button(fenetre, text="Eteindre", fg="blue", activebackground="white", command=Eteindre)`` : Crée un bouton avec le texte "Eteindre" et la fonction de rappel Eteindre().
+   - ``bouton3.place(x=150, y=100)`` : Place
+
+ le bouton à la position spécifiée dans la fenêtre.
+   - ``var = DoubleVar()`` : Crée une variable Tkinter de type DoubleVar.
+   - ``curseur = Scale(fenetre, orient='horizontal', from_=0, to=100, resolution=1, tickinterval=10, length=450, activebackground="blue", variable=var, command=lambda x: valeur(var))`` : Crée un widget Scale (curseur) avec les paramètres spécifiés et la fonction de rappel valeur().
+   - ``curseur.place(x=100, y=175)`` : Place le curseur à la position spécifiée dans la fenêtre.
+
+6. Fonctions de rappel :
+   - ``def Allumer`` : Définit la fonction de rappel Allumer(), qui est appelée lorsque le bouton "Allumer" est cliqué. Elle allume le luminaire en mettant la broche 37 en état haut (GPIO.HIGH) et attend 1 seconde.
+   - ``def Eteindre():`` : Définit la fonction de rappel Eteindre(), qui est appelée lorsque le bouton "Eteindre" est cliqué. Elle éteint le luminaire en mettant la broche 37 en état bas (GPIO.LOW) et attend 1 seconde.
+   - ``def valeur(var):`` : Définit la fonction de rappel valeur(), qui est appelée lorsque la valeur du curseur est modifiée. Elle récupère la valeur du curseur à partir de la variable var, l'affiche, puis modifie le rapport cyclique de la MLI en utilisant la méthode ChangeDutyCycle() de l'objet p.
+
+7. Exécution de la boucle principale de l'interface utilisateur :
+   - ``fenetre.mainloop()`` : Démarre la boucle principale de l'interface utilisateur, qui attend les événements et met à jour l'interface en conséquence. Cette boucle continue jusqu'à ce que la fenêtre soit fermée.
+
+
+
+1. Importation des bibliothèques :
+
+.. code-block:: python
+   :linenos:
+
+   from tkinter import *
+   import smbus
+   import time
+   import RPi.GPIO as GPIO
+
+- ``tkinter`` est une bibliothèque pour créer des interfaces graphiques.
+- ``smbus`` est une bibliothèque pour communiquer avec des périphériques I2C (non utilisée dans ce code).
+- ``time`` est une bibliothèque pour gérer les délais.
+- ``RPi.GPIO`` est une bibliothèque pour contrôler les GPIO (General Purpose Input/Output) du Raspberry Pi.
+
+
+2. Configuration des GPIO :
+
+.. code-block:: python
+   :linenos:
+
+   GPIO.setmode(GPIO.BOARD)
+   GPIO.setup(37, GPIO.OUT)
+   GPIO.setup(12, GPIO.OUT)
+
+
+- ``GPIO.setmode(GPIO.BOARD)`` configure la numérotation des broches GPIO selon la numérotation du Raspberry Pi.
+- ``GPIO.setup(37, GPIO.OUT)`` configure la broche 37 comme une sortie.
+- ``GPIO.setup(12, GPIO.OUT)`` configure la broche 12 comme une sortie.
+
+3. Configuration de la modulation de largeur d'impulsion (PWM) :
+
+.. code-block:: python
+   :linenos:
+
+   p = GPIO.PWM(12, 100)
+   p.start(0)
+
+
+- ``GPIO.PWM(12, 100)`` crée un objet PWM pour contrôler la broche 12 avec une fréquence de 100 Hz.
+- ``p.start(0)`` démarre la PWM avec un rapport cyclique de 0%.
+
+4. Configuration de la fenêtre et des éléments d'interface utilisateur :
+
+.. code-block:: python
+   :linenos:
+
+   fenetre = Tk()
+   fenetre.title("Pilotage progressif des luminaires")
+   fenetre.geometry("650x300")
+   fenetre.configure(bg="ghost white")
+
+- ``Tk()`` crée une fenêtre principale.
+- ``fenetre.title("Pilotage progressif des luminaires")`` définit le titre de la fenêtre.
+- ``fenetre.geometry("650x300")`` définit la taille de la fenêtre.
+- ``fenetre.configure(bg="ghost white")`` définit la couleur de fond de la fenêtre.
+
+5. Création de l'étiquette "Production d'énergie" :
+
+.. code-block:: python
+   :linenos:
+
+   message = Label(fenetre, text="Production d'énergie",
+   fg="blue", bg="ghost white", font=("Courier", 25))
+   message.place(x=120, y=25)
+
+
+- ``Label(fenetre, text="Production d'énergie", fg="blue", bg="ghost white", font=("Courier", 25))`` crée un widget d'étiquette avec le texte "Production d'énergie", une couleur de texte bleue, une couleur de fond "ghost white" et une police "Courier" de taille 25.
+- ``message.place(x=120, y=25)`` place le widget d'étiquette à la position (120, 25) dans la fenêtre.
+
+6. Définition des fonctions de contrôle du luminaire :
+
+.. code-block:: python
+   :linenos:
+
+   def Allumer():
+   print("Allumage du luminaire")
+   GPIO.output(37, GPIO.HIGH)
+   time.sleep(1)
+   def Eteindre():
+   print("Eteindre le luminaire")
+   GPIO.output(37, GPIO.LOW)
+   time.sleep(1)
+
+
+- ``Allumer()`` est une fonction appelée lorsque le bouton "Allumer" est cliqué. Elle affiche un message et met la broche 37 en état haut (HIGH) pour allumer le luminaire.
+- ``Eteindre()`` est une fonction appelée lorsque le bouton "Eteindre" est cliqué. Elle affiche un message et met la broche 37 en état bas (LOW) pour éteindre le luminaire.
+
+7. Définition de la fonction de mise à jour de la valeur du curseur :
+
+.. code-block:: python
+   :linenos:
+
+   def valeur(var):
+   temp = var.get()
+   print(temp)
+   p.ChangeDutyCycle(temp)
+
+
+- ``valeur(var)`` est une fonction appelée chaque fois que la valeur du curseur est modifiée. Elle récupère la valeur actuelle du curseur, l'affiche et utilise la méthode ``ChangeDutyCycle()`` de l'objet PWM ``p`` pour régler le rapport cyclique de la PWM.
+
+8. Création des boutons Quitter, Allumer et Eteindre :
+
+.. code-block:: python
+   :linenos:
+
+   bouton1 = Button(fenetre, text="Quitter", fg="blue",
+   command=fenetre.destroy)
+   bouton1.place(x=250, y=100)
+   bouton2 = Button(fenetre, text="Allumer", fg="blue",
+   activebackground="white", command=Allumer)
+   bouton2.place(x=50, y=100)
+   61/120E 6-2 – PROJET TECHNIQUE – BTS SN IR/EC 2023
+   bouton3 = Button(fenetre, text="Eteindre", fg="blue",
+   activebackground="white", command=Eteindre)
+   bouton3.place(x=150, y=100)
+
+
+- ``Button(fenetre, text="Quitter", fg="blue", command=fenetre.destroy)`` crée un bouton "Quitter" qui détruit la fenêtre principale lorsqu'il est cliqué.
+- ``Button(fenetre, text="Allumer", fg="blue", activebackground="white", command=Allumer)`` crée un bouton "Allumer" qui appelle la fonction ``Allumer()`` lorsque cliqué.
+- ``Button(fenetre, text="Eteindre", fg="blue", activebackground="white", command=Eteindre)`` crée un bouton "Eteindre" qui appelle la fonction ``Eteindre()``lorsque cliqué.
+
+
+9. Création du curseur pour régler l'intensité lumineuse :
+
+.. code-block:: python
+   :linenos:
+
+   var = DoubleVar()
+   curseur = Scale(fenetre, orient='horizontal', from_=0, to=100,
+   resolution=1, tickinterval=10, length=450,
+   activebackground="blue", variable=var, command=lambda x:
+   valeur(var))
+   curseur.place(x=100, y=175)
+
+- ``var = DoubleVar()`` crée une variable de type DoubleVar pour stocker la valeur du curseur.
+- ``Scale(fenetre, orient='horizontal', from_=0, to=100, resolution=1, tickinterval=10, length=450, activebackground="blue", variable=var, command=lambda x: valeur(var))`` crée un curseur horizontal avec une plage de valeurs de 0 à 100, une résolution de 1, un intervalle de graduation de 10, une longueur de 450 pixels et une couleur de fond active bleue. La variable ``var`` est liée au curseur, et la fonction ``valeur(var)`` est appelée à chaque modification de la valeur du curseur.
+
+
+10. Lancement de la boucle principale de la fenêtre :
+
+.. code-block:: python
+   :linenos:
+
+   fenetre.mainloop()
+
+- ``fenetre.mainloop()`` démarre la boucle principale de la fenêtre, ce qui permet d'afficher l'interface utilisateur et de gérer les interactions avec les widgets. La boucle se poursuit jusqu'à ce que la fenêtre soit fermée.
+
+
+
+IX – Problèmes rencontrés
+-------------------------
+
+.. warning::
+
+   Cette partie est en cours de mise à jour.
+
+
+**serveur NTP salle 20**
+
+Dans la salle des BTS le protocole NTP a été bloqué ce qui empêchait de se connecter à internet de la Raspberry Pi. Pour cela il était nécessaire de configurer manuellement la date et l’heure sur la Raspberry Pi. Même lorsque la connexion à internet était établie, elle restait instable et pouvait corrompre le système lors de l’installation des paquets ou de mises à jours.
+
+
+**Configuation des module XBee**
+
+Trouver dans XCTU sur quel paramètre agir pour établir une connexion entre les deux modules XBee.
+
+
+**Réception des données via les modules XBee**
+
+Les données reçues n’étaient pas les données envoyées, il fallait « nettoyer » le message reçu.
+
+
+**IHM in situ**
+
+Établir une connexion entre l’IHM et le système de gestion d’énergie.
+
+
+
+X – Remerciements
+-----------------
+
+Je tiens à remercier Monsieur Duchiron et Monsieur Dubois qui, en tant que professeurs encadrant, se sont montrés toujours à l’écoute et disponibles durant la réalisation de ce projet. Ainsi je les remercie pour leurs aides et tout le temps qu’ils ont bien voulu me consacrer afin de répondre à mes questions.
+
+Enfin, je n’oublie pas de remercier Bastien VIVIAN, Djibril CHAABI et Laurent CARDONA qui ont fait un bout de chemin dans ce projet avec moi.
+
+
+XI – Conclusion
+---------------
+
+Pour conclure, certaines fonctionnalités du Projet Pédagogique de Production d’Énergie sont opérationnelles. L’émission et la réception des données et l’importation des données fonctionnent, il reste à établir le lien entre les deux.
+
+L’IHM est opérationnelle mais ne communique que partiellement avec les Systèmes de Gestion d’Énergie (SGE).
+
+A l’heure actuelle nous attendons encore la livraison du vélo et espérons vivement pouvoir mettre en pratique notre projet.
+
+Ce projet m’a apporté beaucoup de connaissances techniques, telles que la gestion de base de données, le développement en python, le contrôle et la gestion à distance de serveurs.
+
+Personnellement j’ai aussi beaucoup appris sur le travail en groupe.
