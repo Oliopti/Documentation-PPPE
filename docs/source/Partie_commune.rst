@@ -3,6 +3,7 @@ Partie commune
 
 .. _installation:
 
+https://github.com/Oliopti/pppe/blob/main/ressource/Projet%20p%C3%A9dagogique%20de%20production%20d'%C3%A9nergie.pdf
 
 1/ Présentation et situation du projet dans son environnement
 -------------------------------------------------------------
