@@ -112,21 +112,22 @@ Exigences qualité à respecter sur le produit à réaliser :
 3 - Répartition des fonctions ou cas d’utilisation par étudiant
 ---------------------------------------------------------------
 
+
 .. tableau::
 
    +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Etudiant    | Tâches                                                                                                                                                                                                                                             |
    +=============+====================================================================================================================================================================================================================================================+
-   | Etudiant 1  | - Réalisation de la fonction : Utilisation d’une sonde à effet hall pour mesurer les courants mesure de puissance.
-                  - Faire un choix technologique pour mesurer la tension. Envoyer les informations en utilisant un protocole choisi (I2C, UART…).
-                  - Réalisation des essais des différentes structures sélectionnées sur plaque de prototypage.
-                  - Se concerter avec les autres membres du projet pour valider les choix concernant la communication.
-                  - Choisir un mode de communication (synchrone ou asynchrone).
-                  - Réaliser les schémas sur ISIS, simulation et importation sur ARES pour réaliser le PCB des cartes électroniques.
-                  - Intégration dans le système.                                                                                                                                              |
+   | Etudiant 1  |   - Réalisation de la fonction : Utilisation d’une sonde à effet hall pour mesurer les courants mesure de puissance.
+                     - Faire un choix technologique pour mesurer la tension. Envoyer les informations en utilisant un protocole choisi (I2C, UART…).
+                     - Réalisation des essais des différentes structures sélectionnées sur plaque de prototypage.
+                     - Se concerter avec les autres membres du projet pour valider les choix concernant la communication.
+                     - Choisir un mode de communication (synchrone ou asynchrone).
+                     - Réaliser les schémas sur ISIS, simulation et importation sur ARES pour réaliser le PCB des cartes électroniques.
+                     - Intégration dans le système.                                                                                                                                              |
    +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Etudiant 2  | - Réalisation de la fonction : Contrôle de la charge de la batterie.
-                  - Réaliser la fonction basculer d’une source d’énergie à une autre.
+   | Etudiant 2  |   - Réalisation de la fonction : Contrôle de la charge de la batterie.
+                      - Réaliser la fonction basculer d’une source d’énergie à une autre.
                   - Réaliser les actionneurs de puissance.
                   - Mesure de la tension batterie par diviseur de tension.
                   - Réalisation du programme en C permettant de vérifier l’état de la batterie et d’envoyer un message en cas de défaillance.
