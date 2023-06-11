@@ -21,11 +21,45 @@ L'ensemble de ces étapes permettra de mettre en place une fonction de mesure de
 II - Description du code
 ------------------------
 
+.. warning::
+
+   Code en cours de mis à jour.
+
+Ce code est écrit en langage C et semble être destiné à un microcontrôleur PIC12F1572. Il utilise les bibliothèques ``xc.h`` et ``pic12f1572.h`` spécifiques à ce microcontrôleur.
+
+Voici une explication du code :
+
+- ``#include <xc.h>`` : Cette ligne inclut la bibliothèque ``xc.h``, qui contient des définitions spécifiques au microcontrôleur PIC.
+- ``#include <pic12f1572.h>`` : Cette ligne inclut la bibliothèque ``pic12f1572.h``, qui contient des définitions spécifiques au microcontrôleur PIC12F1572.
+- ``#pragma config WDTE=OFF, FOSC=INTOSC, MCLRE=OFF`` : Cette directive pragma configure certains paramètres du microcontrôleur tels que la désactivation du watchdog timer (WDTE), la source d'horloge interne (INTOSC) et la désactivation de la broche MCLR (MCLRE).
+- ``int res;`` : Déclaration de la variable ``res`` de type entier.
+
+Ensuite, le code définit plusieurs fonctions :
+
+- ``void Temp()`` : Cette fonction configure le Timer2 du microcontrôleur avec un prescaler et un postscaler spécifiques, puis effectue une boucle d'attente basée sur le drapeau d'interruption du Timer2 (`TMR2IF`) jusqu'à ce qu'il soit réinitialisé.
+- ``void Init_CAN()`` : Cette fonction configure les registres nécessaires pour utiliser le CAN (Contrôleur d'ADC) du microcontrôleur.
+- ``void init_uart()`` : Cette fonction configure les registres nécessaires pour utiliser l'UART (Universal Asynchronous Receiver-Transmitter) du microcontrôleur.
+- ``void code(unsigned char c)`` : Cette fonction est utilisée pour envoyer un caractère via l'UART.
+
+La fonction principale ``main()`` est la boucle principale du programme :
+
+- ``OSCCON=0b01111011;`` : Configure la fréquence du microcontrôleur à 8 MHz.
+- Configuration des registres pour le fonctionnement de l'ADC (conversion analogique-numérique) et de l'UART.
+- Boucle infinie ``while (1)`` qui effectue les opérations suivantes en boucle :
+  - Active le port ``RA1``.
+  - Appel de la fonction ``Init_CAN()`` pour initialiser le CAN.
+  - Conversion analogique-numérique à l'aide de l'ADC du microcontrôleur.
+  - Appel de la fonction ``init_uart()`` pour initialiser l'UART.
+  - Envoi de la valeur de ``res`` via l'UART en utilisant la fonction ``code()``.
+  - Appel de la fonction ``Temp()`` pour effectuer une temporisation.
+
+Ce code semble effectuer des opérations de conversion ADC, de communication UART et de temporisation en utilisant les périphériques du microcontrôleur PIC12F1572.
 
 
 Ce code est écrit en langage C et est destiné à être compilé et exécuté sur un microcontrôleur PIC12F1572. Voici une explication partie par partie :
 
 1. Les directives d'inclusion :
+
 .. code-block:: c
    :linenos:
 
@@ -35,6 +69,7 @@ Ce code est écrit en langage C et est destiné à être compilé et exécuté s
 Ces directives incluent les fichiers d'en-tête nécessaires pour le microcontrôleur PIC12F1572 et le compilateur XC8.
 
 2. La directive pragma config :
+
 .. code-block:: c
    :linenos:
 
@@ -51,6 +86,7 @@ Cette directive configure les options de configuration du microcontrôleur. Ici,
 Cette ligne déclare une variable globale "res" de type entier.
 
 4. La fonction Temp() :
+
 .. code-block:: c
    :linenos:
 
@@ -74,6 +110,7 @@ Cette ligne déclare une variable globale "res" de type entier.
 Cette fonction configure le timer 2 du microcontrôleur pour générer une temporisation. Elle utilise le prescaler et le postscaler pour régler la fréquence du timer. Ensuite, elle effectue une boucle qui attend que le drapeau de débordement du timer 2 soit activé, puis le drapeau est effacé.
 
 5. La fonction Init_CAN() :
+
 .. code-block:: c
    :linenos:
 
@@ -87,6 +124,7 @@ Cette fonction configure le timer 2 du microcontrôleur pour générer une tempo
 Cette fonction configure les registres associés au contrôleur CAN (Controller Area Network). Elle initialise les ports analogiques, le convertisseur analogique-numérique (CAN) et d'autres registres associés.
 
 6. La fonction init_uart() :
+
 .. code-block:: c
    :linenos:
 
@@ -101,6 +139,7 @@ Cette fonction configure les registres associés au contrôleur CAN (Controller 
    Cette fonction configure l'UART (Universal Asynchronous Receiver Transmitter) pour permettre la communication série. Elle définit les broches de transmission et de réception, les registres de configuration et la vitesse de transmission.
 
 7. La fonction code() :
+
 .. code-block:: c
    :linenos:
 

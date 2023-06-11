@@ -69,7 +69,7 @@ B – Matériel
 
 Une base de données de test pour effectuer les premiers tests d’interaction avec linux :
 
-- **Raspberry Pi 3 Model B v1.2** 
+ **Raspberry Pi 3 Model B v1.2** 
 
 - ROM : SD Card : 8-16 Go
 - RAM : 1Go
@@ -82,7 +82,7 @@ Une base de données de test pour effectuer les premiers tests d’interaction a
 
 Une base de données avec l’écran tactile pour gérer le passage entre le réseau EDF et les panneaux solaires et gérer la luminosité via un slider dans l’interface tactile :
 
-- **Raspberry Pi 3 Model B v1.2 avec Touch Display 7″**
+ **Raspberry Pi 3 Model B v1.2 avec Touch Display 7″**
 
 - ROM : SD Card : 8-16 Go
 - RAM : 1Go
@@ -98,8 +98,8 @@ Une base de données avec l’écran tactile pour gérer le passage entre le ré
 - Zone active : 154,08 mm × 85,92 mm
 - Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
 
-- **Ordinateur MacBook Pro** : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
-- **Ordinateur avec Ubuntu 22.04** : pour programmer, faire des différents tests, exécuter du code
+ **Ordinateur MacBook Pro** : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
+ **Ordinateur avec Ubuntu 22.04** : pour programmer, faire des différents tests, exécuter du code
 
 
 C – Choix technologiques
@@ -272,8 +272,8 @@ Le script shell est destiné à mettre à jour les paquets du système d'exploit
 
 
 
-B - automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+B - Automatiser l'installation d'Apache2, PHP, MariaDB et phpMyAdmin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Créer le fichier ``phpmyadmin-install.sh``
@@ -374,7 +374,7 @@ Cette ligne affiche un message indiquant la fin de l'installation de tous les co
 
    sudo systemctl status mariadb' pour connaître le statut de Apache 2 ou MariaDB.\033[0m"
 
-Cette ligne donne une instruction à l'utilisateur pour vérifier le statut d'Apache 2 ou de MariaDB en utilisant la commande ``systemctl status`.
+Cette ligne donne une instruction à l'utilisateur pour vérifier le statut d'Apache 2 ou de MariaDB en utilisant la commande ``systemctl status``.
 
 Ces commandes permettent donc d'automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin sur un système Linux.
 
@@ -400,17 +400,13 @@ OU
 
 Pour voir le code complet :doc:`Annexe_IR3`
 
-.. warning::
 
-   Code mis à jour
-
-
-Voici une explication partie par partie de sauvegarde du code de la base de donnée :
 
 
 Ce code est un fichier de sauvegarde SQL généré par phpMyAdmin. Il contient une série d'instructions SQL pour créer une base de données et ses tables, ainsi que pour insérer des données dans ces tables.
 
-Voici une explication section par section :
+Voici une explication partie par partie de sauvegarde du code de la base de donnée :
+
 
 
 1. Les premières lignes du code sont des commentaires indiquant la version de phpMyAdmin utilisée, l'hôte, la date et l'heure de génération du fichier, ainsi que les versions du serveur MariaDB et de PHP.
@@ -807,9 +803,7 @@ OU
 
 Pour voir le code complet :doc:`Annexe_IR3`
 
-.. warning::
 
-   Code mis à jour
 
 
 Voici une explication ligne par ligne du code :

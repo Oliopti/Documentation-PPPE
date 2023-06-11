@@ -1,5 +1,5 @@
-Cette page a pour but d'uniquement tester la mise en page d'image
-====================
+Test afficher image
+===================
 
 .. _installation:
 
@@ -7,4 +7,10 @@ I- Test_01
 --------------------------
 
 
-.. image:: /Documentation-PPPE/docs/source/img/comm/logo.png
+.. image:: Documentation-PPPE/docs/source/img/comm/logo.png
+
+
+.. warning::
+
+   Fonksioné paaaaa.
+
