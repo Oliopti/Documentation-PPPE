@@ -84,11 +84,18 @@ Exigences qualité à respecter sur le produit à réaliser :
 2.3/ Ressources mises à disposition des étudiants (logiciels / matériels / documents)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Colonne 1 | Colonne 2 |
-|----------|----------|
-| Ligne 1  | Ligne 1  |
-| Ligne 2  | Ligne 2  |
-| Ligne 3  | Ligne 3  |
+
+.. tableau::
+
+   +------------+------------+
+   | Colonne 1  | Colonne 2  |
+   +============+============+
+   | Ligne 1    | Ligne 1    |
+   +------------+------------+
+   | Ligne 2    | Ligne 2    |
+   +------------+------------+
+   | Ligne 3    | Ligne 3    |
+   +------------+------------+
 
 
 
