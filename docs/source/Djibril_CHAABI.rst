@@ -33,7 +33,7 @@ II - Description du code
 
 .. warning::
 
-   Code en cours de mis à jour.
+   Code en cours de mise à jour.
 
 Ce code est écrit en langage C et semble être destiné à un microcontrôleur PIC12F1572. Il utilise les bibliothèques ``xc.h`` et ``pic12f1572.h`` spécifiques à ce microcontrôleur.
 
