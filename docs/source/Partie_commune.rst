@@ -204,7 +204,7 @@ Exigences qualité à respecter sur le produit à réaliser :
 6.1 - Disponibilité des équipements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L’équipement sera-t-il disponible ? --> oui
+L’équipement sera-t-il disponible ? --> OUI
 
 6.2 - Atteintes des objectifs du point de vue client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -218,7 +218,7 @@ Que devra-t-on observer à la fin du projet qui témoignera de l’atteinte des 
 6.3 - Avenants
 ^^^^^^^^^^^^^^
 
-.. warning::
+.. note::
 
    En cours de mise à jour.
 
@@ -231,7 +231,7 @@ Nombre de pages : ...............
 7/ Observations de la commission de Validation
 ----------------------------------------------
 
-.. warning::
+.. note::
 
    En cours de mise à jour.
 
@@ -243,7 +243,7 @@ Observations : ...............
 7.1 - Avis formulé par la commission de validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning::
+.. note::
 
    En cours de mise à jour.
 
@@ -251,7 +251,7 @@ Observations : ...............
 7.2 - Nom des membres de la commission de validation académique
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning::
+.. note::
 
    En cours de mise à jour.
 
@@ -261,7 +261,7 @@ Observations : ...............
 7.3 - Visa de l’autorité académique
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning::
+.. note::
 
    En cours de mise à jour.
 
