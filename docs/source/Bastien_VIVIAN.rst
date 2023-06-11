@@ -410,6 +410,7 @@ Ce code est écrit en Python et utilise la bibliothèque PyQt5 pour créer une i
    - Elle se connecte à la base de données et exécute une requête SQL pour supprimer le compte utilisateur sélectionné.
 
 Le reste du code comporte des commentaires et des parties de code commentées, qui semblent être en cours de développement ou désactivées pour le moment.
+
 .. code-block:: python
    :linenos:
 

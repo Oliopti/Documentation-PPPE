@@ -6,6 +6,16 @@ EC1 - Djibril Chaabi
 I - Présentation du contrat
 ---------------------------
 
+
+Mon contrat consiste à relever la puissance produite par le vélo, et envoyer cette donnée
+
+Pour récupérer la puissance du vélo, j’utiliserais une sonde à effet Hall qui mesureras l’intensité,et utiliserais un multiplieur pour avoir la puissance en sortie
+
+Pour envoyer les données, on utilise des modules XBee qui sont sur le protocole ZigBee et enfin un MicroControlleur PIC12F1572, qui sert de convertisseur Analogique-Numérique
+
+
+
+
 Dans le cadre de ce projet, diverses étapes doivent être réalisées pour mettre en place la fonction de mesure de courant et de puissance. Tout d'abord, une sonde à effet Hall sera utilisée pour mesurer les courants. Un choix technologique devra également être effectué pour mesurer la tension, en prenant en compte les contraintes et les exigences du système. 
 
 Pour transmettre les informations recueillies, un protocole de communication tel que I2C ou UART sera sélectionné. Des essais seront ensuite réalisés sur une plaque de prototypage afin de valider les différentes structures choisies pour la mesure de courant et de puissance. Une coordination avec les autres membres de l'équipe de projet sera nécessaire pour s'assurer de la pertinence des choix effectués en ce qui concerne la communication.
@@ -15,7 +25,7 @@ Un mode de communication, soit synchrone soit asynchrone, sera choisi en fonctio
 L'ensemble de ces étapes permettra de mettre en place une fonction de mesure de courant et de puissance efficace et précise, en utilisant des technologies appropriées et en garantissant une bonne communication au sein du système.
 
 
-`Cliquez ici pour voir le code <https://youtu.be/xvFZjo5PgG0>`_
+`Cliquez ici pour voir le code <https://github.com/Oliopti/pppe/blob/main/Code_de_Djibril/main.c>`_
 
 
 II - Description du code
@@ -78,6 +88,7 @@ Ces directives incluent les fichiers d'en-tête nécessaires pour le microcontr�
 Cette directive configure les options de configuration du microcontrôleur. Ici, elle désactive le watchdog timer (WDTE), utilise une horloge interne (FOSC=INTOSC) et désactive la broche de réinitialisation (MCLRE=OFF).
 
 3. Définition des variables globales :
+
 .. code-block:: c
    :linenos:
 

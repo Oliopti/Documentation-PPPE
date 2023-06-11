@@ -198,14 +198,14 @@ III - Automatisation
 A - Mise à jours des paquets du système d'exploitation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Créer le fichier ``update.sh``
+1. Créer le fichier ``update.sh``
 
 .. code-block:: bash
    :linenos:
 
    sudo nano update.sh
 
-La commande ``sudo chmod +x update.sh`` est utilisée pour changer les permissions du fichier ``update.sh`` et le rendre exécutable
+2. La commande ``sudo chmod +x update.sh`` est utilisée pour changer les permissions du fichier ``update.sh`` et le rendre exécutable
 
 .. code-block:: bash
    :linenos:
@@ -213,7 +213,7 @@ La commande ``sudo chmod +x update.sh`` est utilisée pour changer les permissio
    sudo chmod +x update.sh
 
 
-Voici une explication ligne par ligne du script permettant Voici une explication ligne par ligne du script permettant des paquets du système d'exploitationla mise à jours du système d'exploitation :
+4. Voici une explication ligne par ligne du script permettant de mettre à jours les paquets du système d'exploitationla :
 
 .. code-block:: bash
    :linenos:
@@ -268,7 +268,12 @@ Cette ligne affiche un autre message à l'utilisateur. Ensuite, la commande ``su
 
 Cette ligne affiche un message à l'utilisateur pour indiquer que la mise à jour est terminée. Le texte est coloré en cyan clair.
 
-Le script shell est destiné à mettre à jour les paquets du système d'exploitation en utilisant la commande ``apt-get`` et à afficher des informations sur les paquets pouvant être mis à jour. Il effectue également la suppression des paquets inutiles.
+5. Pour executer le script il vous suffira d'être dans le bon répertoire exécuter ``./update.sh``.
+
+
+Le script shell est destiné à mettre à jour les paquets du système d'exploitation en utilisant la commande ``apt-get``, ``apt`` et à afficher des informations sur les paquets pouvant être mis à jour. Il effectue également la suppression des paquets inutiles.
+
+
 
 
 
@@ -276,14 +281,14 @@ B - Automatiser l'installation d'Apache2, PHP, MariaDB et phpMyAdmin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Créer le fichier ``phpmyadmin-install.sh``
+1. Créer le fichier ``phpmyadmin-install.sh``
 
 .. code-block:: bash
    :linenos:
 
    sudo nano phpmyadmin-install.sh
 
-La commande ``sudo chmod +x phpmyadmin-install.sh`` est utilisée pour changer les permissions du fichier ``phpmyadmin-install.sh`` et le rendre exécutable
+2. La commande ``sudo chmod +x phpmyadmin-install.sh`` est utilisée pour changer les permissions du fichier ``phpmyadmin-install.sh`` et le rendre exécutable
 
 .. code-block:: bash
    :linenos:
@@ -291,7 +296,7 @@ La commande ``sudo chmod +x phpmyadmin-install.sh`` est utilisée pour changer l
    sudo chmod +x phpmyadmin-install.sh
 
 
-Ce script shell est destiné à installer et configurer Apache2, PHP, MariaDB et phpMyAdmin. Voici une explication ligne par ligne :
+3. Ce script shell est destiné à installer et configurer Apache2, PHP, MariaDB et phpMyAdmin. Voici une explication ligne par ligne :
 
 .. code-block:: bash
    :linenos:
@@ -376,6 +381,9 @@ Cette ligne affiche un message indiquant la fin de l'installation de tous les co
 
 Cette ligne donne une instruction à l'utilisateur pour vérifier le statut d'Apache 2 ou de MariaDB en utilisant la commande ``systemctl status``.
 
+4. Pour executer le script il vous suffira d'être dans le bon répertoire exécuter ``./phpmyadmin-install.sh``.
+
+
 Ces commandes permettent donc d'automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin sur un système Linux.
 
 C - Autoriser les connexion étrangère
@@ -389,6 +397,123 @@ Pour autoriser les connexion étrangère ouvrir le fichier de configuration ``/e
    sudo nano /etc/mysql/mysql.conf.d/mysql.cnf
 
 Puis, renplacer ``bind-address = 127.0.0.1`` par ``bind-address = 0.0.0.0``.
+
+D - Automatiser l'execution du code au démarrage :
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Voici une série de commandes utilisées pour configurer et gérer un service systemd sur un système Linux.
+
+Voici une explication de chaque commande :
+
+
+1. Créer le fichier ``phpmyadmin-install.sh``
+
+.. code-block:: bash
+   :linenos:
+
+   sudo sudo nano monservice.service
+
+
+2. Insérer dans le fichier :
+
+.. code-block:: bash
+   :linenos:
+
+   [Unit]
+   Description=Mon service
+   After=network.target
+
+   [Service]
+   ExecStart=/usr/bin/python3 /home/pi/Documents/code-reception-envoie-serveur/1v-main.py
+   WorkingDirectory=/home/pi/Documents/code-reception-envoie-serveur
+   StandardOutput=inherit
+   StandardError=inherit
+   Restart=always
+   User=pi
+
+   [Install]
+   WantedBy=default.target
+
+
+Ce code est un fichier de configuration pour un service sous systemd sur un système Linux. Il décrit la configuration d'un service appelé "Mon service" qui exécute un script Python.
+
+Voici une explication du code :
+
+- ``[Unit]`` : Cette section spécifie des informations sur le service.
+  - ``Description=Mon service`` : C'est une description textuelle du service.
+  - ``After=network.target`` : Cela indique que le service doit démarrer après que le réseau soit prêt.
+
+- ``[Service]`` : Cette section contient les détails de l'exécution du service.
+  - ``ExecStart=/usr/bin/python3 /home/pi/Documents/code-reception-envoie-serveur/1v-main.py`` : C'est la commande qui est exécutée pour démarrer le service. Elle exécute le script Python ``1v-main.py`` en utilisant l'interpréteur Python 3.
+  - ``WorkingDirectory=/home/pi/Documents/code-reception-envoie-serveur`` : C'est le répertoire de travail dans lequel le service sera lancé. Cela définit le répertoire dans lequel se trouve le script Python.
+  - ``StandardOutput=inherit`` et ``StandardError=inherit`` : Ces options indiquent que la sortie standard (stdout) et la sortie d'erreur (stderr) du service seront héritées du processus parent.
+  - ``Restart=always`` : Cela spécifie que le service sera redémarré automatiquement en cas d'échec ou de terminaison.
+  - ``User=pi` : Cela définit l'utilisateur sous lequel le service sera exécuté.
+
+- ``[Install]`` : Cette section spécifie comment le service doit être installé.
+  - ``WantedBy=default.target`` : Cela indique que le service sera activé au démarrage par défaut.
+
+En résumé, ce fichier de configuration définit un service qui exécute un script Python lors du démarrage du système. Le service sera redémarré automatiquement en cas de besoin. Les sorties standard et d'erreur du service seront héritées du processus parent, et le service sera exécuté sous l'utilisateur "pi".
+
+
+3. 
+
+.. code-block:: bash
+   :linenos:
+   sudo mv monservice.service /etc/systemd/system/
+
+Cette commande déplace le fichier ``monservice.service`` dans le répertoire ``/etc/systemd/system/``. Le répertoire ``/etc/systemd/system/`` est l'emplacement standard pour les fichiers de service systemd.
+
+4. 
+
+.. code-block:: bash
+   :linenos:
+   cd /etc/systemd/system/ 
+
+Cette commande se déplace dans le répertoire ``/etc/systemd/system/``. Cela permet d'accéder au répertoire où le fichier de service a été déplacé.
+
+5. 
+
+.. code-block:: bash
+   :linenos:
+   
+   sudo systemctl daemon-reload
+   
+Cette commande demande à systemd de recharger sa configuration. Cela est nécessaire lorsque de nouveaux fichiers de service sont ajoutés ou modifiés.
+
+6. 
+
+.. code-block:: bash
+   :linenos:
+   
+   sudo systemctl enable monservice
+
+Cette commande active le service ``monservice``. Cela signifie que le service sera automatiquement démarré au démarrage du système.
+
+7. 
+
+.. code-block:: bash
+   :linenos:
+
+   sudo systemctl status monservice
+
+Cette commande affiche le statut actuel du service ``monservice``. Cela permet de vérifier si le service est en cours d'exécution, s'il a échoué ou s'il a été arrêté.
+
+En résumé, ces commandes sont utilisées pour déplacer le fichier de service dans le répertoire approprié, recharger la configuration de systemd, activer le service pour le démarrage automatique et vérifier son statut. Cela permet de gérer efficacement un service systemd sur un système Linux.
+Executer cesudo mv monservice.service /etc/systemd/system/
+
+.. warning::
+
+   Code code s'exécute en tâche de fond alors ATTENTION à ne pas saturer le système.
+
+
+Si vous souhaitez savoir quel processus utilise du python vous pouvez executer la commande:
+
+.. code-block:: bash
+   :linenos:
+
+   ps aux | grep python
+
 
 
 V - Description de la Base de Données

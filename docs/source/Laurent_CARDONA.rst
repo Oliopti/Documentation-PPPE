@@ -6,6 +6,12 @@ EC2 - Laurent Cardona
 I - Présentation du contrat
 --------------------------
 
+Mon contrat est destiné au contrôle de la charge des batteries et la commutation d'une source d'énergie à une autre.
+
+Pour mesurer la tension des batteries j'ai dû faire un pont diviseur de tension. Un programme en C vérifie l'état de la batterie et envoie un message en cas de défaillance et il permet aussi la commutation.
+
+Le programme est implanté sur un microcontrôleur PIC12F1572. J'ai d'abord effectué une simulation sur ISIS avant de faire des essais sur une plaque de prototypage pour au final réaliser une carte électronique avec tous les composants dont j'avais besoin. La commutation se fait entre les batteries et EDF dès que les batteries sont déchargées. 
+
 
 Dans le cadre de ce projet, plusieurs fonctions doivent être réalisées pour assurer le contrôle de la charge de la batterie, la commutation entre différentes sources d'énergie et la mise en œuvre des actionneurs de puissance. Tout d'abord, une mesure de la tension de la batterie sera effectuée à l'aide d'un diviseur de tension. Ensuite, un programme en langage C sera développé pour vérifier l'état de la batterie et envoyer un message d'alerte en cas de défaillance. Une fonction supplémentaire en C sera mise en place pour permettre la commutation vers une autre source d'alimentation lorsque nécessaire.
 
@@ -14,6 +20,9 @@ Pour valider le fonctionnement du système, une simulation sera réalisée sur I
 Une étroite collaboration avec les autres membres de l'équipe du projet sera nécessaire pour valider les choix liés à la communication entre les différents composants. Enfin, des cartes seront réalisées et intégrées dans le système pour assurer son bon fonctionnement global.
 
 Ce processus de réalisation permettra d'obtenir un système efficace et fiable pour le contrôle de la charge de la batterie, la commutation d'énergie et l'actionnement des composants de puissance.
+
+
+`Cliquez ici pour voir le code <https://github.com/Oliopti/pppe/blob/main/projetBTS.X/PROJETBTS.c>`_
 
 
 
