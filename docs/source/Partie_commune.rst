@@ -3,8 +3,14 @@ Partie commune
 
 .. _installation:
 
+
+1/ Présentation et situation du projet dans son environnement
+-------------------------------------------------------------
+
+.. image:: img/comm/Presentation.png
+
 1.1- Présentation du projet
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Dans le contexte actuel où la production de l’énergie électrique pose quelques problèmes en ce qui
 concerne la production, on souhaite rendre autonome l’éclairage de la salle blanche où se
@@ -15,7 +21,7 @@ d’alimenter tous les luminaires de la salle soit 11 points lumineux de 40W cha
 
 
 1.2- Situation du projet dans son contexte
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Domaine d’activité du système support d’étude :
 
@@ -26,7 +32,7 @@ Domaine d’activité du système support d’étude :
 
 
 1.2- Cahier des charges – Expression du besoin
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Réaliser l’installation de l’ensemble panneaux, régulateur, batteries, vélos et alternateurs pour ensuite :
 
@@ -38,14 +44,64 @@ Réaliser l’installation de l’ensemble panneaux, régulateur, batteries, vé
 2- Spécifications
 -----------------
 
+2.1/ Diagrammes SYSML
+^^^^^^^^^^^^^^^^^^^^^
+
+2.1.1/ Exigences
+++++++++++++++++
+
+.. image:: img/comm/Diagramme-1.png
 
 
-.. code-block:: console
+2.1.2/ Constitution du système, diagramme de définition de blocs
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-   (.venv) $ pip install lumache
 
-II- Description du code 
-----------------
+.. image:: img/comm/Diagramme-2.png
+
+
+2.2/ Contraintes de réalisation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Contraintes financières (budget alloué) : 200 € à la charge du lycée.
+
+Contraintes de développement (matériel et/ou logiciel imposé / technologies utilisées) :
+
+Il s’agit de réaliser une solution :
+
+- Embarquée, à base d’un microcontrôleur Microchip PIC16f88.
+- Utilisation de circuits intégrés spécialisés et transistors.
+
+Exigences qualité à respecter sur le produit à réaliser :
+
+- Ergonomie Sur le développement.
+- Respect des standards sur la documentation à produire.
+- Dossier de suivi de projet.
+- Dossier technique unique.
+
+
+
+2.3/ Ressources mises à disposition des étudiants (logiciels / matériels / documents)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Colonne 1 | Colonne 2 |
+|----------|----------|
+| Ligne 1  | Ligne 1  |
+| Ligne 2  | Ligne 2  |
+| Ligne 3  | Ligne 3  |
+
+
+
+3 - Répartition des fonctions ou cas d’utilisation par étudiant
+---------------------------------------------------------------
+
+
+
+4/ Exploitation Pédagogique – Compétences terminales évaluées
+-------------------------------------------------------------
+
+.. image:: img/comm/Contrats-tache.png
+
 
 To retrieve a list of random ingredients,
 you can use the ``lumache.get_random_ingredients()`` function:

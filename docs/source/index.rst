@@ -1,3 +1,7 @@
+.. image:: img/index/logo.png
+
+
+
 Bienvenue dans la documentation du Projet Pédagogique de Production d'Énergie !
 ===============================================================================
 
@@ -24,6 +28,7 @@ Sommaire
 .. toctree::
 
    Partie_commune
+   Mode_emploi 
 
    Djibril_CHAABI
    Laurent_CARDONA

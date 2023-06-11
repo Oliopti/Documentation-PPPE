@@ -98,8 +98,10 @@ Une base de données avec l’écran tactile pour gérer le passage entre le ré
 - Zone active : 154,08 mm × 85,92 mm
 - Écran tactile : Véritable écran tactile capacitif multi-touch avec jusqu'à 10 points d'absolution
 
- **Ordinateur MacBook Pro** : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
- **Ordinateur avec Ubuntu 22.04** : pour programmer, faire des différents tests, exécuter du code
+
+**Ordinateur MacBook Pro** : pour la bureautique, l’organisation, créer différents diagrammes et mettre à jour le diagramme de Gantt.
+
+**Ordinateur avec Ubuntu 22.04** : pour programmer, faire des différents tests, exécuter du code
 
 
 C – Choix technologiques
@@ -213,7 +215,7 @@ A - Mise à jours des paquets du système d'exploitation
    sudo chmod +x update.sh
 
 
-4. Voici une explication ligne par ligne du script permettant de mettre à jours les paquets du système d'exploitationla :
+4. Voici une explication ligne par ligne du script permettant de mettre à jours les paquets du système d'exploitation :
 
 .. code-block:: bash
    :linenos:
@@ -460,6 +462,7 @@ En résumé, ce fichier de configuration définit un service qui exécute un scr
 
 .. code-block:: bash
    :linenos:
+
    sudo mv monservice.service /etc/systemd/system/
 
 Cette commande déplace le fichier ``monservice.service`` dans le répertoire ``/etc/systemd/system/``. Le répertoire ``/etc/systemd/system/`` est l'emplacement standard pour les fichiers de service systemd.
@@ -468,6 +471,7 @@ Cette commande déplace le fichier ``monservice.service`` dans le répertoire ``
 
 .. code-block:: bash
    :linenos:
+
    cd /etc/systemd/system/ 
 
 Cette commande se déplace dans le répertoire ``/etc/systemd/system/``. Cela permet d'accéder au répertoire où le fichier de service a été déplacé.
@@ -504,7 +508,7 @@ Executer cesudo mv monservice.service /etc/systemd/system/
 
 .. warning::
 
-   Code code s'exécute en tâche de fond alors ATTENTION à ne pas saturer le système.
+   Ce code s'exécute en tâche de fond alors ATTENTION à ne pas saturer le système.
 
 
 Si vous souhaitez savoir quel processus utilise du python vous pouvez executer la commande:
@@ -513,6 +517,7 @@ Si vous souhaitez savoir quel processus utilise du python vous pouvez executer l
    :linenos:
 
    ps aux | grep python
+
 
 
 
