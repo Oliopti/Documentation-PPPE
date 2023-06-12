@@ -39,6 +39,3 @@ Sommaire
    Annexe_EC2
    Annexe_IR3
    Annexe_IR4
-
-
-   test_inserer_code
