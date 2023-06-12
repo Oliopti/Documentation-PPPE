@@ -7,7 +7,7 @@ I - Présentation du contrat
 ---------------------------
 
 
-Mon contrat consiste à relever la puissance produite par le vélo, et envoyer cette donnée
+Mon contrat consiste à relever la puissance produite par le vélo, les panneaux solaires et envoyer cette donnée
 
 Pour récupérer la puissance du vélo, j’utiliserais une sonde à effet Hall qui mesureras l’intensité,et utiliserais un multiplieur pour avoir la puissance en sortie
 
@@ -28,8 +28,159 @@ L'ensemble de ces étapes permettra de mettre en place une fonction de mesure de
 `Cliquez ici pour voir le code <https://github.com/Oliopti/pppe/blob/main/Code_de_Djibril/main.c>`_
 
 
-II - Description du code
-------------------------
+II- Logiciel utilisé
+--------------------
+
+
+- Google Drive : Pour la communication entre l’équipe et les échanges de documents.
+
+- GitHub : Pour partager des fichiers entre le groupe 
+
+- PROTEUS : Pour réaliser la carte électronique et les schémas
+
+- MPLAB X : Pour réaliser le programme du Microcontrôleur
+
+- MindView : Pour gérer l’emploi du temps
+
+- Draw.io : Pour créer différents diagrammes
+
+
+III- Ressources et matériaux utilisés
+-------------------------------------
+
+A - Sonde à Effet Hall (HASS 50S)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+J’utilise un capteur à effet Hall pour obtenir un produit de l’intensité de l’énergie produite, il fonctionne en captant les variations de champs magnétiques grâce à l’effet de la force de Lorentz
+
+
+.. image:: img/Djibril_Chaabi/image1.png
+
+
+B - IH0515D
+^^^^^^^^^^^
+
+Pour l’alimentation (+15v/-15v) de la sonde, nous avons décidé d’utiliser un convertisseur DC/DC qui convertit une tension entre 4.5 et 5.5V, et en une tension 15v/-15v mais avec la contrepartie de limiter le courant.
+
+
+C - XBee
+^^^^^^^^
+
+Les modules XBee sont des modules qui permettent d'envoyer et de recevoir des données, sans fil, performants et accessibles. Ils sont caractérisés par une portée très confortable d'une centaine de mètres en environnement intérieur, et jusqu'à plus d'un kilomètre en zone dégagée pour les modules XBee-PRO équipés d'une antenne adaptée.
+Ils peuvent être utilisés couplés à un microcontrôleur ou de façon indépendante.
+Ils sont très pratiques pour la réalisation de nombreux montages électroniques qui doivent pouvoir communiquer entre eux.
+Ils doivent être alimentés entre 2,8 et 3,4 volts et il a une fréquence de 2,4 GHZ.
+
+.. image:: img/Djibril_Chaabi/image2.png
+
+
+D - PIC12F1572
+^^^^^^^^^^^^^^
+
+Le PIC12F1572 est un convertisseur CAN à 10 bits, ce qui signifie que la tension peut prendre 1024 valeurs différentes échelonnées entre 0 et 5 V.
+
+.. image:: img/Djibril_Chaabi/image3.png
+
+.. image:: img/Djibril_Chaabi/image4.png
+
+
+
+E - Ampli-op MCP6022
+^^^^^^^^^^^^^^^^^^^^
+
+Le MCP6022 est un amplificateur opérationnel, Pour mon montage j'utilise un Ampli-op MCP6022 en mode suiveur pour avoir la même tension en entrée et en sortie, il effectue une adaptation d'impédance, en entrée il reçoit une tension de 5 volts au lieu de 30 volts grâce à un pont diviseur de tension.
+
+.. image:: img/Djibril_Chaabi/image5.png
+
+.. image:: img/Djibril_Chaabi/image6.png
+
+
+
+F - Diode Zener (1N4728A)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Une diode Zener est un type spécial de diode qui est conçue pour fonctionner dans la région de rupture inverse et maintenir une tension constante, appelée tension Zener, même lorsque la tension appliquée à ses bornes varie.
+Dans le cas spécifique d'une diode Zener de 3,3V, cela signifie qu'elle maintiendra une tension de 3,3 volts à ses bornes, quelle que soit la tension appliquée dans la polarité inverse, tant que cette tension ne dépasse pas sa tension de rupture inverse maximale.
+En résumé, une diode Zener de 3,3V est conçue pour maintenir une tension constante de 3,3 volts dans la polarité inverse, offrant ainsi une référence de tension stable dans les circuits de régulation de tension.
+
+.. image:: img/Djibril_Chaabi/image7.png
+
+G - Multiplieur (AD633)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Le AD633 est un multiplicateur analogique à quatre quadrants fabriqué par Analog
+Devices. Il permet de multiplier deux signaux analogiques ensemble en fournissant
+en sortie le produit de ces signaux. C'est un circuit précis et largement utilisé dans
+les applications de traitement de signal.
+
+.. image:: img/Djibril_Chaabi/image8.png
+
+.. image:: img/Djibril_Chaabi/image9.png
+
+
+H - Traco power TSR 2450
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Leur rendement élevé permet un fonctionnement à pleine charge jusqu'à +60°C avec un déclenchement de température ambiante sans avoir besoin de dissipateur de chaleur ou de refroidissement par forcé.
+rendement élevé et la faible consommation en veille font de ces régulateurs la solution idéale pour de nombreuses applications alimentées par batterie.
+Les régulateurs à découpage TSR 1 offrent de nombreuses fonctions améliorées par rapport aux régulateurs linéaires, telles qu'une meilleure précision de sortie (±2%) et un courant de veille plus faible de 2mA, sans nécessiter de condensateurs externes
+
+.. image:: img/Djibril_Chaabi/image10.png
+
+
+I - Les résistances
+^^^^^^^^^^^^^^^^^^^
+
+La résistance est un dipôle qui joue un rôle de protection sur les autres dipôles d'un circuit qui ne résistent pas à un surplus d'intensité. Plus la valeur d'une résistance est élevée, plus l'intensité du courant est faible.
+
+Dans ce circuit électrique il y a 5 résistances :
+- 10k Ω
+- 10k Ω
+- 3.3k Ω
+- 1k Ω
+- 100 Ω
+
+La résistance de 570k et celle de 100k servent à faire un pont diviseur de tension
+pour passer de 30 volts a 4,5 volts pour alimenter le MCP6022.
+
+
+IV- Carte électronique
+----------------------
+
+La carte à été réalisée sur le logiciel Proteus.
+Le schéma suivant correspond à la carte électronique finale, on y retrouve les composants présentés précédemment, elle contient aussi les différents borniers.
+Le bornier J1 est branché à la sonde à effet Hall, le bornier J2 est pour les batteries.
+
+Ensuite on retrouve aussi le tracopower “TSR-2450”, il alimente le circuit en 5 Volts, l’avantage des tracopower est leur rendement.
+On retrouve aussi la diode Zener 3,3 Volts qui sert à passer de 5 Volts à 3,3 volts pour alimenter le module XBEE, ce même module envoie les données de point à point ( du module A au module “B” ).
+
+Le MCP6022 est branché en mode suiveur pour avoir la même tension en entrée et en sortie ici il a une tension de 4,5 volts, un des avantages de MCP6022 c’est qu’il est alimenté en monomode c’est à dire qu il est alimentée en 5 volts et reliée à la masse.
+
+La tension de 4,5 volts est obtenue grâce au pont diviseur de tension qui est composée de la résistance de 570 k ohm et 100 k ohm, il sert à atténuer la tension de 30 volts a 4,5 volts pour que le MCP6022 ne grille pas.
+
+J’ai dû effectuer l’empreinte du module XBEE car elle n’existait pas sur proteus j’ai dû mesurer les dimensions entre chaque broche pour avoir les bonnes dimensions après que la plaque soit gravée.
+
+Le IH0515D sert de convertisseur 5v -> +15v/-15v pour alimenter la sonde à effet hall
+
+Le PIC12F1572 sert de Convertisseur Analogique-Numérique pour convertir la tension reçue en entrée en valeur ASCII qui sera envoyé entre mon module XBee et celui de l’IR 3 (Olivier JOURDAIN).
+
+
+Pour finir, l’AD633 reçoit 2 tensions correspondantes au voltage et à l’ampérage des batteries, il va ensuite les multiplier pour obtenir la puissance.
+
+.. image:: img/Djibril_Chaabi/image11.png
+
+Voici un plan 3D de la carte électronique avec tous les composants réalisées sur ARES.
+
+.. image:: img/Djibril_Chaabi/image12.png
+
+Et voici la carte électronique finale après la gravure où je devrais souder les composants.
+
+.. image:: img/Djibril_Chaabi/image13.png
+
+
+
+V - Description du code
+-----------------------
 
 .. note::
 
@@ -191,3 +342,42 @@ Cette fonction est utilisée pour transmettre un octet sur l'UART. Elle attend q
 La fonction ``main()`` est la fonction principale du programme. Elle configure la fréquence du microcontrôleur, les ports et les registres associés. Ensuite, elle entre dans une boucle infinie où elle active une broche, initialise le CAN, effectue une conversion analogique-numérique, transmet les données sur l'UART à l'aide de la fonction ``code()``, et appelle la fonction ``Temp()`` pour effectuer une temporisation.
 
 Cela représente une vue d'ensemble du code et de ses différentes parties. Chaque partie joue un rôle spécifique dans l'exécution du programme sur le microcontrôleur PIC12F1572.
+
+VI- Diagramme d’utilisation
+---------------------------
+
+.. image:: img/Djibril_Chaabi/image14.png
+
+VII- Gantt
+----------
+
+.. image:: img/Djibril_Chaabi/image13.png
+
+
+VIII- Problèmes rencontrés
+--------------------------
+
+Lors de la réalisation de ce projet plusieurs problèmes ont été rencontrés et des solutions ont été trouvées.
+
+Un des problèmes rencontré était dû au vélo car on ne la jamais reçu ça aurait pu nous être utile pour effectuer des tests supplémentaires pour la production d’énergie.
+
+L’autre problème rencontré était lors des gravure des cartes électroniques, les cartes n'avaient pas les bonnes dimensions ce qui fait qu'on ne pouvait pas mettre les composants sur la carte.
+Pour résoudre ce problème, on a dû refaire les cartes électroniques ce qui nous a fait perdre du temps.
+
+IX - Nomenclature
+-----------------
+
+Contraintes financières (budget alloué) : 200 € à la charge du lycée.
+
+.. image:: img/Djibril_Chaabi/image13.png
+
+X - Remerciements
+-----------------
+
+Je tiens à remercier avant tout Monsieur F.Duchiron, et Monsieur P.Dubois qui, en tant que professeur encadrant les projets, se sont montrés toujours à l’écoute et très disponibles tout au long de la réalisation de ce projet.
+
+Grâce à leurs conseils et leurs expertise j’ai pu développer mes compétences et accomplir les missions de mon contrat.
+
+Ainsi je les remercie pour leurs aides et tout le temps qu’ils ont bien voulu me consacrer afin de répondre à mes questions et m’aider lors de problèmes.
+
+Enfin, je n’oublie pas de remercier les membres de mon groupe de projet, Laurent CARDONA, Bastien VIVIAN et Olivier JOURDAIN.
