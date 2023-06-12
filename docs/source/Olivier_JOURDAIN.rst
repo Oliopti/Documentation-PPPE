@@ -238,7 +238,7 @@ C – Diagramme de déploiement
 IV - Automatisation
 --------------------
 
-A - Mise à jours des paquets du système d'exploitation
+A - Mise à jour des paquets du système d'exploitation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Créer le fichier ``update.sh``
@@ -429,20 +429,10 @@ Cette ligne donne une instruction à l'utilisateur pour vérifier le statut d'Ap
 
 Ces commandes permettent donc d'automatiser l'installation et la configuration d'Apache2, PHP, MariaDB et phpMyAdmin sur un système Linux.
 
-C - Autoriser les connexion étrangère
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pour autoriser les connexion étrangère ouvrir le fichier de configuration ``/etc/mysql/mariadb.conf.d/50-server.cnf``.
 
-.. code-block:: bash
-   :linenos:
-
-   sudo nano /etc/mysql/mysql.conf.d/mysql.cnf
-
-Puis, renplacer ``bind-address = 127.0.0.1`` par ``bind-address = 0.0.0.0``.
-
-D - Automatiser l'execution du code au démarrage :
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C - Automatiser l'exécution du code au démarrage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Voici une série de commandes utilisées pour configurer et gérer un service systemd sur un système Linux.
 
@@ -454,7 +444,7 @@ Voici une explication de chaque commande :
 .. code-block:: bash
    :linenos:
 
-   sudo sudo nano monservice.service
+   sudo nano monservice.service
 
 
 2. Insérer dans le fichier :
@@ -483,18 +473,26 @@ Ce code est un fichier de configuration pour un service sous systemd sur un syst
 Voici une explication du code :
 
 - ``[Unit]`` : Cette section spécifie des informations sur le service.
-  - ``Description=Mon service`` : C'est une description textuelle du service.
-  - ``After=network.target`` : Cela indique que le service doit démarrer après que le réseau soit prêt.
+
+- ``Description=Mon service`` : C'est une description textuelle du service.
+
+- ``After=network.target`` : Cela indique que le service doit démarrer après que le réseau soit prêt.
 
 - ``[Service]`` : Cette section contient les détails de l'exécution du service.
-  - ``ExecStart=/usr/bin/python3 /home/pi/Documents/code-reception-envoie-serveur/1v-main.py`` : C'est la commande qui est exécutée pour démarrer le service. Elle exécute le script Python ``1v-main.py`` en utilisant l'interpréteur Python 3.
-  - ``WorkingDirectory=/home/pi/Documents/code-reception-envoie-serveur`` : C'est le répertoire de travail dans lequel le service sera lancé. Cela définit le répertoire dans lequel se trouve le script Python.
-  - ``StandardOutput=inherit`` et ``StandardError=inherit`` : Ces options indiquent que la sortie standard (stdout) et la sortie d'erreur (stderr) du service seront héritées du processus parent.
-  - ``Restart=always`` : Cela spécifie que le service sera redémarré automatiquement en cas d'échec ou de terminaison.
-  - ``User=pi` : Cela définit l'utilisateur sous lequel le service sera exécuté.
+
+- ``ExecStart=/usr/bin/python3 /home/pi/Documents/code-reception-envoie-serveur/1v-main.py`` : C'est la commande qui est exécutée pour démarrer le service. Elle exécute le script Python ``1v-main.py`` en utilisant l'interpréteur Python 3.
+
+- ``WorkingDirectory=/home/pi/Documents/code-reception-envoie-serveur`` : C'est le répertoire de travail dans lequel le service sera lancé. Cela définit le répertoire dans lequel se trouve le script Python.
+
+- ``StandardOutput=inherit`` et ``StandardError=inherit`` : Ces options indiquent que la sortie standard (stdout) et la sortie d'erreur (stderr) du service seront héritées du processus parent.
+
+- ``Restart=always`` : Cela spécifie que le service sera redémarré automatiquement en cas d'échec ou de terminaison.
+
+- ``User=pi`` : Cela définit l'utilisateur sous lequel le service sera exécuté.
 
 - ``[Install]`` : Cette section spécifie comment le service doit être installé.
-  - ``WantedBy=default.target`` : Cela indique que le service sera activé au démarrage par défaut.
+
+- ``WantedBy=default.target`` : Cela indique que le service sera activé au démarrage par défaut.
 
 En résumé, ce fichier de configuration définit un service qui exécute un script Python lors du démarrage du système. Le service sera redémarré automatiquement en cas de besoin. Les sorties standard et d'erreur du service seront héritées du processus parent, et le service sera exécuté sous l'utilisateur "pi".
 
@@ -561,11 +559,168 @@ Si vous souhaitez savoir quel processus utilise du python vous pouvez executer l
 
 
 
+V - Description du code pour récupérer les données et les importer dans la base de donnée:
+--------------------------------------------------------------------------------------------
 
-V - Description de la Base de Données
----------------------------------------
+`Cliquez ici pour voir ce code sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
 
-`Cliquez ici pour voir une sauvegarde du code de la base de donnée sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
+OU
+
+Pour voir le code complet :doc:`Annexe_IR3`
+
+
+
+
+Voici une explication ligne par ligne du code :
+
+
+Voici une explication détaillée du code ligne par ligne :
+
+.. code-block:: python
+   :linenos:
+
+   import time
+   import serial
+
+   import mysql.connector as mysql
+
+Dans cette section, nous importons les modules nécessaires pour le programme. Le module ``time`` est utilisé pour gérer les attentes et les intervalles de temps, le module ``serial`` permet la communication avec les périphériques série, et le module ``mysql.connector`` est utilisé pour se connecter à une base de données MySQL.
+
+.. code-block:: python
+   :linenos:
+
+   ser = serial.Serial(
+      port='/dev/ttyUSB0',                  # Port série à utiliser
+      baudrate=9600,                        # Vitesse de communication en bauds
+      parity=serial.PARITY_NONE,            # Parité (aucune parité)
+      stopbits=serial.STOPBITS_ONE,         # Bits d'arrêt (1 bit)
+      bytesize=serial.EIGHTBITS,            # Taille des octets de données (8 bits)
+      timeout=5                             # Délai d'attente pour la lecture de données (5 secondes)
+   )
+
+
+Cette partie configure la connexion série en utilisant les paramètres spécifiés. ``port`` indique le port série à utiliser (dans cet exemple, '/dev/ttyUSB0'), ``baudrate`` définit la vitesse de communication en bauds (9600), ``parity`` indique la parité (aucune parité), ``stopbits`` spécifie le nombre de bits d'arrêt (1 bit), ``bytesize`` détermine la taille des octets de données (8 bits), et ``timeout`` représente le délai d'attente pour la lecture de données (5 secondes).
+
+.. code-block:: python
+   :linenos:
+
+   if ser.isOpen():
+      ser.close()
+
+
+Cette condition vérifie si le port série est déjà ouvert à l'aide de la méthode ``isOpen()``. Si c'est le cas, la méthode ``close()`` est appelée pour fermer le port série.
+
+.. code-block:: python
+   :linenos:
+
+   ser.open()
+
+Cette ligne ouvre le port série en appelant la méthode ``open()``.
+
+.. code-block:: python
+   :linenos:
+
+   ser.isOpen()
+
+Cette ligne vérifie si le port série est ouvert en appelant la méthode ``isOpen()``. Cependant, le résultat de cet appel n'est pas stocké ou utilisé dans ce code.
+
+.. code-block:: python
+   :linenos:
+
+   while True:
+      try:
+         res = ser.read(6)
+         res = res.decode()
+         res = res.split("-")
+         print("Signal recu :",res)
+         if len(res)==2:
+               insertion(res)
+         time.sleep(1)
+      except:
+         print('erreur while true')
+
+Ceci est la boucle principale du programme. Il s'agit d'une boucle infinie ``while True`` qui lit en continu les données à partir du port série, effectue certaines opérations sur ces données, puis attend 1 seconde avant la prochaine lecture.
+
+Dans la boucle, les étapes suivantes sont effectuées :
+- ``res = ser.read(6)`` lit 6 octets de données à partir du port série et les stocke dans la variable ``res``.
+- ``res = res.decode()`` décode les données lues en une chaîne de caractères lisible.
+- ``res = res.split("-")`` divise la chaîne de caractères en une liste de sous-chaînes en utilisant le caractère "-" comme séparateur.
+- ``print("Signal recu :", res)`` affiche les données reçues du port série.
+- ``if len(res)==2:`` vér ifie si la longueur de la liste ``res`` est égale à 2.
+- Si la condition est vraie, la fonction ``insertion(res)`` est appelée avec la liste ``res`` en tant qu'argument.
+- ``time.sleep(1)`` fait une pause d'une seconde avant de continuer à la prochaine itération de la boucle.
+
+.. code-block:: python
+   :linenos:
+
+   def insertion(mesures):
+      try:
+         connection = mysql.connector.connect(
+               host='192.168.0.104',
+               database='pppe',
+               user='admin',
+               password='admin'
+         )
+         cursor = connection.cursor()
+
+         if mesures[0] == '0':
+               mySql_insert_query = f"INSERT INTO mesure_batterie(id_batterie, tension, timestamp) VALUES((SELECT MAX(id) FROM batterie), {mesures[1]}, timestamp)"
+         elif mesures[0] == '1':
+               mySql_insert_query = f"INSERT INTO panneaux_solaire(tension, timestamp) VALUES({mesures[1]}, timestamp)"
+         elif mesures[0] == '2':
+               mySql_insert_query = f"INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), {mesures[1]})"
+
+         print(mySql_insert_query)
+
+         cursor.execute(mySql_insert_query)
+         connection.commit()
+         print("Exécuter la commande :", mySql_insert_query)
+
+         cursor.close()
+         print("Enregistrement inséré avec succès dans la table releve_puissance")
+      except mysql.connector.Error as error:
+         print("Échec de l'insertion d'un enregistrement dans la table :", error)
+         return False
+      return True
+
+
+Cette partie du code définit la fonction ``insertion(mesures)`` qui est appelée pour insérer les données dans une base de données MySQL.
+
+Dans la fonction, les étapes suivantes sont effectuées :
+
+- Une connexion est établie avec le serveur MySQL en utilisant les informations de connexion fournies (hôte, base de données, nom d'utilisateur, mot de passe).
+- Un curseur est créé pour exécuter les requêtes SQL.
+- En fonction de la valeur ``mesures[0]`` (le premier élément de la liste ``mesures``), une requête d'insertion appropriée est construite pour insérer les données dans la table correspondante de la base de données.
+- La requête d'insertion est affichée à des fins de débogage.
+- La requête d'insertion est exécutée à l'aide de la méthode ``execute()`` du curseur.
+- Les modifications sont validées dans la base de données à l'aide de la méthode ``commit()`` de la connexion.
+- La requête d'insertion est à nouveau affichée.
+- Le curseur est fermé.
+- Un message indiquant le succès de l'insertion est affiché.
+- Si une exception ``mysql.connector.Error`` est levée pendant le processus, un message d'échec est affiché et la valeur ``False`` est renvoyée.
+- Sinon, la valeur ``True`` est renvoyée pour indiquer le succès de l'insertion.
+
+
+VI - Base de Données
+--------------------
+
+A - Autoriser les connexions étrangères
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pour autoriser les connexion étrangère ouvrir le fichier de configuration ``/etc/mysql/mariadb.conf.d/50-server.cnf``.
+
+.. code-block:: bash
+   :linenos:
+
+   sudo nano /etc/mysql/mysql.conf.d/mysql.cnf
+
+Puis, renplacer ``bind-address = 127.0.0.1`` par ``bind-address = 0.0.0.0``.
+
+
+B - Description d'une sauvegarde de la base de données **pppe**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Cliquez ici pour voir une sauvegarde du code de la base de donnée sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/Olivier/PPPE-database/1v-oj-sauvegarde-pppe.sql>`_
 
 OU
 
@@ -965,147 +1120,6 @@ Voici une explication partie par partie de sauvegarde du code de la base de donn
 En résumé, le code fourni crée la structure de deux tables (« batterie », « mesure_batterie », « panneaux_solaire », « releve_puissance », « role », « session » et « utilisateur ») dans la base de données « pppe » et insère des données initiales dans ces tables. Des index, des contraintes et des configurations supplémentaires sont également définis pour les tables.
 
 
-VI - Description du code pour récupérer les données et les importer dans la base de donnée:
---------------------------------------------------------------------------------------------
-
-`Cliquez ici pour voir ce code sur GitHub <https://github.com/Oliopti/pppe/blob/main/Code_de_Olivier/Sauvegarde-bdd-projet/PPPE-database/1v-sauvegarde-pppe.sql>`_
-
-OU
-
-Pour voir le code complet :doc:`Annexe_IR3`
-
-
-
-
-Voici une explication ligne par ligne du code :
-
-
-Voici une explication détaillée du code ligne par ligne :
-
-.. code-block:: python
-   :linenos:
-
-   import time
-   import serial
-
-   import mysql.connector as mysql
-
-Dans cette section, nous importons les modules nécessaires pour le programme. Le module ``time`` est utilisé pour gérer les attentes et les intervalles de temps, le module ``serial`` permet la communication avec les périphériques série, et le module ``mysql.connector`` est utilisé pour se connecter à une base de données MySQL.
-
-.. code-block:: python
-   :linenos:
-
-   ser = serial.Serial(
-      port='/dev/ttyUSB0',                  # Port série à utiliser
-      baudrate=9600,                        # Vitesse de communication en bauds
-      parity=serial.PARITY_NONE,            # Parité (aucune parité)
-      stopbits=serial.STOPBITS_ONE,         # Bits d'arrêt (1 bit)
-      bytesize=serial.EIGHTBITS,            # Taille des octets de données (8 bits)
-      timeout=5                             # Délai d'attente pour la lecture de données (5 secondes)
-   )
-
-
-Cette partie configure la connexion série en utilisant les paramètres spécifiés. ``port`` indique le port série à utiliser (dans cet exemple, '/dev/ttyUSB0'), ``baudrate`` définit la vitesse de communication en bauds (9600), ``parity`` indique la parité (aucune parité), ``stopbits`` spécifie le nombre de bits d'arrêt (1 bit), ``bytesize`` détermine la taille des octets de données (8 bits), et ``timeout`` représente le délai d'attente pour la lecture de données (5 secondes).
-
-.. code-block:: python
-   :linenos:
-
-   if ser.isOpen():
-      ser.close()
-
-
-Cette condition vérifie si le port série est déjà ouvert à l'aide de la méthode ``isOpen()``. Si c'est le cas, la méthode ``close()`` est appelée pour fermer le port série.
-
-.. code-block:: python
-   :linenos:
-
-   ser.open()
-
-Cette ligne ouvre le port série en appelant la méthode ``open()``.
-
-.. code-block:: python
-   :linenos:
-
-   ser.isOpen()
-
-Cette ligne vérifie si le port série est ouvert en appelant la méthode ``isOpen()``. Cependant, le résultat de cet appel n'est pas stocké ou utilisé dans ce code.
-
-.. code-block:: python
-   :linenos:
-
-   while True:
-      try:
-         res = ser.read(6)
-         res = res.decode()
-         res = res.split("-")
-         print("Signal recu :",res)
-         if len(res)==2:
-               insertion(res)
-         time.sleep(1)
-      except:
-         print('erreur while true')
-
-Ceci est la boucle principale du programme. Il s'agit d'une boucle infinie ``while True`` qui lit en continu les données à partir du port série, effectue certaines opérations sur ces données, puis attend 1 seconde avant la prochaine lecture.
-
-Dans la boucle, les étapes suivantes sont effectuées :
-- ``res = ser.read(6)`` lit 6 octets de données à partir du port série et les stocke dans la variable ``res``.
-- ``res = res.decode()`` décode les données lues en une chaîne de caractères lisible.
-- ``res = res.split("-")`` divise la chaîne de caractères en une liste de sous-chaînes en utilisant le caractère "-" comme séparateur.
-- ``print("Signal recu :", res)`` affiche les données reçues du port série.
-- ``if len(res)==2:`` vér ifie si la longueur de la liste ``res`` est égale à 2.
-- Si la condition est vraie, la fonction ``insertion(res)`` est appelée avec la liste ``res`` en tant qu'argument.
-- ``time.sleep(1)`` fait une pause d'une seconde avant de continuer à la prochaine itération de la boucle.
-
-.. code-block:: python
-   :linenos:
-
-   def insertion(mesures):
-      try:
-         connection = mysql.connector.connect(
-               host='192.168.0.104',
-               database='pppe',
-               user='admin',
-               password='admin'
-         )
-         cursor = connection.cursor()
-
-         if mesures[0] == '0':
-               mySql_insert_query = f"INSERT INTO mesure_batterie(id_batterie, tension, timestamp) VALUES((SELECT MAX(id) FROM batterie), {mesures[1]}, timestamp)"
-         elif mesures[0] == '1':
-               mySql_insert_query = f"INSERT INTO panneaux_solaire(tension, timestamp) VALUES({mesures[1]}, timestamp)"
-         elif mesures[0] == '2':
-               mySql_insert_query = f"INSERT INTO releve_puissance(id_session, mesures) VALUES((SELECT MAX(id) FROM session), {mesures[1]})"
-
-         print(mySql_insert_query)
-
-         cursor.execute(mySql_insert_query)
-         connection.commit()
-         print("Exécuter la commande :", mySql_insert_query)
-
-         cursor.close()
-         print("Enregistrement inséré avec succès dans la table releve_puissance")
-      except mysql.connector.Error as error:
-         print("Échec de l'insertion d'un enregistrement dans la table :", error)
-         return False
-      return True
-
-
-Cette partie du code définit la fonction ``insertion(mesures)`` qui est appelée pour insérer les données dans une base de données MySQL.
-
-Dans la fonction, les étapes suivantes sont effectuées :
-
-- Une connexion est établie avec le serveur MySQL en utilisant les informations de connexion fournies (hôte, base de données, nom d'utilisateur, mot de passe).
-- Un curseur est créé pour exécuter les requêtes SQL.
-- En fonction de la valeur ``mesures[0]`` (le premier élément de la liste ``mesures``), une requête d'insertion appropriée est construite pour insérer les données dans la table correspondante de la base de données.
-- La requête d'insertion est affichée à des fins de débogage.
-- La requête d'insertion est exécutée à l'aide de la méthode ``execute()`` du curseur.
-- Les modifications sont validées dans la base de données à l'aide de la méthode ``commit()`` de la connexion.
-- La requête d'insertion est à nouveau affichée.
-- Le curseur est fermé.
-- Un message indiquant le succès de l'insertion est affiché.
-- Si une exception ``mysql.connector.Error`` est levée pendant le processus, un message d'échec est affiché et la valeur ``False`` est renvoyée.
-- Sinon, la valeur ``True`` est renvoyée pour indiquer le succès de l'insertion.
-
 
 VII - Description du code de l'IHM *in Situ*
 --------------------------------------------
@@ -1269,7 +1283,7 @@ Pour voir le code complet :doc:`Annexe_IR3`
 
 
 
-IX – Problèmes rencontrés
+VIII – Problèmes rencontrés
 -------------------------
 
 .. warning::
@@ -1298,7 +1312,7 @@ Les données reçues n’étaient pas les données envoyées, il fallait « nett
 
 
 
-X – Remerciements
+IX – Remerciements
 -----------------
 
 Je tiens à remercier Monsieur Duchiron et Monsieur Dubois qui, en tant que professeurs encadrant, se sont montrés toujours à l’écoute et disponibles durant la réalisation de ce projet. Ainsi je les remercie pour leurs aides et tout le temps qu’ils ont bien voulu me consacrer afin de répondre à mes questions.
@@ -1306,7 +1320,7 @@ Je tiens à remercier Monsieur Duchiron et Monsieur Dubois qui, en tant que prof
 Enfin, je n’oublie pas de remercier Bastien VIVIAN, Djibril CHAABI et Laurent CARDONA qui ont fait un bout de chemin dans ce projet avec moi.
 
 
-XI – Conclusion
+X – Conclusion
 ---------------
 
 Pour conclure, certaines fonctionnalités du Projet Pédagogique de Production d’Énergie sont opérationnelles. L’émission et la réception des données et l’importation des données fonctionnent, il reste à établir le lien entre les deux.
