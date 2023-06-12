@@ -34,12 +34,11 @@ Sommaire
    Laurent_CARDONA
    Olivier_JOURDAIN
    Bastien_VIVIAN
-   
 
+   Annexe_EC1
+   Annexe_EC2
    Annexe_IR3
+   Annexe_IR4
 
-   test_img
 
-   usage
-   api
-   test
+   test_inserer_code

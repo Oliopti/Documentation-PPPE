@@ -31,7 +31,7 @@ L'ensemble de ces étapes permettra de mettre en place une fonction de mesure de
 II - Description du code
 ------------------------
 
-.. warning::
+.. note::
 
    Code en cours de mise à jour.
 
