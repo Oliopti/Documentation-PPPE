@@ -29,6 +29,9 @@ L'ensemble de ces fonctionnalités graphiques et d'interaction utilisateur contr
 
 `Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/tree/main/Code_de_Bast>`_
 
+OU 
+
+Pour voir le code le code de Bastien Vivian :doc:`Annexe_IR4`
 
 
 
@@ -59,8 +62,8 @@ J’ai aussi eu recours aux matériels suivant :
 - Raspberry pi 3 Linux : J’ai utilisé cette carte afin de pouvoir travailler et interagir sur la base de données pour avancer dans mon code.
  
 
-Diagramme de Gantt
-^^^^^^^^^^^^^^^^^^
+**Diagramme de Gantt**
+
 
 .. image:: img/Bastien_Vivian/Diagramme/image1.png
 
