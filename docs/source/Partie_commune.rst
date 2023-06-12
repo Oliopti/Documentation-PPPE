@@ -215,6 +215,23 @@ Que devra-t-on observer à la fin du projet qui témoignera de l’atteinte des 
 - Le candélabre doit être opérationnel avec une autonomie de 8h. La communication entre l’écran tactile et le candélabre via le Raspberry doit être validée.
 
 
+Conclusion Générale & amélioration possible
+-------------------------------------------
+
+Notre groupe tient tout d’abord à remercier nos professeurs Monsieur Duchiron, Monsieur Dubois, qui se sont toujours montrés à l’écoute et très disponibles tout au long de la réalisation de notre projet. Nous les remercions aussi pour leur aide, leurs conseils et leurs cours nous ayant permis d’évoluer et de faire avancer grandement le projet.
+
+Pour conclure ce projet, la plupart des fonctionnalités sont opérationnelles. L'affichage général est bien organisé par rapport aux widgets présents mais sont aussi opérationnels telles que l'inscription des profils, leur modification, ou leur suppression de l’interface par les administrateurs.
+
+Certaines fonctionnalités ne sont pas totalement opérationnelles telles que nous l'imaginions. Avec le temps qu’il nous reste, nous allons peaufiner l’envoi de donnée et leurs réception (lien entre l’IR3 et l’EC 1 et 2)
+
+Ce projet nous a beaucoup appris, notamment à avoir une vision et une posture professionnelle, ainsi qu’une autonomie et une gestion du travail d’équipe, nous donnant ainsi une idée de notre avenir.
+
+Cela nous a aussi permis d’apprendre à imaginer, préparer et concevoir un produit de A à Z via sa création autant matérielle que logicielle.
+
+Ces nouvelles compétences que nous avons pu obtenir au fur et à mesure du projet seront bénéfiques dans nos projets futurs.
+
+
+
 6.3 - Avenants
 ^^^^^^^^^^^^^^
 

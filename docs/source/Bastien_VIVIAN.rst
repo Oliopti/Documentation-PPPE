@@ -6,6 +6,14 @@ IR4 - Bastien Vivian
 I- Présentation du contrat
 --------------------------
 
+Mon contrat porte, en premier lieu, sur la création d’une Interface Homme-Machine (IHM) permettant aux utilisateurs de voir leurs productions d’énergie en temps reel ainsi que leurs statistiques.
+ 
+En second, mon contrat est de distinguer différents types de connexions : les utilisateurs simples qui peuvent uniquement voir leurs statistiques et faire du vélo, et les administrateurs, qui peuvent intervenir sur les profils des utilisateurs simples en réinitialisant leurs statistiques, bloquer temporairement ou supprimer leurs comptes. Ils peuvent également comme les utilisateurs simple, faire du vélo ou voir leurs statistiques. Enfin, ils peuvent ajouter manuellement des utilisateurs sans passer par la fenêtre authentification (trop fort !).
+ 
+Enfin, mon contrat est d’établir un moyen avec l’étudiant IR3 :doc:`Olivier_JOURDAIN` pour que lorsqu’un cycliste est connecté, les données de production soient enregistrées sous son profil (toutes les données des utilisateurs devront être sur une base de données gérée par les étudiants IR3 et 4).
+ 
+Mon contrat étant assez fourni, il contient à lui seul 10 fichiers de type “.py”. Il comporte en tout 10 classes et 34 fonctions.
+
 
 Pour faciliter la visualisation des informations, il est nécessaire de choisir une technologie graphique appropriée, telle que C++, Python, PHP, etc. Cette technologie permettra de créer une interface graphique conviviale pour les utilisateurs. Il est important de fournir une représentation visuelle des données, à la fois de manière générale et de manière spécifique lorsque l'utilisateur est connecté.
 
@@ -22,8 +30,307 @@ L'ensemble de ces fonctionnalités graphiques et d'interaction utilisateur contr
 `Cliquez ici pour voir le code complet <https://github.com/Oliopti/pppe/tree/main/Code_de_Bast>`_
 
 
-II - Description du code
+
+
+
+
+II - Ressources logicielles,matérielles et diagramme de Gantt
+-------------------------------------------------------------
+
+Afin de pouvoir réaliser mon contrat, j’ai eu recours aux logiciels suivants :
+
+- **Pycharm** : J’ai utilisé Pycharm afin de réaliser tous les fichiers de type “.py” (voir Choix Technologique).
+
+- **Qt Designer** :  J’ai utilisé Qt Designer afin de réaliser l’interface graphique (voir Choix Technologique).
+
+- **MindView** : J’ai utilisé MindView afin de réaliser mon diagramme de Gantt afin de prévoir la répartition de mon temps sur les différentes parties de mon contrat.
+
+- **Paint** : J’ai utilisé Paint afin de créer des schémas pour mon Interface Graphique
+
+
+J’ai aussi eu recours aux matériels suivant :
+
+- Ordinateur fixe Windows 10 : J’ai utilisé cet ordinateur, situé dans la salle de cours, pour faire les différents fichiers .py, mon diagramme de Gantt et commencer mon contrat mais également pour des raisons d’ergonomie.
+
+- Ordinateur portable personnel Chrombook : J’ai utilisé cet ordinateur pour accéder à de nombreuses ressources présentes sur le web afin de m’aider à avancer sur le projet. Je l’ai aussi utilisé pour faire les différents diagrammes UML du projet.
+
+- Ordinateur fixe personnel Windows 11 : J’ai utilisé cet ordinateur, situé à mon domicile, pour continuer à travailler sur les différents fichiers .py, mais aussi pour accéder à de nombreux cours et de vidéos afin de m’aider dans la réalisation de mon contrat
+
+- Raspberry pi 3 Linux : J’ai utilisé cette carte afin de pouvoir travailler et interagir sur la base de données pour avancer dans mon code.
+ 
+
+Diagramme de Gantt
+^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Diagramme/image1.png
+
+
+
+III - Choix Technologiques
+--------------------------
+
+Afin de réaliser mon contrat, j’ai dû choisir parmi plusieurs langages de programmation. Pour n’en citer que deux, j’avais le choix entre le C++ et le Python. Pour trancher entre tous ces langages, j’ai comparé leurs avantages et leurs inconvénients.
+
+Le langage de programmation que nous avons finalement choisi est Python car ce langage est facile à apprendre, comprendre et à coder. Notre projet va être porté vers une carte Raspberry pi 3 sous Linux. Le python nous permet de réaliser un portage d’un OS à l’autre sans problèmes (voir Ressources logicielles et matérielles). Enfin, c’est un langage très documenté sur internet, ce qui m’a permis de régler plus rapidement quelques erreurs que j'ai eues. Pour conclure sur ce choix, grâce au langage Python, j’ai été plus productif que si j’avais choisi un autre langage de programmation.
+
+J’ai dû également choisir entre PyQt5 (qui est une bibliothèque de Qt) et Tkinter pour créer l’Interface Homme-Machine. Qt possède son propre logiciel graphique qui permet de créer l’Interface en voyant ce que l’on fait, ce qui est plus pratique et rapide. Lorsque l’on enregistre l’Interface, elle est de type “.ui”, il suffit alors de convertir ce fichier en “.py” grâce à Pycharm.
+
+PyQt5 et Qt prennent également en charge tout type d’OS. Ils sont aussi beaucoup documentés sur internet.
+
+Enfin, contrairement à Qt, Tkinter est moins fiable et on doit écrire un code pour placer les labels à l’aveugle (ce qui n’est pas très ergonomique).
+
+J’ai donc choisi PyQt5 afin de gagner du temps sur le développement de mon contrat.
+
+
+
+.. image:: img/Bastien_Vivian/Diagramme/image2.png
+
+
+IV - Diagramme des cas d’utilisation
+------------------------------------
+
+Afin de créer mon Interface Homme-Machine, je me suis mis dans la peau de l’utilisateur en exprimant mes besoins vis-à-vis de cette application. Puis, j’ai créé un diagramme des cas d’utilisation qui retranscrit mes besoins.
+
+
+.. image:: img/Bastien_Vivian/Diagramme/image3.png
+
+
+
+V - Interface Graphique
+-----------------------
+
+Pour créer mon interface graphique, j’ai regardé mon diagramme des cas d’utilisations (Voir diagramme des cas d’utilisation) afin de déterminer les éléments et les différentes actions possibles qu’il devrait y avoir sur l’IHM. Suite à ça, j’ai créé les schémas des différentes pages de mon application. Ces schémas m’ont permis de représenter ce à quoi devrait ressembler mon travail une fois terminé. Au niveau esthétique, certaines fenêtres ont été modifiées pour le rendu final (voir photo dans mode d’emploi).
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image1.png
+
+*Schéma page administrateur*
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image2.png
+
+*Schéma page faire du vélo*
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image3.png
+
+*Schéma page authentification*
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image4.png
+
+*Schéma page statistiques*
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image5.png
+
+*Schéma page d’accueil*
+
+.. image:: img/Bastien_Vivian/Interface_Graphique/image6.png
+
+*Schéma page inscription*
+
+
+VI - Diagramme de classe
 ------------------------
+
+
+.. image:: img/Bastien_Vivian/Diagramme/image4.png
+
+Pour récapituler, tout part de la classe Manager.
+Presque chaque classe hérite également de QMainWindow, 
+sauf la classe SuperWindow qui hérite de QDialog.  Toutes les 
+classes du programme sont liées à la classe principale Manager par un lien de composition. 
+
+
+
+VII - Explication des codes de chaque classes
+---------------------------------------------
+
+A - Explication du code pour la classe Manager
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pour cette classe, je vais expliquer comment j’ai organisé mon code et comment elle fonctionne.
+Voici une capture d’écran des lignes du code
+
+.. image:: img/Bastien_Vivian/Explication_code/image1.png
+
+
+
+Cet extrait de code me sert à afficher les fenêtres des différentes classes. Chaque classe est donc associé à une fenêtre.
+
+Cette partie du code est donc très importante.
+
+.. image:: img/Bastien_Vivian/Explication_code/image2.png
+
+
+Cet extrait de code me sert à connecter les différents boutons de chaque fenêtre. A chaque clic, cela envoie un signal à la fonction associée à la fenêtre où est présente le bouton, permettant ainsi le passage d’une fenêtre à une autre. 
+
+Par exemple, quand je clique sur le bouton « s’inscrire », un signal est envoyé à la fonction « signup ». A la réception de ce signal, cette dernière affiche la fenêtre connectée au bouton (ici, elle affichera la page d’inscription)
+
+.. image:: img/Bastien_Vivian/Explication_code/image3.png
+
+Voici les fonctions servant à passer d’une fenêtre à une autre. Chaque fonction est donc associée à des boutons qui leurs correspondent et attendent le signal d’un clic. Chaque fonction fait le jonglage entre plusieurs fenêtres différentes.
+
+.. image:: img/Bastien_Vivian/Explication_code/image4.png
+
+Voici comment je connecte mon code à la base de données. Chaque fois que le logiciel a besoin d’avoir accès à la BDD, on crée une fonction avec le squelette de « try » jusqu’à « exept error as e » en modifiant à chaque fois le contenu à l’intérieur.
+
+Par exemple sur l’image ci-dessus, lorsqu’un utilisateur se connecte, le logiciel va aller chercher si les informations de connexions (email et mot de passe dans ce cas) ne sortent pas de nulle part et si elles sont bien présentes dans BDD. Si la connexion avec la base échoue, le message « Error while connecting to Mysl » apparaîtra. Cette partie du code et notamment ce squelette est donc très important et nécessaire.
+
+
+B - Explication du code pour la classe AutentWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image5.png
+
+Ce code concerne la fenêtre d’authentification. Chaque fenêtre est présente dans un fichier différent MAIS seul le fichier principal « main.py » contient les différentes connexions et boutons. Dans les autres fenêtres (sauf pour la fenêtre d’administrateur qui est un peu particulière comme nous le verrons après) comme nous pouvons le voir, il n’y a que du graphique (taille des boutons, tailles des fenêtres etc). Sur l’extrait du code ci-dessus nous définissons donc la taille de la fenêtre, le placement des boutons et ce qu’il y a écrit dessus.
+
+
+C - Explication du code pour la classe InfoWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image6.png
+
+Voici le code de la fenêtre qui affiche un message d’erreur lorsque nous rentrons de mauvaises informations de connexions. Est présent la taille de la fenêtre, du bouton, le message d’erreur qui s’affiche ainsi que son placement.
+
+
+D - Explication du code pour la classe SuperWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image7.png
+
+
+Voici cette fois le code de la petite fenêtre qui s’ouvre informant l’utilisateur que son compte a bien été créé, cette fenêtre est très simple et contient juste un message avec un simple bouton
+
+E - Explication du code pour la classe LoginWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image8.png
+
+Cette partie du code concerne la fenêtre de connexion ou sont présent 2 labels pour entrer son email et son mot de passe. Il y a également un bouton. Comme d’habitude, sont présentes leurs positions dans la fenêtre, leurs tailles et ce qu’il y a écrit sur le bouton. J’ai également fait en sorte que lorsque nous rentrons le mot de passe, nous ne voyons pas ce que nous écrivons (des points apparaissent à la place du texte écrit) grâce à « setEchoMode »
+
+
+F - Explication du code pour la classe SignupWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image9.png
+
+Ici, nous avons la fenêtre d’inscriptions. Comme vous pouvez le voir, elle est assez similaire à la fenêtre de connexion. Sont présents les différents labels avec les différents champs pour écrire.
+
+
+G - Explication du code pour la classe FenêtreVelo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image10.png
+
+Ici est présent le code pour la fenêtre « Faire du vélo » ou comme d’habitude, j’ai défini sa taille, ses boutons et régler leurs placements
+
+
+H - Explication du code pour la classe StatWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image11.png
+
+Cette fenêtre concerne la fenêtre des statistiques ou 3 labels sont présents : Nombre de participations, Énergie produite et Date de création de compte. Contrairement aux fenêtres précédentes, cette page possède une image que j’ai inséré le widget QPixmap pour insérer une photo.  J’ai comme d’habitude défini la taille de l’image, l’orientation des labels et la taille de la fenêtre.
+
+I - Explication du code pour la classe WelcomeWindow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: img/Bastien_Vivian/Explication_code/image12.png
+
+Cette partie du code traite de la fenêtre de bienvenue qui s’affiche lorsqu’un utilisateur se connecte. C’est une fenêtre très simple avec 3 boutons menant vers différentes fenêtres de l’application.
+
+
+J - Explication du code pour la classe AdminSpace
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. image:: img/Bastien_Vivian/Explication_code/image13.png
+
+Enfin, voici le code de la fenêtre administrateur qui, contrairement aux autres fenêtres que l’on a vues, est plus complexe.
+
+Dans cet extrait, j’ai créé un tableau avec le widget TableWidget en définissant sa taille, son nombre de colonne ainsi que les titres de chaque colonne (au nombre de 6).
+
+Je dis aussi au code que pour le terme user, utilisateur aura la valeur 0. Pour le terme last_conn, utilisateur aura la valeur 1.
+
+Ensuite, grâce à une seconde boucle for, les données du tableau seront apprises. Toutes les données avec la valeur 0 seront dans la colonne user, toutes les données avec la valeur 1 seront dans la colonne last_conn au format jour/mois/année etc .
+
+Enfin vous pouvez voir que j’ai ajouté « str » pour nb_conn et energy. Pour faire simple, ce str signifie que les valeurs pourront changer en fonction du combo box. En effet l’administrateur aura le choix d’afficher les informations de la semaine en cours, du mois ou de l’année (voir photo ci-dessous). L’énergie produite d’un utilisateur dans le mois n’aura donc surement pas la même valeur que l’énergie qui l’a produite dans la semaine. Ce qui n’est pas le cas de la date d'inscription ou du nom d’utilisateur qui lui ne changera jamais.
+
+Le str signifie donc pour faire simple que les valeurs de nb_conn et energy pourront changer en fonction du combo box.
+
+
+.. image:: img/Bastien_Vivian/Explication_code/image14.png
+
+*Page administrateur*
+
+Enfin, j’ai ajouté un combo box dans la 6ème colonne du tableau (ayant pour titre « Gérer » avec « -- », « Bloquer l’utilisateur », « Supprimer compte utilisateur » et « Réinitialiser stats »
+
+.. image:: img/Bastien_Vivian/Explication_code/image15.png
+
+Pour finir, la suite de mon code de la classe AdminSpace reprend le squelette avec Try ou il y a divers requête SQL à l’intérieur afin de récupérer les informations nécessaires pour le tableau tel que le nombre de sessions, la date de déconnexion d’un utilisateur etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VIII - Description du code
+--------------------------
 
 A - Description du code main.py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1481,3 +1788,13 @@ Enfin, il y a des lignes de code commentées (``#self.login_button.clicked.conne
             #self.setCentralWidget(central_widget)
 
 
+IX - Conclusion personnel et remerciement
+-----------------------------------------
+
+Je tiens tout d’abord à remercier Monsieur Duchiron qui s’est toujours montré à l’écoute et très disponible tout au long de la réalisation de mon projet. Je le remercie pour son aide, ses conseils et ses cours. Enfin, je n’oublie pas de remercier sincèrement Olivier Jourdain, Djibril Chaabi et Laurent Cardona qui ont fait un bout de chemin dans ce projet avec moi.
+
+Pour conclure, la plupart des fonctionnalités de l’IHM sont opérationnelles telles que s’inscrire et se connecter à l’application, récupérer les données des utilisateurs ou accéder au page des statistiques. L’affichage général est bien organisé par rapport aux widgets présents.
+
+Certaines fonctionnalités ne sont pas totalement opérationnelles telles que nous l'imaginons. Avec le temps qu’il nous reste, je vais, avec l’aide d’Olivier (étudiant IR3), faire en sorte que l’énergie produite arrive en temps réel sur la page « Faire du vélo ». De même pour les statistiques des utilisateurs. Avec plus de temps, j’aurai aimé faire en sorte de finir l’IHM à 100%. J’aurais aussi aimé approfondir le tableau administrateur afin que les modérateurs aient un contrôle total sur le compte des utilisateurs simple via l’IHM et sans passer par la BDD (ou le contrôle total est déjà présent).
+
+Ce projet m’a appris à être à l’écoute de mon équipe. Nous avons favorisé le travail d’équipe afin de travailler tous ensemble en prenant en compte les idées des autres. Cette expérience m'a été très bénéfique en m’apportant de nouvelles connaissances et compétences. 
