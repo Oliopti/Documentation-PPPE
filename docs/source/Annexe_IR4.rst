@@ -47,7 +47,7 @@ Annexe - IR4 - Bastien Vivian
 7 - Code main.py
 ----------------
 
-.. literalinclude:: code/Bastien_Vivian/nomainmcode.py
+.. literalinclude:: code/Bastien_Vivian/main.py
    :language: python
         
 
