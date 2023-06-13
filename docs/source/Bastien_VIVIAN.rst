@@ -37,7 +37,7 @@ Pour voir le code le code de Bastien Vivian :doc:`Annexe_IR4`
 
 
 
-II - Ressources logicielles,matérielles et diagramme de Gantt flflflfl
+II - Ressources logicielles,matérielles et diagramme de Gantt flflflflk
 -------------------------------------------------------------
 
 Afin de pouvoir réaliser mon contrat, j’ai eu recours aux logiciels suivants :
