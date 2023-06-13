@@ -1,5 +1,8 @@
-Test-Titre1
-===========
+Test-Titre 1
+============
+
+.. _installation:
+
 
 Titre 2
 -------
@@ -15,6 +18,11 @@ Mettre du texte dans en italique *Mettre en italique*
 Mettre du texte dans en gras **Mettre en gras**
 
 Mettre du texte dans un cadre ``test``
+
+Faire référence a un autre page :doc:`test`
+
+Insérer un liens `Cliquer ici <https://youtu.be/O91DT1pR1ew>`_
+
 
 Faire un tableau :
 
