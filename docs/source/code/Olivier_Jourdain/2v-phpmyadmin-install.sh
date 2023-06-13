@@ -37,3 +37,4 @@ echo -e "\033[0;35mInstallation de Apache2, PHP, MariaDB et phpMyAdmin terminée
 
 echo -e "\033[0;35mExecutez 'sudo systemctl status apache2' ou 'sudo systemctl status mariadb' pour connaître le satus de Apache 2 ou MariaDB .\033[0m"
 
+

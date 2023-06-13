@@ -16,3 +16,4 @@ sudo apt-get autoremove -y && sudo apt autoremove -y
 
 echo -e "\033[1;36mMise à jour terminée.\033[0m"
 
+
