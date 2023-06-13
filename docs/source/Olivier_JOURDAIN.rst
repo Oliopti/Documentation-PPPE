@@ -62,17 +62,17 @@ Pour la base de données :
 
 - MariaDB : MariaDB est un système de gestion de base de données (SGBD) open source et performant, qui constitue une alternative compatible à MySQL et offre des fonctionnalités avancées pour la gestion et le stockage des données.
 
-.. image:: img/Olivier_Jourdain/image1.png
+.. image:: img/Olivier_Jourdain/illustration/image1.png
 
 
 - phpMyAdmin : PhpMyAdmin est un outil open-source permettant de gérer et d'administrer facilement des bases de données MySQL à travers une interface web.
 
-.. image:: img/Olivier_Jourdain/image1.png
+.. image:: img/Olivier_Jourdain/illustration/image2.png
 
 
 - Apache2 : Apache2 est un serveur web open-source largement utilisé, offrant une plateforme stable et sécurisée pour héberger des sites web et servir des pages aux utilisateurs. Apache2 m’a fourni un accès à phpMyAdmin via un navigateur web.
 
-.. image:: img/Olivier_Jourdain/image1.png
+.. image:: img/Olivier_Jourdain/illustration/image3.png
 
 Pour le contrôle à distance :
 +++++++++++++++++++++++++++++
@@ -132,7 +132,7 @@ Pour la transmission des données j’ai choisi XBee Pro S1 comme module de comm
 Protocole de communication :
 Le module XBee Pro S1 prend uniquement en charge le protocole de communication Zigbee. Il est important de noter qu’il n'est pas compatible avec d'autres protocoles tels que le Wi-Fi ou Bluetooth. Zigbee offre une portée étendue, une faible consommation d'énergie, la connectivité à plusieurs appareils et des fonctionnalités avancées, le distinguant ainsi du Bluetooth, du Wi-Fi, du LoRa et de Sigfox.
 
-.. image:: img/Olivier_Jourdain/image1.png
+.. image:: img/Olivier_Jourdain/image2.png
 
 
 **Quel équivalent ?**
